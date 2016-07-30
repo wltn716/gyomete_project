@@ -1,0 +1,19 @@
+<%@forms.each do |p|%>
+    <%=p.title%><br>
+    <%=p.content%><br>
+    <%=p.hit%><br>
+    <%=p.like%><br>
+
+  <div class="container">
+    <form action="/home/form_reply" method="POST">
+      <div class="form-group">
+        <input type="hidden" value="<%=p.id%>" name="id_of_form">
+        <textarea name="reply_f" class="form-control" rows="5" id="comment"></textarea>
+      </div>
+      <button type="submit" class="btn btn-default">Submit</button>
+    </form>
+  </div>
+  <%p.freplies.each do |r|%>
+  <p><%=r.content%></p>
+  <%end%>
+<%end%>

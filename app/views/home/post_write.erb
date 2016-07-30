@@ -1,0 +1,18 @@
+<div class="container">
+    <h1>커뮤니티 글 쓰기</h1>
+    <form action="/post_write" method="POST">
+      <div class="form-group">
+        <label for="exampleInputPassword1">제목</label>
+        <input type="text" name="title" class="form-control" id="title" placeholder="제목을 입력하세요">
+      </div>
+      <div class="form-group">
+        <label for="comment">내용</label>
+        <textarea class="form-control" name="content" rows="5" id="comment" placeholder="내용을 입력하세요"></textarea>
+      </div>
+      <div class="form-group">
+      <label for="exampleInputFile">파일 첨부</label>
+      <input type="file" id="file">
+      </div>  
+      <button type="submit" class="btn btn-default">확인</button>
+    </form>
+</div>
