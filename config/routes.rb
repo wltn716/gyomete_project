@@ -4,8 +4,13 @@ Rails.application.routes.draw do
   post 'home/form_action'
   get 'home/form_view'
   post 'home/form_reply'
+  get 'home/form_result'
   get 'home/post_write'
-  post 'home/post_write'
+  #post 'home/post_acion'
+  post 'post_action' => "home#post_action"
+  get 'home/post_view'
+  get 'home/post_list'
+  post 'home/post_list'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

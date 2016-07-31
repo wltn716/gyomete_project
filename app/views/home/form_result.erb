@@ -1,34 +1,34 @@
 <!--#글 출력창-->
   <%@forms.each do |p|%>
-  <div class="well">
-      <%=p.title%><br>
-      <%=p.content%><br>
-      <%=p.hit%><br>
-      <%=p.like%><br>
-      <a href="/home/form_result?search=<%=p.hashtag%>"><%=p.hashtag%></a>
-      
-  <!--#좋아요 버튼 근데 숫자 출력 어카지..--> 
-      <div class="post" postid="<%p.id%>">
-          <input type="button" class='like' value="LikeButton" /> </input>
-          <input type="button" class='dislike' value="DislikeButton"> </input>
-      </div>
-  
-  <!--#댓글창-->
-    <div class="container">
-      <form action="/home/form_reply" method="POST">
-        <div class="form-group">
-          <input type="hidden" value="<%=p.id%>" name="id_of_form">
-          <textarea name="reply_f" class="form-control" rows="5" id="comment"></textarea>
+    <div class="well">
+        <%=p.title%><br>
+        <%=p.content%><br>
+        <%=p.hit%><br>
+        <%=p.like%><br>
+        <a href="/home/form_result?search=<%=p.hashtag%>"><%=p.hashtag%></a>
+        
+    <!--#좋아요 버튼 근데 숫자 출력 어카지..--> 
+        <div class="post" postid="<%p.id%>">
+            <input type="button" class='like' value="LikeButton" /> </input>
+            <input type="button" class='dislike' value="DislikeButton"> </input>
         </div>
-        <button type="submit" class="btn btn-default">Submit</button>
-      </form>
+    
+    <!--#댓글창-->
+      <div class="container">
+        <form action="/home/form_reply" method="POST">
+          <div class="form-group">
+            <input type="hidden" value="<%=p.id%>" name="id_of_form">
+            <textarea name="reply_f" class="form-control" rows="5" id="comment"></textarea>
+          </div>
+          <button type="submit" class="btn btn-default">Submit</button>
+        </form>
+      </div>
+    <!--#댓글-->
+      <%p.freplies.each do |r|%>
+      <p><%=r.content%></p>
+      <%end%>
     </div>
-  <!--#댓글-->
-    <%p.freplies.each do |r|%>
-    <p><%=r.content%></p>
-    <%end%>
-  </div>
-<%end%>
+  <%end%>
 
 <!--검색-->
 <form action="/home/form_result" method="GET">

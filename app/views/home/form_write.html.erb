@@ -1,9 +1,9 @@
-#(왜때무네 주석처리가 안되지?;;)글 쓰는 곳! 제목. 내용.카테고리분류항목 생성까지 완료 
-#선택한 카테고리의 밸류값이 이 글의 제목과 내용 모두에 적용되도록 하는 방법은 아직 모르게씀당..
+<!-- (왜때무네 주석처리가 안되지?;;)글 쓰는 곳! 제목. 내용.카테고리분류항목 생성까지 완료 
+#선택한 카테고리의 밸류값이 이 글의 제목과 내용 모두에 적용되도록 하는 방법은 아직 모르게씀당..-->
 
 <div class="container">
   <form action="/home/form_action" method="POST">
-#카테고리 분류
+<!--#카테고리 분류-->
     <div class="form-group">
       <lable for="category">Category</label>
       <select class="form-control">
@@ -12,18 +12,23 @@
         <option value="three">개인질문</option>
       </select>
     </div>
-#제목입력
+<!--#제목입력-->
     <div class="form-group">
       <label for="exampleInputEmail1">제목</label>
       <input name="title" type="text" class="form-control" id="exampleInputEmail1" placeholder="제목을 입력해 주세요">
     </div>
-#글작성
+<!--#글작성-->
     <div class="form-group">
       <label for="comment">Comment:</label>
       <textarea name="content" class="form-control" rows="5" id="comment"></textarea>
     </div>
-#해시태그 곧 넣겠슴당
-#글 올리는 버튼
+<!--#해시태그 곧 넣겠슴당-->
+    <div class="form-group">
+      <label for="exampleInputEmail1">Hashtag</label>
+      <input name="hashtag" type="text" class="form-control" id="exampleInputEmail1" placeholder="제목을 입력해 주세요">
+    </div>
+
+<!--#글 올리는 버튼-->
     <button type="submit" class="btn btn-default">Submit</button>
   </form>
 </div>

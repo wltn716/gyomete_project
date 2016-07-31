@@ -1,6 +1,6 @@
 <div class="container">
     <h1>커뮤니티 글 쓰기</h1>
-    <form action="/post_write" method="POST">
+    <form action="/post_action" method="POST" enctype="multipart/form-data">
       <div class="form-group">
         <label for="exampleInputPassword1">제목</label>
         <input type="text" name="title" class="form-control" id="title" placeholder="제목을 입력하세요">
@@ -11,8 +11,9 @@
       </div>
       <div class="form-group">
       <label for="exampleInputFile">파일 첨부</label>
-      <input type="file" id="file">
+      <input type="file" name="pic" accept="image/*">
       </div>  
       <button type="submit" class="btn btn-default">확인</button>
     </form>
 </div>
+

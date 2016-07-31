@@ -29,18 +29,38 @@ class HomeController < ApplicationController
     redirect_to "/home/form_view"
   end
   
+  def form_result
+    @forms = Form.search(params[:search]).reverse
+  end
+  
   # 커뮤니티 게시판 글 작성
   def post_write
+    #@posts = Post.all
+  end
   
+  #게시판 글 작성 액션
+  def post_action
+    post = Post.new
+    post.title = params[:title]
+    post.content = params[:content]
+    file = params[:pic]
+    uploader = GyometeCommunityUploader.new
+    uploader.store!(file)
+    post.image_url = uploader.url
+    
+      redirect_to "/home/post_list"  
+    # 나중에 post_view로 redirect_to 시키게끔해야 함..! 
+      
   end
   
   # 커뮤니티 게시판 리스트 출력
   def post_list
-      
+  @posts_title = Post.all
   end
   
   # 커뮤니티 게시판 리스트에서 글 눌렀을 때, 제목과 내용 출력과 댓글 달기
   def post_view
+
   
   end
   
