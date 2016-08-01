@@ -1,6 +1,8 @@
+require 'mailgun'
 class HomeController < ApplicationController
   # 메일 양식 작성
   def form_write
+    @forms=Form.all
     
   end
   
@@ -8,6 +10,20 @@ class HomeController < ApplicationController
   def form_action
     form = Form.new(title: params[:title], content: params[:content], hit: params[:hit], like: params[:like], hashtag: params[:hashtag])
     form.save
+    @receiver = params[:receiver]
+    mg_client = Mailgun::Client.new("your-api-key")
+    
+    message_params =  {
+                       from: current_user.email,
+                       to:   @receiver,
+                       subject: params[:title],
+                       text:    params[:content]
+                      }
+    
+    result = mg_client.send_message('sandbox41ceb00888d0479096b32609df172ab0.mailgun.org', message_params).to_h!
+    
+    message_id = result['id']
+    message = result['message']
     redirect_to "/home/form_view"
   end
   
@@ -29,6 +45,7 @@ class HomeController < ApplicationController
     redirect_to "/home/form_view"
   end
   
+  #해시태그만들기1
   def form_result
     @forms = Form.search(params[:search]).reverse
   end
