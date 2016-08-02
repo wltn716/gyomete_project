@@ -2,19 +2,23 @@ require 'mailgun'
 class HomeController < ApplicationController
   # 메일 양식 작성
   def form_write
-    @forms=Form.all
+   
     
   end
   
   # 메일 양식 작성 액션
   def form_action
-    form = Form.new(title: params[:title], content: params[:content], hit: params[:hit], like: params[:like], hashtag: params[:hashtag])
+    #writer: params[:nickname]추가예정
+    form = Form.new
+    form.title = params[:title]
+    form.content = params[:content]
+    form.hashtag = params[:hashtag]
     form.save
     @receiver = params[:receiver]
-    mg_client = Mailgun::Client.new("your-api-key")
+    mg_client = Mailgun::Client.new("key-f6f12a06f7725629b847ba47b4b04815")
     
     message_params =  {
-                       from: current_user.email,
+                       from: "hahiho716@naver.com",
                        to:   @receiver,
                        subject: params[:title],
                        text:    params[:content]
@@ -34,6 +38,11 @@ class HomeController < ApplicationController
   
   # 작성된 하나하나의 메일 양식 & 댓글 출력 
   def form_view
+    form = Form.new
+    @form_hit = form.hit
+  
+    form.save
+    @form_hit= @form_hit+1
     @forms = Form.all
     Freply.all
   end

@@ -4,9 +4,10 @@ class CreateForms < ActiveRecord::Migration
 
       t.string :title
       t.text :content
-      t.integer :hit
+      t.integer :hit, default: 0
       t.integer :like
       t.string :hashtag
+      t.string :nickname
       
 
       t.timestamps null: false

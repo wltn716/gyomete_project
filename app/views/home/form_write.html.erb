@@ -1,8 +1,10 @@
+<!--current_user.nickname-->
 <!-- 글 쓰는 곳! 제목. 내용.카테고리분류항목 생성까지 완료 
 선택한 카테고리의 밸류값이 이 글의 제목과 내용 모두에 적용되도록 하는 방법은 아직 모르게씀당..-->
 
 <div class="container">
   <form action="/home/form_action" method="POST" ><!--여기 안에 value="<@category>" 루비언어로 하면 적용되는것?-->
+    <!--input type="hidden" name="nickname" value="current_user.nickname"-->
 <!--#카테고리 분류-->
     <div class="form-group">
       <lable for="category">Category</label>

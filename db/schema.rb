@@ -16,11 +16,12 @@ ActiveRecord::Schema.define(version: 20160731165153) do
   create_table "forms", force: :cascade do |t|
     t.string   "title"
     t.text     "content"
-    t.integer  "hit"
+    t.integer  "hit",        default: 0
     t.integer  "like"
     t.string   "hashtag"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "nickname"
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
   end
 
   create_table "freplies", force: :cascade do |t|

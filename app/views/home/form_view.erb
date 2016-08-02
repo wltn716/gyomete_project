@@ -1,9 +1,9 @@
 <!--#글 출력창-->
+<%=@form_hit%>
   <%@forms.each do |p|%>
   <div class="well">
       <%=p.title%><br>
       <%=p.content%><br>
-      <%=p.hit%><br>
       <%=p.like%><br>
       <a href="/home/form_result?search=<%=p.hashtag%>"><%=p.hashtag%></a>
       
