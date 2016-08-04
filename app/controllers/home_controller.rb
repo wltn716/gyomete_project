@@ -1,5 +1,14 @@
 require 'mailgun'
+require 'mechanize'
 class HomeController < ApplicationController
+  def scrap
+  
+    mechanize = Mechanize.new
+    
+    page = mechanize.get('http://stackoverflow.com/')
+    
+    puts page.title
+  end
   
   def firstpage
     #unless user_signed_in?
