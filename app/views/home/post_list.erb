@@ -1,7 +1,7 @@
 <div class="container">
     <h1>커뮤니티 게시판</h1>
     <% @posts.each do |p| %>
-        <%=p.title%><br>
+        <a href="/post_view/<%=p.id%>"><%=p.title%></a><br>
     <% end %>
     <a href="/home/post_result?search="></a>
 </div>

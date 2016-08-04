@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   get 'home/post_write'
   #post 'home/post_acion'
   post 'post_action' => "home#post_action"
-  get 'home/post_view'
+  get 'post_view/:post_id' => "home#post_view"
   get 'home/post_list'
   post 'home/post_list'
   get 'home/post_result'

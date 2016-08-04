@@ -107,10 +107,10 @@ class HomeController < ApplicationController
     post = Post.new
     post.title = params[:title]
     post.content = params[:content]
-    file = params[:pic]
-    uploader = GyometeCommunityUploader.new
-    uploader.store!(file)
-    post.image_url = uploader.url
+    #file = params[:pic]
+    #uploader = GyometeCommunityUploader.new
+    #uploader.store!(file)
+    #post.image_url = uploader.url
     post.save
     
     redirect_to "/home/post_list"  
@@ -129,7 +129,7 @@ class HomeController < ApplicationController
   # 커뮤니티 게시판 리스트에서 글 눌렀을 때, 제목과 내용 출력과 댓글 달기
   def post_view
 
-  
+  @view_post = Post.find(params[:post_id])
   end
   
   # 커뮤니티 게시판에 대한 댓글 작성 action
