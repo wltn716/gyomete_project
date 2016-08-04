@@ -4,6 +4,8 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
          
-         
+  has_one :account_setting      
+  before_create :build_profile #-> builds a blank profile on user create
+  has_one :profile
          
 end
