@@ -28,7 +28,7 @@ class HomeController < ApplicationController
     form.hashtag = params[:hashtag]
     form.save
     
-    redirect_to "/home/form_view"
+    redirect_to "/home/form_list"
   end
   
   # 메일 양식 리스트 출력
@@ -40,12 +40,13 @@ class HomeController < ApplicationController
   
   # 작성된 하나하나의 메일 양식 & 댓글 출력 
   def form_view
-    form = Form.new
-    @form_hit = form.hit
-    form.save
+    #form = Form.new
+    #@form_hit = form.hit
+    #form.save
     
-    @form_hit= @form_hit+1
-    @forms = Form.all
+    #@form_hit= @form_hit+1
+    #@forms = Form.all
+    @view_form = Form.find(params[:form_id])
     Freply.all
   end
   

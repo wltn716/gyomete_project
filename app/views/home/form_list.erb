@@ -1,1 +1,3 @@
-<%@forms.%>
+<%@forms.each do |p|%>
+   <a href="/form_view/<%=p.id%>"><%=p.title%></a></br>
+<%end%>

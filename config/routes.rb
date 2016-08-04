@@ -5,7 +5,8 @@ Rails.application.routes.draw do
   post 'home/firstpage_result'
   get 'home/form_write'
   post 'home/form_action'
-  get 'home/form_view'
+  get 'form_view/:form_id' => "home#form_view"
+  get 'home/form_list'
   post 'home/form_reply'
   get 'home/form_result'
   get 'form_mail/:form_id' => "home#form_mail"
