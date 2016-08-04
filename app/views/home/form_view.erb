@@ -5,13 +5,11 @@
       <%=p.title%><br>
       <%=p.content%><br>
       <%=p.like%><br>
-      <a href="/home/form_result?search=<%=p.hashtag%>"><%=p.hashtag%></a>
+      <a href="/home/form_result?search=<%=p.hashtag%>"><%=p.hashtag%></a><br>
       
-  <!--#좋아요 버튼 근데 숫자 출력 어카지..--> 
-      <div class="post" postid="<%p.id%>">
-          <input type="button" class='like' value="LikeButton"> </input>
-          <input type="button" class='dislike' value="DislikeButton"> </input>
-      </div>
+  <!--#좋아요 버튼 근데 새로고침하면 숫자없어짐ㅎ..--> 
+      <button onclick="clickCounter()" type="button">Like</button>
+      <span id="result"></span>
   
   <!--#댓글창-->
     <div class="container">
@@ -27,8 +25,12 @@
     <%p.freplies.each do |r|%>
     <p><%=r.content%></p>
     <%end%>
+  <!--메일링크-->
+  <a href="/form_mail/<%=p.id%>">메일보내러가기</a>
   </div>
+  
 <%end%>
+
 
 <!--검색-->
 <form action="/home/form_result" method="GET">
@@ -37,29 +39,17 @@
 </form>
 
 <!--#좋아요 기능 구현하기 위한 ajax-->
-<script type="text/javascript">
-   $(function () {
-    $('.like').click(function () { likeFunction(this); });
-    $('.dislike').click(function () { dislikeFunction(this);});
-  });
-  
-  
-  function likeFunction(caller) {
-    var postId = caller.parentElement.getAttribute('postid');
-    $.ajax({
-        type: "POST",
-        url: "rate.php",
-        data: 'Action=LIKE&PostID=' + postId,
-        success: function () {}
-    });
-  }
-  function dislikeFunction(caller) {
-    var postId = caller.parentElement.getAttribute('postid');
-    $.ajax({
-        type: "POST",
-        url: "rate.php",
-        data: 'Action=DISLIKE&PostID=' + postId,
-        success: function () {}
-    });
-  }
+<script>
+function clickCounter() {
+    if(typeof(Storage) !== "undefined") {
+        if (localStorage.clickcount) {
+            localStorage.clickcount = Number(localStorage.clickcount)+1;
+        } else {
+            localStorage.clickcount = 1;
+        }
+        document.getElementById("result").innerHTML =  localStorage.clickcount ;
+    } else {
+        document.getElementById("result").innerHTML = "Sorry, your browser does not support web storage...";
+    }
+}
 </script>

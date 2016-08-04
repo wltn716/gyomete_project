@@ -12,26 +12,15 @@ class HomeController < ApplicationController
     form.content = params[:content]
     form.hashtag = params[:hashtag]
     form.save
-    @receiver = params[:receiver]
-    mg_client = Mailgun::Client.new("key-f6f12a06f7725629b847ba47b4b04815")
     
-    message_params =  {
-                       from: "hahiho716@naver.com",
-                       to:   @receiver,
-                       subject: params[:title],
-                       text:    params[:content]
-                      }
-    
-    result = mg_client.send_message('sandbox41ceb00888d0479096b32609df172ab0.mailgun.org', message_params).to_h!
-    
-    message_id = result['id']
-    message = result['message']
     redirect_to "/home/form_view"
   end
   
   # 메일 양식 리스트 출력
   def form_list
     #카테고리 출력하는 action필요함 카테고리는 value값으로 받기
+   @forms = Form.all  
+  
   end
   
   # 작성된 하나하나의 메일 양식 & 댓글 출력 
@@ -55,6 +44,41 @@ class HomeController < ApplicationController
   #해시태그만들기1
   def form_result
     @forms = Form.search(params[:search]).reverse
+  end
+  
+  #메일보내기
+  
+  def form_mail
+    @one_form = Form.find(params[:form_id])
+  
+  end
+  
+  def form_m_update
+    @receiver = params[:receiver]
+    mg_client = Mailgun::Client.new("key-f6f12a06f7725629b847ba47b4b04815")
+    
+    message_params =  {
+                       from: "hahiho716@naver.com",
+                       to:   @receiver,
+                       subject: params[:title],
+                       text:    params[:content]
+                      }
+    
+    result = mg_client.send_message('sandbox41ceb00888d0479096b32609df172ab0.mailgun.org', message_params).to_h!
+    
+    message_id = result['id']
+    message = result['message']
+
+    @one_form = Form.find(params[:form_id])
+    
+    @one_form.title= params[:title]
+    
+    @one_form.content = params[:content]
+    
+    @one_form.save
+    
+    redirect_to "/home/form_view"
+  
   end
   
   # 커뮤니티 게시판 글 작성
