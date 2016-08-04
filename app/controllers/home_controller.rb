@@ -2,8 +2,6 @@ require 'mailgun'
 class HomeController < ApplicationController
   # 메일 양식 작성
   def form_write
-   
-    
   end
   
   # 메일 양식 작성 액션
@@ -40,8 +38,8 @@ class HomeController < ApplicationController
   def form_view
     form = Form.new
     @form_hit = form.hit
-  
     form.save
+    
     @form_hit= @form_hit+1
     @forms = Form.all
     Freply.all
@@ -61,7 +59,7 @@ class HomeController < ApplicationController
   
   # 커뮤니티 게시판 글 작성
   def post_write
-    #@posts = Post.all
+    #@posts_title = Post.all
   end
   
   #게시판 글 작성 액션
@@ -73,15 +71,19 @@ class HomeController < ApplicationController
     uploader = GyometeCommunityUploader.new
     uploader.store!(file)
     post.image_url = uploader.url
+    post.save
     
-      redirect_to "/home/post_list"  
-    # 나중에 post_view로 redirect_to 시키게끔해야 함..! 
-      
+    redirect_to "/home/post_list"  
   end
   
   # 커뮤니티 게시판 리스트 출력
   def post_list
-  @posts_title = Post.all
+  @posts = Post.all  
+  end
+  
+  # 커뮤니티 게시판 리스트에서 검색했을 때 결과
+  def post_result
+  @posts = Post.search params[:search]
   end
   
   # 커뮤니티 게시판 리스트에서 글 눌렀을 때, 제목과 내용 출력과 댓글 달기

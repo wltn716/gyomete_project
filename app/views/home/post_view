@@ -1,9 +1,0 @@
-    <% @posts.each do |p| %>
-      <div class="well">
-        <span style="font-weight:bold;"><%= p.title %></span><br>
-        <%= p.content %> <br><hr>
-        <% unless p.image_url.nil? %>
-        <img src="<%= p.image_url %>">
-        <% end %>
-      </div>
-    <% end %>

@@ -1,3 +1,12 @@
-<%@posts_title.each do |p|%>
-    <%=p.title%><br>
-<%end%>
+<div class="container">
+    <h1>커뮤니티 게시판</h1>
+    <% @posts.each do |p| %>
+        <%=p.title%><br>
+    <% end %>
+</div>
+
+
+<form action="/home/post_result" method="GET">
+    <input type="text" name="search" class="form_control">
+    <button type="submit" class="btn btn-default">검색</button>
+</form>
