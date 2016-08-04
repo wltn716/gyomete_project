@@ -34,7 +34,7 @@ class HomeController < ApplicationController
   # 메일 양식 리스트 출력
   def form_list
     #카테고리 출력하는 action필요함 카테고리는 value값으로 받기
-   @forms = Form.all  
+    @forms = Form.all  
   
   end
   
@@ -118,12 +118,12 @@ class HomeController < ApplicationController
   
   # 커뮤니티 게시판 리스트 출력
   def post_list
-  @posts = Post.all  
+    @posts = Post.all  
   end
   
   # 커뮤니티 게시판 리스트에서 검색했을 때 결과
   def post_result
-  @posts = Post.search params[:search]
+    @posts = Post.search params[:search]
   end
   
   # 커뮤니티 게시판 리스트에서 글 눌렀을 때, 제목과 내용 출력과 댓글 달기
@@ -136,5 +136,11 @@ class HomeController < ApplicationController
   def post_reply
     
   end
+  
+  def my_info
+    
+  
+  end  
+  
   
 end
