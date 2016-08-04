@@ -1,5 +1,20 @@
 require 'mailgun'
 class HomeController < ApplicationController
+  
+  def firstpage
+    #unless user_signed_in?
+      #redirect_to "/users/sign_in"
+    #end
+  end
+  def firstpage_result
+    @forms = Form.all
+    if params[:search]
+      @forms = Form.search(params[:search]).reverse
+      @posts = Post.search(params[:search]).reverse
+    else
+    end
+  end
+  
   # 메일 양식 작성
   def form_write
   end

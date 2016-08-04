@@ -1,0 +1,16 @@
+<div class= "container">
+  
+  <h2>교메때</h2>
+  <% if user_signed_in? %>
+    <a href="/users/sign_out">로그아웃</a>
+  <% else %>
+    <a href="/users/sign_in">로그인</a>
+  <% end %>
+  <form action="/home/firstpage_result" method="POST">
+    <input type="text" name="search" class="form_control">
+    <button type="submit" class="btn btn-default">검색</button>
+  </form>
+  
+  
+
+</div>

@@ -1,0 +1,73 @@
+<div class= "container">
+  <form action="/home/firstpage_result" method="POST">
+    <input type="text" name="search" class="form_control">
+    <button type="submit" class="btn btn-default">검색</button>
+  </form>
+  
+  <!--검색한 양식 출력-->
+  <hr>
+  <h2>메일양식 검색 결과</h2>
+  <%@forms.each do |p|%>
+      <div class="well">
+          <%=p.title%><br>
+          <%=p.content%><br>
+          <%=p.hit%><br>
+          <%=p.like%><br>
+          <a href="/home/form_result?search=<%=p.hashtag%>"><%=p.hashtag%></a>
+          
+      <!--#좋아요 버튼 근데 숫자 출력 어카지..--> 
+          <div class="post" postid="<%p.id%>">
+              <input type="button" class='like' value="LikeButton" /> </input>
+              <input type="button" class='dislike' value="DislikeButton"> </input>
+          </div>
+      
+      <!--#댓글창-->
+        <div class="container">
+          <form action="/home/form_reply" method="POST">
+            <div class="form-group">
+              <input type="hidden" value="<%=p.id%>" name="id_of_form">
+              <textarea name="reply_f" class="form-control" rows="5" id="comment"></textarea>
+            </div>
+            <button type="submit" class="btn btn-default">Submit</button>
+          </form>
+        </div>
+      <!--#댓글-->
+        <%p.freplies.each do |r|%>
+        <p><%=r.content%></p>
+        <%end%>
+      </div>
+    <%end%>
+  <hr>
+  <!--검색한 게시판 출력-->
+  <h2>게시판 검색 결과</h2>
+  <%@posts.each do |p|%>
+      <div class="well">
+          <%=p.title%><br>
+          <%=p.content%><br>
+          <%=p.hit%><br>
+          <%=p.like%><br>
+          <a href="/home/post_result?search=<%=p.hashtag%>"><%=p.hashtag%></a>
+          
+      <!--#좋아요 버튼 근데 숫자 출력 어카지..--> 
+          <div class="post" postid="<%p.id%>">
+              <input type="button" class='like' value="LikeButton" /> </input>
+              <input type="button" class='dislike' value="DislikeButton"> </input>
+          </div>
+      
+      <!--#댓글창-->
+        <div class="container">
+          <form action="/home/post_reply" method="POST">
+            <div class="form-group">
+              <input type="hidden" value="<%=p.id%>" name="id_of_post">
+              <textarea name="reply_p" class="form-control" rows="5" id="comment"></textarea>
+            </div>
+            <button type="submit" class="btn btn-default">Submit</button>
+          </form>
+        </div>
+      <!--#댓글-->
+        <%p.preplies.each do |r|%>
+        <p><%=r.content%></p>
+        <%end%>
+      </div>
+    <%end%>
+</div>

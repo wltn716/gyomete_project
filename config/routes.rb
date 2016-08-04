@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
   devise_for :users
+  root 'home#firstpage'
+  get 'home/firstpage'
+  post 'home/firstpage_result'
   get 'home/form_write'
   post 'home/form_action'
   get 'home/form_view'
