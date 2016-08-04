@@ -1,6 +1,4 @@
 source 'https://rubygems.org'
-gem 'carrierwave'
-gem 'fog-aws'
 gem 'devise'
 gem 'mailgun-ruby'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
