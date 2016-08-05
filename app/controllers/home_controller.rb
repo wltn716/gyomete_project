@@ -1,5 +1,4 @@
 require 'mailgun'
-require 'mechanize'
 class HomeController < ApplicationController
   def scrap
   
@@ -63,7 +62,7 @@ class HomeController < ApplicationController
   def form_reply
     freply = Freply.new(content: params[:reply_f], form_id: params[:id_of_form])
     freply.save
-    redirect_to "/home/form_view"
+    redirect_to "/form_view/"+params[:id_of_form]
   end
   
   #해시태그만들기1
@@ -96,13 +95,9 @@ class HomeController < ApplicationController
 
     @one_form = Form.find(params[:form_id])
     
-    @one_form.title= params[:title]
+  
     
-    @one_form.content = params[:content]
-    
-    @one_form.save
-    
-    redirect_to "/home/form_view"
+    redirect_to "/form_view/"+params[:form_id]
   
   end
   
