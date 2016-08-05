@@ -2,9 +2,10 @@
 
   
   <div class="well">
-      <%=@view_form.title%><br>
-      <%=@view_form.content%><br>
-      <a href="/home/form_result?search=<%=@view_form.hashtag%>"><%=@view_form.hashtag%></a><br>
+      조회수:<%= @formhit.impressionist_count %><br>
+      제목:<%=@view_form.title%><br>
+      내용:<%=@view_form.content%><br>
+      해시태그:<a href="/home/form_result?search=<%=@view_form.hashtag%>"><%=@view_form.hashtag%></a><br>
       
   <!--#좋아요 버튼 근데 새로고침하면 숫자없어짐ㅎ..--> 
       <button onclick="clickCounter()" type="button">Like</button>

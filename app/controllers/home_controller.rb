@@ -1,13 +1,6 @@
 require 'mailgun'
 class HomeController < ApplicationController
-  def scrap
-  
-    mechanize = Mechanize.new
-    
-    page = mechanize.get('http://stackoverflow.com/')
-    
-    puts page.title
-  end
+  impressionist :actions => [:show]
   
   def firstpage
     #unless user_signed_in?
@@ -48,6 +41,7 @@ class HomeController < ApplicationController
   
   # 작성된 하나하나의 메일 양식 & 댓글 출력 
   def form_view
+   
     #form = Form.new
     #@form_hit = form.hit
     #form.save
@@ -55,6 +49,8 @@ class HomeController < ApplicationController
     #@form_hit= @form_hit+1
     #@forms = Form.all
     @view_form = Form.find(params[:form_id])
+    @formhit = Form.find(params[:form_id])
+    impressionist(@formhit)
     Freply.all
   end
   
