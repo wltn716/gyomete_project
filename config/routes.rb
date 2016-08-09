@@ -14,14 +14,12 @@ Rails.application.routes.draw do
   get 'home/post_write'
   #post 'home/post_acion'
   post 'post_action' => "home#post_action"
-<<<<<<< HEAD
+
   get '/post_view/:post_id' => "home#post_view"
   get 'home/post_reply'
   post 'home/post_reply'
   #get 'home/post_view'
-=======
   get 'post_view/:post_id' => "home#post_view"
->>>>>>> 35a0e0e22c343d55c5ff20ce3e00ee4e5524aa38
   get 'home/post_list'
   post 'home/post_list'
   get 'home/post_result'
