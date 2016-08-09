@@ -11,16 +11,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 20160808122911) do
-=======
-ActiveRecord::Schema.define(version: 20160805061141) do
 
   create_table "account_settings", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
->>>>>>> 35a0e0e22c343d55c5ff20ce3e00ee4e5524aa38
 
   create_table "forms", force: :cascade do |t|
     t.string   "title"
@@ -73,13 +69,14 @@ ActiveRecord::Schema.define(version: 20160805061141) do
     t.datetime "updated_at",              null: false
   end
 
-<<<<<<< HEAD
   create_table "preplies", force: :cascade do |t|
     t.text     "content"
     t.integer  "post_id"
-=======
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "profiles", force: :cascade do |t|
->>>>>>> 35a0e0e22c343d55c5ff20ce3e00ee4e5524aa38
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

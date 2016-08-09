@@ -131,9 +131,6 @@ class HomeController < ApplicationController
   # 커뮤니티 게시판에 대한 댓글 작성 action
   def post_reply
     preply = Preply.new(content: params[:reply_p], post_id: params[:id_of_post])
-    #preply = Preply.new
-    #preply.comment = params[:comment]
-    #preply.post_id = params[:id_of_post]
     preply.save
     redirect_to "/post_view/" + params[:id_of_post]
   end
