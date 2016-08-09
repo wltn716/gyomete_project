@@ -1,9 +1,48 @@
-    <% @posts.each do |p| %>
-      <div class="well">
-        <span style="font-weight:bold;"><%= p.title %></span><br>
-        <%= p.content %> <br><hr>
-        <% unless p.image_url.nil? %>
-        <img src="<%= p.image_url %>">
-        <% end %>
-      </div>
-    <% end %>
+<%=@view_post.title%><br>
+<%=@view_post.content%><br>
+      
+      
+<div class="container">
+  <% @view_post.preplies.each do |r|%>
+    <%=r.content%></p>
+  <%end%>
+  <form action="/home/post_reply" method="POST">
+    <div class="form-group">
+      <input type="hidden" value="<%=@view_post.id%>" name="id_of_post">
+      <textarea name="reply_p" class="form-control" rows="5" id="comment"></textarea>
+    </div>
+    <button type="submit" class="btn btn-default">Submit</button>
+  </form>
+</div>
+
+<!--<div class="container">
+  <div class="form-group">
+    <input type="hidden" value="<%=@view_post.id%>" name="id_of_post">
+    <textarea name="reply_p" class="form-control" rows="5" id="comment"></textarea>
+  </div>
+  <button type="submit" class="btn btn-default">Submit</button>
+</div>
+
+<!--<script>
+$(".preply_submit").click(function(){
+  post_id=this.value;
+  post_comment = $("#comment_"+post_id).val();
+  $.ajax({
+  method: "POST",
+  url: "/home/post_reply",
+  data: { comment: post_comment, id_of_post: post_id },
+  .done(function( msg ) {
+  alert("리플이 작성되었습니다");
+  });
+});
+</script> -->
+
+
+
+
+
+
+
+  
+    
+  
