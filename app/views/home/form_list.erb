@@ -1,1 +1,4 @@
-<%@forms.%>
+<%@forms.each do |p|%>
+   <a href="/form_view/<%=p.id%>"><%=p.title%></a></br>
+<%end%>
+<a href="/home/form_write">글 쓰러 가기</a>

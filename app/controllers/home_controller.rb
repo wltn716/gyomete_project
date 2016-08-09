@@ -1,5 +1,6 @@
 require 'mailgun'
 class HomeController < ApplicationController
+  impressionist :actions => [:show]
   
   def firstpage
     #unless user_signed_in?
@@ -28,24 +29,20 @@ class HomeController < ApplicationController
     form.hashtag = params[:hashtag]
     form.save
     
-    redirect_to "/home/form_view"
+    redirect_to "/home/form_list"
   end
   
   # 메일 양식 리스트 출력
   def form_list
     #카테고리 출력하는 action필요함 카테고리는 value값으로 받기
-   @forms = Form.all  
+    @forms = Form.all  
   
   end
   
   # 작성된 하나하나의 메일 양식 & 댓글 출력 
   def form_view
-    form = Form.new
-    @form_hit = form.hit
-    form.save
-    
-    @form_hit= @form_hit+1
-    @forms = Form.all
+    @view_form = Form.find(params[:form_id])
+    impressionist(@view_form)
     Freply.all
   end
   
@@ -53,7 +50,7 @@ class HomeController < ApplicationController
   def form_reply
     freply = Freply.new(content: params[:reply_f], form_id: params[:id_of_form])
     freply.save
-    redirect_to "/home/form_view"
+    redirect_to "/form_view/"+params[:id_of_form]
   end
   
   #해시태그만들기1
@@ -86,13 +83,9 @@ class HomeController < ApplicationController
 
     @one_form = Form.find(params[:form_id])
     
-    @one_form.title= params[:title]
+  
     
-    @one_form.content = params[:content]
-    
-    @one_form.save
-    
-    redirect_to "/home/form_view"
+    redirect_to "/form_view/"+params[:form_id]
   
   end
   
@@ -118,11 +111,13 @@ class HomeController < ApplicationController
   # 커뮤니티 게시판 리스트 출력
   def post_list
     @posts = Post.all.reverse  
+    @posts = Post.all  
   end
   
   # 커뮤니티 게시판 리스트에서 검색했을 때 결과
   def post_result
     @posts = Post.search(params[:search].reverse)
+    @posts = Post.search params[:search]
   end
   
   # 커뮤니티 게시판 리스트에서 글 눌렀을 때, 제목과 내용 출력과 댓글 달기
@@ -130,6 +125,7 @@ class HomeController < ApplicationController
     @view_post = Post.find(params[:post_id])
     Preply.all
 
+  @view_post = Post.find(params[:post_id])
   end
   
   # 커뮤니티 게시판에 대한 댓글 작성 action
@@ -141,5 +137,11 @@ class HomeController < ApplicationController
     preply.save
     redirect_to "/post_view/" + params[:id_of_post]
   end
+  
+  def my_info
+    
+  
+  end  
+  
   
 end

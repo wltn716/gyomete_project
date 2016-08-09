@@ -1,11 +1,11 @@
 <!--#글 출력창-->
-<%=@form_hit%>
-  <%@forms.each do |p|%>
+
+  
   <div class="well">
-      <%=p.title%><br>
-      <%=p.content%><br>
-      <%=p.like%><br>
-      <a href="/home/form_result?search=<%=p.hashtag%>"><%=p.hashtag%></a><br>
+      조회수:<%=@view_form.impressionist_count%><br>
+      제목:<%=@view_form.title%><br>
+      내용:<%=@view_form.content%><br>
+      해시태그:<a href="/home/form_result?search=<%=@view_form.hashtag%>"><%=@view_form.hashtag%></a><br>
       
   <!--#좋아요 버튼 근데 새로고침하면 숫자없어짐ㅎ..--> 
       <button onclick="clickCounter()" type="button">Like</button>
@@ -15,21 +15,22 @@
     <div class="container">
       <form action="/home/form_reply" method="POST">
         <div class="form-group">
-          <input type="hidden" value="<%=p.id%>" name="id_of_form">
+          <input type="hidden" value="<%=@view_form.id%>" name="id_of_form">
           <textarea name="reply_f" class="form-control" rows="5" id="comment"></textarea>
         </div>
         <button type="submit" class="btn btn-default">Submit</button>
       </form>
     </div>
   <!--#댓글-->
-    <%p.freplies.each do |r|%>
+    <%@view_form.freplies.each do |r|%>
     <p><%=r.content%></p>
     <%end%>
   <!--메일링크-->
-  <a href="/form_mail/<%=p.id%>">메일보내러가기</a>
+  <a href="/form_mail/<%=@view_form.id%>">메일보내러가기</a>
+  <a href="/home/form_list">목록으로 가기</a>
   </div>
   
-<%end%>
+
 
 
 <!--검색-->
