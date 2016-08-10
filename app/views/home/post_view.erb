@@ -1,11 +1,56 @@
 <%=@view_post.title%><br>
 <%=@view_post.content%><br>
+<a href="/post_update/<%= @view_post.id %>">[수정]</a>
+<a href="/post_destroy/<%=@view_post.id %>">[삭제]</a>
+
+
+<div class="container">
+  <div id ="reply_<%=@view_post.id%>"> 
+  <% @view_post.preplies.each do |r|%>
+    <%=r.content%><br>
+    <a href="/post_reply_destroy/<%=r.id %>">[삭제]</a>
+  <%end%>
+  </div>
+    <div class="form-group">
+      <textarea name="reply_p" class="form-control" rows="5" id="content_<%=@view_post.id%>"></textarea>
+    </div>
+    <button value="<%= @view_post.id %>" type="submit" class="btn btn-default reply_submit">Submit</button> <br>  
+ 
+  <form action="/home/post_list" method="GET">
+      <button type="submit" class="btn btn-default">목록</button>
+  </form>
+</div>
+
+
+<script>
+$(function(){
+  $('.reply_submit').click(function(){ 
+    post_id = this.value;
+    post_content = $("#content_" + post_id).val();
+    
+      $.ajax({
+      method: "POST",
+      url: "/home/post_reply",
+      data: { reply_p:post_content, 
+              id_of_post: post_id},
+              
+      success: function(){
+          $("#reply_" + post_id).append("<p>" + post_content + "</p>")
+          $("#content_" + post_id).val('');  
+      }
+    })
+  });
+});
+</script>
+
+
+
       
       
 <!--<div class="container">
-  <% @view_post.preplies.each do |r|%>
-    <%=r.content%></p>
-  <%end%>
+  < @view_post.preplies.each do |r|%>
+    <=r.content%></p>
+  <end%>
   <form action="/home/post_reply" method="POST">
     <div class="form-group">
       <input type="hidden" value="<%=@view_post.id%>" name="id_of_post">
@@ -17,30 +62,8 @@
 
 <!--<div class="container">
   <div class="form-group">
-    <input type="hidden" value="<%=@view_post.id%>" name="id_of_post">
+    <input type="hidden" value="<=@view_post.id%>" name="id_of_post">
     <textarea name="reply_p" class="form-control" rows="5" id="comment"></textarea>
   </div>
   <button type="submit" class="btn btn-default">Submit</button>
 </div> -->
-
-<div class="container">
-  <% @view_post.preplies.each do |r|%>
-    <%=r.content%></p>
-  <%end%>
-    <div class="form-group">
-      <input type="hidden" value="<%=@view_post.id%>" name="id_of_post">
-      <textarea name="reply_p" class="form-control" rows="5" id="comment_<%=@view_post.id%>"></textarea>
-    </div>
-    <button type="submit" class="btn btn-default reply_submit">Submit</button>
-</div>
-
-
-<script>
-$('.reply_submit').click (function(){ 
-  $.ajax({
-    method: "POST",
-    url: "/home/post_reply",
-    data: { reply_p:"리플입니다", id of post: 1}
-  })
-})
-</script>

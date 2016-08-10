@@ -125,7 +125,24 @@ class HomeController < ApplicationController
     @view_post = Post.find(params[:post_id])
     Preply.all
 
-  @view_post = Post.find(params[:post_id])
+  end
+  
+  def post_destroy
+    @one_post = Post.find(params[:post_id]) 
+    @one_post.destroy
+    redirect_to "/home/post_list"
+  end
+  
+  def post_update
+    @one_post = Post.find(params[:post_id])
+  end
+  
+  def post_update_action
+    @one_post = Post.find(params[:post_id]) 
+    @one_post.title= params[:title] 
+    @one_post.content = params[:content]
+    @one_post.save
+    redirect_to "/home/post_list" 
   end
   
   # 커뮤니티 게시판에 대한 댓글 작성 action
@@ -134,7 +151,16 @@ class HomeController < ApplicationController
     preply.save
     redirect_to "/post_view/" + params[:id_of_post]
   end
+
+#대부분 커뮤니티 참고해봤을때, 댓글은 삭제 기능만 있는 게 많아서 구현 안해놓았습니다.  
+  def post_reply_destroy
+    @reply_post = Preply.find(params[:id_of_reply])
+    #위에 들어갈 id 값이 왜 다 넣어봤는데 안되는 걸까..광광...
+    @reply_post.destroy
+    redirect_to "/post_view/" + params[:id_of_post]  
+  end
   
+
   def my_info
     
   

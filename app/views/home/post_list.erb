@@ -6,8 +6,13 @@
     <a href="/home/post_result?search="></a>
 </div>
 
-
-<form action="/home/post_result" method="GET">
-    <input type="text" name="search" class="form_control">
-    <button type="submit" class="btn btn-default">검색</button>
-</form>
+<div class="container">
+    <form action="/home/post_write" method="GET">
+        <button type="submit" class="btn btn-default">글쓰기</button>
+    </form>
+    
+    <form action="/home/post_result" method="GET">
+        <input type="text" name="search" class="form_control">
+        <button type="submit" class="btn btn-default">검색</button>
+    </form>
+</div>

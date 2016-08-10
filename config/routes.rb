@@ -19,6 +19,10 @@ Rails.application.routes.draw do
   post 'home/post_reply'
   #get 'home/post_view'
   get 'post_view/:post_id' => "home#post_view"
+  get 'post_destroy/:post_id' => "home#post_destroy"
+  get 'post_reply_destroy/:post_id' => "home#post_reply_destroy"  
+  get 'post_update/:post_id' => "home#post_update"
+  post 'post_update_action/:post_id' => "home#post_update_action"
   get 'home/post_list'
   post 'home/post_list'
   get 'home/post_result'
