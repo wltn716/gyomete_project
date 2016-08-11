@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :users, :controllers => { :omniauth_callbacks => "callbacks" }
   root 'home#firstpage'
   get 'home/firstpage'
   post 'home/firstpage_result'
@@ -32,6 +32,7 @@ Rails.application.routes.draw do
   get 'home/post_result'
   
   get 'users/myaccount'
+  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

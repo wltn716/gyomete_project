@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
+gem 'omniauth-facebook'
 gem 'impressionist'
 gem 'devise'
 gem 'mailgun-ruby'

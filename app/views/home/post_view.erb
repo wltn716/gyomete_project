@@ -7,7 +7,7 @@
 <div class="container">
   <div id ="reply_<%=@view_post.id%>"> 
   <% @view_post.preplies.each do |r|%>
-    <%=r.content%><br>
+    <%=r.content%>
     <a href="/post_reply_destroy/<%=r.id %>">[삭제]</a>
   <%end%>
   </div>
