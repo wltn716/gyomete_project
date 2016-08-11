@@ -46,11 +46,37 @@ class HomeController < ApplicationController
     Freply.all
   end
   
+  def form_destroy
+    @one_form = Form.find(params[:form_id]) 
+    @one_form.destroy
+    redirect_to "/home/form_list"
+  end
+  
+  def form_update
+    @one_form = Form.find(params[:form_id])
+  end
+  
+  def form_update_action
+    @one_form = Form.find(params[:form_id]) 
+    @one_form.title= params[:title] 
+    @one_form.content = params[:content]
+    @one_form.hashtag = params[:hashtag]
+    @one_form.save
+    redirect_to "/form_view/"+params[:form_id] 
+  end
+  
   # 양식에 대한 댓글 작성 action
   def form_reply
     freply = Freply.new(content: params[:reply_f], form_id: params[:id_of_form])
     freply.save
     redirect_to "/form_view/"+params[:id_of_form]
+  end
+  
+  def form_reply_destroy
+    
+    @reply_form = Freply.find(params[:reply_id])
+    @reply_form.destroy
+    redirect_to :back  
   end
   
   #해시태그만들기1
@@ -154,10 +180,11 @@ class HomeController < ApplicationController
 
 #대부분 커뮤니티 참고해봤을때, 댓글은 삭제 기능만 있는 게 많아서 구현 안해놓았습니다.  
   def post_reply_destroy
-    @reply_post = Preply.find(params[:id_of_reply])
+    
+    @reply_post = Preply.find(params[:reply_id])
     #위에 들어갈 id 값이 왜 다 넣어봤는데 안되는 걸까..광광...
     @reply_post.destroy
-    redirect_to "/post_view/" + params[:id_of_post]  
+    redirect_to :back  
   end
   
 

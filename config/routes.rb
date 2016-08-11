@@ -6,6 +6,10 @@ Rails.application.routes.draw do
   get 'home/form_write'
   post 'home/form_action'
   get 'form_view/:form_id' => "home#form_view"
+  get 'form_destroy/:form_id' => "home#form_destroy"
+  get 'form_reply_destroy/:reply_id' => "home#form_reply_destroy"  
+  get 'form_update/:form_id' => "home#form_update"
+  post 'form_update_action/:form_id' => "home#form_update_action"
   get 'home/form_list'
   post 'home/form_reply'
   get 'home/form_result'
@@ -20,7 +24,7 @@ Rails.application.routes.draw do
   #get 'home/post_view'
   get 'post_view/:post_id' => "home#post_view"
   get 'post_destroy/:post_id' => "home#post_destroy"
-  get 'post_reply_destroy/:post_id' => "home#post_reply_destroy"  
+  get 'post_reply_destroy/:reply_id' => "home#post_reply_destroy"  
   get 'post_update/:post_id' => "home#post_update"
   post 'post_update_action/:post_id' => "home#post_update_action"
   get 'home/post_list'

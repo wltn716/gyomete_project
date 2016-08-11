@@ -1,0 +1,31 @@
+<div class="container">
+  <form action="/form_update_action/<%=@one_form.id%>"  method="POST" enctype="multipart/form-data">
+    <div class="form-group">
+      <lable for="category">Category</label>
+      <select class="form-control" name="category">
+        <option value="one">성적정정</option>
+        <option value="two">출석문의</option>
+        <option value="three">개인질문</option>
+      </select>
+    </div>
+    
+<!--#제목입력-->
+    <div class="form-group">
+      <label for="exampleInputEmail1">제목</label>
+      <input name="title" type="text" class="form-control" id="exampleInputEmail1" value="<%=@one_form.title %>">
+    </div>
+<!--#글작성-->
+    <div class="form-group">
+      <label for="comment">Comment:</label>
+      <textarea name="content" class="form-control" rows="5" id="comment"><%=@one_form.content %></textarea>
+    </div>
+<!--#해시태그 곧 넣겠슴당-->
+    <div class="form-group">
+      <label for="exampleInputEmail1">Hashtag</label>
+     <input name="hashtag" type="text" class="form-control" id="exampleInputEmail1" value="<%=@one_form.hashtag %>">
+    </div>
+
+<!--#글 올리는 버튼-->
+    <button type="submit" class="btn btn-default">Submit</button>
+  </form>
+</div>
