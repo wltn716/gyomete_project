@@ -1,66 +1,8 @@
-<!--#검색한 글 출력창-->
-  <%@forms.each do |p|%>
-    <div class="well">
-        <%=p.title%><br>
-        <%=p.content%><br>
-        <%=p.hit%><br>
-        <%=p.like%><br>
-        <a href="/home/form_result?search=<%=p.hashtag%>"><%=p.hashtag%></a>
-        
-    <!--#좋아요 버튼 근데 숫자 출력 어카지..--> 
-        <div class="post" postid="<%p.id%>">
-            <input type="button" class='like' value="LikeButton" /> </input>
-            <input type="button" class='dislike' value="DislikeButton"> </input>
-        </div>
-    
-    <!--#댓글창-->
-      <div c3
-      12lass="container">
-        <form action="/home/form_reply" method="POST">
-          <div class="form-group">
-            <input type="hidden" value="<%=p.id%>" name="id_of_form">
-            <textarea name="reply_f" class="form-control" rows="5" id="comment"></textarea>
-          </div>
-          <button type="submit" class="btn btn-default">Submit</button>
-        </form>
-      </div>
-    <!--#댓글-->
-      <%p.freplies.each do |r|%>
-      <p><%=r.content%></p>
-      <%end%>
-    </div>
-  <%end%>
-
-<!--검색-->
+<%@forms.each do |p|%>
+   <a href="/form_view/<%=p.id%>"><%=p.title%></a></br>
+<%end%>
+<a href="/home/form_write">글 쓰러 가기</a>
 <form action="/home/form_result" method="GET">
   <input type="text" name="search" class="form_control">
   <button type="submit" class="btn btn-default">검색</button>
 </form>
-
-<!--#좋아요 기능 구현하기 위한 ajax-->
-<script type="text/javascript">
-   $(function () {
-    $('.like').click(function () { likeFunction(this); });
-    $('.dislike').click(function () { dislikeFunction(this);});
-  });
-  
-  
-  function likeFunction(caller) {
-    var postId = caller.parentElement.getAttribute('postid');
-    $.ajax({
-        type: "POST",
-        url: "rate.php",
-        data: 'Action=LIKE&PostID=' + postId,
-        success: function () {}
-    });
-  }
-  function dislikeFunction(caller) {
-    var postId = caller.parentElement.getAttribute('postid');
-    $.ajax({
-        type: "POST",
-        url: "rate.php",
-        data: 'Action=DISLIKE&PostID=' + postId,
-        success: function () {}
-    });
-  }
-</script>
