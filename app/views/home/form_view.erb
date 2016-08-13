@@ -5,7 +5,10 @@
       조회수:<%=@view_form.impressionist_count%><br>
       제목:<%=@view_form.title%><br>
       내용:<%=@view_form.content%><br>
-      해시태그:<a href="/home/form_result?search=<%=@view_form.hashtag%>"><%=@view_form.hashtag%></a><br>
+      해시태그:<% tags = @view_form.hashtag.split(",")%>
+      <%tags.each do |tag|%>
+      #<%=link_to tag,"/home/form_result?search=#{tag}"%>
+      <%end%><br>
       <a href="/form_update/<%= @view_form.id %>">[수정]</a>
       <a href="/form_destroy/<%=@view_form.id %>">[삭제]</a>
       
@@ -33,9 +36,6 @@
   <a href="/home/form_list">목록으로 가기</a>
   </div>
   
-
-
-
 <!--검색-->
 <form action="/home/form_result" method="GET">
   <input type="text" name="search" class="form_control">
@@ -43,17 +43,4 @@
 </form>
 
 <!--#좋아요 기능 구현하기 위한 ajax-->
-<script>
-function clickCounter() {
-    if(typeof(Storage) !== "undefined") {
-        if (localStorage.clickcount) {
-            localStorage.clickcount = Number(localStorage.clickcount)+1;
-        } else {
-            localStorage.clickcount = 1;
-        }
-        document.getElementById("result").innerHTML =  localStorage.clickcount ;
-    } else {
-        document.getElementById("result").innerHTML = "Sorry, your browser does not support web storage...";
-    }
-}
-</script>
+
