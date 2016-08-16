@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  devise_for :users, :controllers => { :omniauth_callbacks => "callbacks" }
+  devise_for :users
   root 'home#firstpage'
   get 'home/firstpage'
   post 'home/firstpage_result'

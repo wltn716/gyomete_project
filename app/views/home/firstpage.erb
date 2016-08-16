@@ -3,21 +3,13 @@
   <h2>교메때</h2>
   <% if user_signed_in? %>
     <a href="/users/sign_out">로그아웃</a>
+    <p><%= current_user.nickname %></p>
   <% else %>
+    <a href="/users/sign_up">회원가입</a> <br> 
     <a href="/users/sign_in">로그인</a>
   <% end %>
   <form action="/home/firstpage_result" method="POST">
     <input type="text" name="search" class="form_control">
     <button type="submit" class="btn btn-default">검색</button>
-  </form>
-  
-  <form action="/home/firstpage_result" method="POST">
-  <% if user_signed_in? %>
-    <p>현재 로그인된 유저의 이메일: <%= current_user.email %></p>
-    <p><%= link_to "로그아웃", destroy_user_session_path, method: :delete, data:{confirm: "Are you sure?"}, class: 'ban ban-default' %></p>
-  <% else %>
-    <p><%= link_to "로그인", new_user_session_path, class: 'btn btn-default' %></p>
-    <p><%= link_to "페이스북으로 로그인", user_facebook_omniauth_callback_path %></p>
-  <% end %>
   </form>
 </div>
