@@ -2,7 +2,7 @@
   
   <h2>교메때</h2>
   <% if user_signed_in? %>
-    <a href="/users/sign_out">로그아웃</a>
+    <p><%= link_to "로그아웃", destroy_user_session_path, method: :delete, data:{confirm: "Are you sure?"}, class: 'ban ban-default' %></p>
     <p><%= current_user.nickname %></p>
   <% else %>
     <a href="/users/sign_up">회원가입</a> <br> 
