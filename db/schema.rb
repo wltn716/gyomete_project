@@ -94,6 +94,10 @@ ActiveRecord::Schema.define(version: 20160816103337) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
+    t.string   "major"
+    t.string   "nickname"
+    t.string   "uid"
+    t.string   "provider"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
