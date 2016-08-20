@@ -4,6 +4,7 @@ class CreateFreplies < ActiveRecord::Migration
       
       t.text :content
       t.integer :form_id
+      t.integer :writer_id
       
       t.timestamps null: false
     end

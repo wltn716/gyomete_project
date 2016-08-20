@@ -3,6 +3,7 @@
   
   <div class="well">
       조회수:<%=@view_form.impressionist_count%><br>
+      작성자:<%=@view_form.writer.nickname%><br>
       제목:<%=@view_form.title%><br>
       내용:<%=@view_form.content%><br>
       해시태그:<% tags = @view_form.hashtag.split(",")%>
@@ -15,7 +16,7 @@
   <!--#좋아요 버튼 근데 새로고침하면 숫자없어짐ㅎ..--> 
       <div class="col s12 like_div">
         <%= link_to liking_path(@view_form.id), class: "like_btn #{if current_user.likees.include? p then :liked else :unliked end}", method: 'post', remote: true, id: "like_btn_#{@view_form.id}" do %>
-          <i class="tiny material-icons">thumb_up</i> 좋아요
+           좋아요
         <% end %>
         <div id="liker_wrap<%= @view_form.id %>">
             <%= render partial: 'liker_list', locals: {p: @view_form} %>
@@ -35,7 +36,7 @@
     </div>
   <!--#댓글-->
     <%@view_form.freplies.each do |r|%>
-    <p><%=r.content%></p>
+    <p><%=r.writer.nickname%>:<%=r.content%></p>
     <a href="/form_reply_destroy/<%=r.id %>">[삭제]</a><br>
     <%end%>
   <!--메일링크-->
@@ -49,5 +50,5 @@
   <button type="submit" class="btn btn-default">검색</button>
 </form>
 
-<!--#좋아요 기능 구현하기 위한 ajax-->
+
 
