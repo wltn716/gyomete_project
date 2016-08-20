@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
+gem 'cancan'
 gem 'omniauth-facebook'
 gem 'impressionist'
 gem 'devise'

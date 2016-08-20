@@ -59,12 +59,14 @@ class HomeController < ApplicationController
   
   def form_destroy
     @one_form = Form.find(params[:form_id]) 
+    authorize! :manage, @one_form
     @one_form.destroy
     redirect_to "/home/form_list"
   end
   
   def form_update
     @one_form = Form.find(params[:form_id])
+    authorize! :manage, @one_form
   end
   
   def form_update_action
@@ -86,6 +88,7 @@ class HomeController < ApplicationController
   def form_reply_destroy
     
     @reply_form = Freply.find(params[:reply_id])
+    authorize! :manage, @reply_form
     @reply_form.destroy
     redirect_to :back  
   end

@@ -10,8 +10,10 @@
       <%tags.each do |tag|%>
       #<%=link_to tag,"/home/form_result?search=#{tag}"%>
       <%end%><br>
-      <a href="/form_update/<%= @view_form.id %>">[수정]</a>
-      <a href="/form_destroy/<%=@view_form.id %>">[삭제]</a>
+      <% if can? :manage, @view_form %>
+        <a href="/form_update/<%= @view_form.id %>">[수정]</a>
+        <a href="/form_destroy/<%=@view_form.id %>">[삭제]</a>
+      <% end %>
       
   <!--#좋아요 버튼 근데 새로고침하면 숫자없어짐ㅎ..--> 
       <div class="col s12 like_div">
@@ -36,8 +38,11 @@
     </div>
   <!--#댓글-->
     <%@view_form.freplies.each do |r|%>
-    <p><%=r.writer.nickname%>:<%=r.content%></p>
-    <a href="/form_reply_destroy/<%=r.id %>">[삭제]</a><br>
+    <%=r.writer.nickname%>:<%=r.content%>
+      <% if can? :manage, r %>
+          <a href="/form_reply_destroy/<%=r.id %>">[삭제]</a><br>
+      <%end%>
+      <br>
     <%end%>
   <!--메일링크-->
   <a href="/form_mail/<%=@view_form.id%>">메일보내러가기</a>
