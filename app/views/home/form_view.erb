@@ -13,8 +13,15 @@
       <a href="/form_destroy/<%=@view_form.id %>">[삭제]</a>
       
   <!--#좋아요 버튼 근데 새로고침하면 숫자없어짐ㅎ..--> 
-      <button onclick="clickCounter()" type="button">Like</button>
-      <span id="result"></span>
+      <div class="col s12 like_div">
+        <%= link_to liking_path(@view_form.id), class: "like_btn #{if current_user.likees.include? p then :liked else :unliked end}", method: 'post', remote: true, id: "like_btn_#{@view_form.id}" do %>
+          <i class="tiny material-icons">thumb_up</i> 좋아요
+        <% end %>
+        <div id="liker_wrap<%= @view_form.id %>">
+            <%= render partial: 'liker_list', locals: {p: @view_form} %>
+        </div>
+      </div>
+      
   
   <!--#댓글창-->
     <div class="container">

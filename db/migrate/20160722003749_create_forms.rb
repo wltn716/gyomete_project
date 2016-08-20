@@ -9,6 +9,7 @@ class CreateForms < ActiveRecord::Migration
       t.integer :like
       t.string :hashtag
       t.string :nickname
+      t.integer :writer_id
       
 
       t.timestamps null: false

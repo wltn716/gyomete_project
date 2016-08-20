@@ -11,9 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160816103337) do
+ActiveRecord::Schema.define(version: 20160820144026) do
 
   create_table "account_settings", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "favors", force: :cascade do |t|
+    t.integer  "form_id"
+    t.integer  "liker_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -25,6 +32,7 @@ ActiveRecord::Schema.define(version: 20160816103337) do
     t.integer  "like"
     t.string   "hashtag"
     t.string   "nickname"
+    t.integer  "writer_id"
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
   end

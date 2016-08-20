@@ -1,0 +1,7 @@
+<% unless p.likers.empty? %>
+  <div class="col s12 liker_list">
+    <i class="material-icons">thumb_up</i>
+    <%=  p.likers.count %>명이 좋아합니다 |
+    <%=  p.likers.pluck(:email).join(', ') %>
+  </div>
+<% end %>

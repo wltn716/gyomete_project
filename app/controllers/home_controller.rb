@@ -1,5 +1,6 @@
 require 'mailgun'
 class HomeController < ApplicationController
+  before_action :authenticate_user!
   impressionist :actions => [:show]
   
   def firstpage
@@ -23,13 +24,23 @@ class HomeController < ApplicationController
   # 메일 양식 작성 액션
   def form_action
     #writer: params[:nickname]추가예정
-    form = Form.new
+    form = Form.create
+    form.writer = current_user
     form.title = params[:title]
     form.content = params[:content]
     form.hashtag = params[:hashtag]
     form.save
     
     redirect_to "/home/form_list"
+  end
+  
+  def liking
+    @forming = Form.find(params[:form_id].to_i)
+    if @forming.likers.include? current_user
+      @forming.likers.delete(current_user)
+    else
+      @forming.likers << current_user
+    end
   end
   
   # 메일 양식 리스트 출력
