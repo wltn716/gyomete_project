@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160820144026) do
+ActiveRecord::Schema.define(version: 20160823104624) do
 
   create_table "account_settings", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -86,6 +86,14 @@ ActiveRecord::Schema.define(version: 20160820144026) do
   end
 
   create_table "profiles", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "scraps", force: :cascade do |t|
+    t.string   "title"
+    t.integer  "scrap_id"
+    t.integer  "writer_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

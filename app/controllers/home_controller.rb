@@ -93,6 +93,16 @@ class HomeController < ApplicationController
     redirect_to :back  
   end
   
+  def form_scrap_action
+    scrap = Scrap.create(title: params[:scrap_title], scrap_id: params[:scrap_id], writer: current_user)
+    scrap.save
+    redirect_to :back
+  end
+  
+  def form_scrap
+    @scraps=Scrap.all
+  end
+  
   #해시태그만들기1
   def form_result
     @forms = Form.search(params[:search]).reverse

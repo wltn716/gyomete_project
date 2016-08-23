@@ -6,6 +6,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
   
   has_many :forms
+  has_many :scraps
 
   has_many :favors, foreign_key: :liker_id
   has_many :likees, through: :favors

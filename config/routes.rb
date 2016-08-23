@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   #root 'home#firstpage'
   root 'cover#report'
   post 'liking/:form_id' => 'home#liking', as: 'liking'
+  post 'home/form_scrap_action'
+  get 'home/form_scrap'
   get 'home/firstpage'
   post 'home/firstpage_result'
   get 'home/form_write'
