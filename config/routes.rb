@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
+  get 'cover/report'
+
   devise_for :users
-  root 'home#firstpage'
+  #root 'home#firstpage'
+  root 'cover#report'
   post 'liking/:form_id' => 'home#liking', as: 'liking'
   get 'home/firstpage'
   post 'home/firstpage_result'
