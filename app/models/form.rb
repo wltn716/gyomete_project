@@ -9,4 +9,5 @@ class Form < ActiveRecord::Base
   def self.search(search)
       where("title Like ? OR content LIKE ? OR hashtag LIKE ? ", "%#{search}%", "%#{search}%", "%#{search}%")
   end
+ 
 end

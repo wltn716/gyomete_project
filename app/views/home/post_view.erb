@@ -1,14 +1,17 @@
 <%=@view_post.title%><br>
 <%=@view_post.content%><br>
+<% if can? :manage, @view_post %>
 <a href="/post_update/<%= @view_post.id %>">[수정]</a>
 <a href="/post_destroy/<%=@view_post.id %>">[삭제]</a>
-
+<%end%>
 
 <div class="container">
   <div id ="reply_<%=@view_post.id%>"> 
   <% @view_post.preplies.each do |r|%>
     <%=r.content%>
+    <% if can? :manage, r %>
     <a href="/post_reply_destroy/<%=r.id %>">[삭제]</a>
+    <%end%><br>
   <%end%>
   </div>
     <div class="form-group">

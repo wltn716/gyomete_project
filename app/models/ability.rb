@@ -8,6 +8,8 @@ class Ability
     #   if user.admin?
          can :manage, Form, writer_id: writer.id
          can :manage, Freply, writer_id: writer.id
+         can :manage, Post, writer_id: writer.id
+         can :manage, Preply, writer_id: writer.id
          can :manage, Scrap, writer_id: writer.id
     #   else
     #     can :read, :all

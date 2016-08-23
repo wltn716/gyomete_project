@@ -26,16 +26,17 @@ class HomeController < ApplicationController
     #writer: params[:nickname]추가예정
     form = Form.create
     form.writer = current_user
+    form.category = params[:category]
     form.title = params[:title]
     form.content = params[:content]
     form.hashtag = params[:hashtag]
     form.save
     
-    redirect_to "/home/form_list"
+    redirect_to "/form_list/" + params[:category]
   end
   
   def liking
-    @forming = Form.find(params[:form_id].to_i)
+    @forming = Form.find(params[:form_id])
     if @forming.likers.include? current_user
       @forming.likers.delete(current_user)
     else
@@ -46,7 +47,7 @@ class HomeController < ApplicationController
   # 메일 양식 리스트 출력
   def form_list
     #카테고리 출력하는 action필요함 카테고리는 value값으로 받기
-    @forms = Form.all  
+    @forms = Form.where(category: params[:category])
   
   end
   
@@ -61,7 +62,7 @@ class HomeController < ApplicationController
     @one_form = Form.find(params[:form_id]) 
     authorize! :manage, @one_form
     @one_form.destroy
-    redirect_to "/home/form_list"
+    redirect_to "/form_list/1"
   end
   
   def form_update
@@ -120,7 +121,7 @@ class HomeController < ApplicationController
     mg_client = Mailgun::Client.new("key-f6f12a06f7725629b847ba47b4b04815")
     
     message_params =  {
-                       from: "hahiho716@naver.com",
+                       from: current_user.email,
                        to:   @receiver,
                        subject: params[:title],
                        text:    params[:content]
@@ -149,6 +150,7 @@ class HomeController < ApplicationController
     post = Post.new
     post.title = params[:title]
     post.content = params[:content]
+    post.writer = current_user
     #file = params[:pic]
     #uploader = GyometeCommunityUploader.new
     #uploader.store!(file)
@@ -197,7 +199,7 @@ class HomeController < ApplicationController
   
   # 커뮤니티 게시판에 대한 댓글 작성 action
   def post_reply
-    preply = Preply.new(content: params[:reply_p], post_id: params[:id_of_post])
+    preply = Preply.new(content: params[:reply_p], post_id: params[:id_of_post], writer: current_user)
     preply.save
     redirect_to "/post_view/" + params[:id_of_post]
   end

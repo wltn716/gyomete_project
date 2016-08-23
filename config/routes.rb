@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   get 'form_reply_destroy/:reply_id' => "home#form_reply_destroy"  
   get 'form_update/:form_id' => "home#form_update"
   post 'form_update_action/:form_id' => "home#form_update_action"
-  get 'home/form_list'
+  get 'form_list/:category' => "home#form_list", as: "category"
   post 'home/form_reply'
   get 'home/form_result'
   get 'form_mail/:form_id' => "home#form_mail"
