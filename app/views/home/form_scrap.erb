@@ -1,5 +1,3 @@
 <%@scraps.each do |s|%>
-  <% if can? :manage, s %>
     <a href="/form_view/<%=s.scrap_id%>"><%=s.title%></a><br>
-  <%end%>
 <%end%>

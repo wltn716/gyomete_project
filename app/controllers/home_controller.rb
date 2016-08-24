@@ -101,7 +101,7 @@ class HomeController < ApplicationController
   end
   
   def form_scrap
-    @scraps=Scrap.all
+    @scraps=Scrap.where(writer: current_user)
   end
   
   #해시태그만들기1
