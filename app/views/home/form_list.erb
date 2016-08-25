@@ -1,15 +1,3 @@
-<<<<<<< HEAD
-<div class="container">
-    <%@forms.each do |p|%>
-       <a href="/form_view/<%=p.id%>"><%=p.title%></a></br>
-    <%end%>
-    <a href="/home/form_write">글 쓰러 가기</a>
-    <form action="/home/form_result" method="GET">
-      <input type="text" name="search" class="form_control">
-      <button type="submit" class="btn btn-default">검색</button>
-    </form>
-</div>
-=======
 <%@forms.each do |p|%>
    <a href="/form_view/<%=p.id%>"><%=p.title%></a></br>
    </hr>
@@ -19,4 +7,3 @@
   <input type="text" name="search" class="form_control">
   <button type="submit" class="btn btn-default">검색</button>
 </form>
->>>>>>> e53b3444e67f68fea2d55f3a806617c657f032bf
