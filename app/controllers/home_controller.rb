@@ -4,12 +4,11 @@ class HomeController < ApplicationController
   impressionist :actions => [:show]
   
   def firstpage
-    #unless user_signed_in?
-      #redirect_to "/users/sign_in"
-    #end
+    @forms = Form.all
+    @posts = Post.all
   end
   def firstpage_result
-    @forms = Form.all
+    
     if params[:search]
       @forms = Form.search(params[:search]).reverse
       @posts = Post.search(params[:search]).reverse
