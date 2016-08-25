@@ -7,6 +7,7 @@ class CreateForms < ActiveRecord::Migration
       t.text :content
       t.integer :hit, default: 0
       t.integer :like
+      t.integer :category
       t.string :hashtag
       t.string :nickname
       t.integer :writer_id

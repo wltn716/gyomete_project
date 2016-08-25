@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160820144026) do
+ActiveRecord::Schema.define(version: 20160823104624) do
 
   create_table "account_settings", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -30,6 +30,7 @@ ActiveRecord::Schema.define(version: 20160820144026) do
     t.text     "content"
     t.integer  "hit",        default: 0
     t.integer  "like"
+    t.integer  "category"
     t.string   "hashtag"
     t.string   "nickname"
     t.integer  "writer_id"
@@ -73,6 +74,7 @@ ActiveRecord::Schema.define(version: 20160820144026) do
   create_table "posts", force: :cascade do |t|
     t.string   "title"
     t.text     "content"
+    t.integer  "writer_id"
     t.string   "image_url",  default: ""
     t.datetime "created_at",              null: false
     t.datetime "updated_at",              null: false
@@ -81,11 +83,20 @@ ActiveRecord::Schema.define(version: 20160820144026) do
   create_table "preplies", force: :cascade do |t|
     t.text     "content"
     t.integer  "post_id"
+    t.integer  "writer_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "profiles", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "scraps", force: :cascade do |t|
+    t.string   "title"
+    t.integer  "scrap_id"
+    t.integer  "writer_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

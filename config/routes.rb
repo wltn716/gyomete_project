@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   #root 'home#firstpage'
   root 'cover#report'
   post 'liking/:form_id' => 'home#liking', as: 'liking'
+  post 'home/form_scrap_action'
+  get 'home/form_scrap'
   get 'home/firstpage'
   post 'home/firstpage_result'
   get 'home/form_write'
@@ -14,7 +16,7 @@ Rails.application.routes.draw do
   get 'form_reply_destroy/:reply_id' => "home#form_reply_destroy"  
   get 'form_update/:form_id' => "home#form_update"
   post 'form_update_action/:form_id' => "home#form_update_action"
-  get 'home/form_list'
+  get 'form_list/:category' => "home#form_list", as: "category"
   post 'home/form_reply'
   get 'home/form_result'
   get 'form_mail/:form_id' => "home#form_mail"
