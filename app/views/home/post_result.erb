@@ -1,6 +1,6 @@
 <div class="container">
     <h1>커뮤니티 게시판 검색</h1>
     <% @posts.each do |p| %>
-        <a href="/post_view/<%=p.id%>"><%=p.title%></a><br>
+        <%=link_to p.title, post_view_path(p.id), method: 'get'%> </br>
     <% end %>
 </div>

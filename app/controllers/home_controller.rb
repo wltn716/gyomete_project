@@ -157,7 +157,7 @@ class HomeController < ApplicationController
     #post.image_url = uploader.url
     post.save
     
-    redirect_to "/home/post_list"  
+    redirect_to "/post_list"  
   end
   
   # 커뮤니티 게시판 리스트 출력
