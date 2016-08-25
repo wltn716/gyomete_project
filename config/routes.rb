@@ -11,9 +11,9 @@ Rails.application.routes.draw do
   get 'home/firstpage_result'
   get 'home/form_write'
   post 'home/form_action'
-  get 'form_destroy/:form_id' => "home#form_destroy"
-  get 'form_reply_destroy/:reply_id' => "home#form_reply_destroy"  
-  get 'form_update/:form_id' => "home#form_update"
+  get 'form_destroy/:form_id' => "home#form_destroy", as: "form_destroy"
+  get 'form_reply_destroy/:reply_id' => "home#form_reply_destroy", as: "form_reply_destroy"  
+  get 'form_update/:form_id' => "home#form_update", as: "form_update"
   post 'form_update_action/:form_id' => "home#form_update_action"
   post 'home/form_reply'
   get 'home/form_result'
@@ -37,12 +37,10 @@ Rails.application.routes.draw do
   
   get '/firstpage', to: 'home#firstpage'
   get '/form_list/:category', to: 'home#form_list', as: "form_list"
-<<<<<<< HEAD
-  get '/post_list', to: 'home#post_list'
+
   get '/form_view/:form_id', to: 'home#form_view', as: "form_view"
-=======
   get '/post_list', to: 'home#post_list', as: "post_list"
->>>>>>> e8c047b7f1f7bfc6736715018db5e1664ee2d310
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

@@ -82,7 +82,7 @@ class HomeController < ApplicationController
   def form_reply
     freply = Freply.new(content: params[:reply_f], form_id: params[:id_of_form], writer: current_user)
     freply.save
-    redirect_to "/form_view/"+params[:id_of_form]
+    
   end
   
   def form_reply_destroy
