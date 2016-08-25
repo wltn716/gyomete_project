@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Workspace</title>
+  <title>교메때</title>
 
- 
+  <!-- Bootstrap 시작 -->
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   
   <%= csrf_meta_tags %>
@@ -11,38 +11,122 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
   
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+  <!-- Bootstrap 끝 -->
   
+  <!-- Template 시작 -->
+  <!-- Google fonts styles -->
+  <link href='https://fonts.googleapis.com/css?family=Roboto:400,900italic,900,700italic,700,500italic,500,400italic,300italic,300,100italic,100' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
+    
+  <!-- Lifestone styles -->
+  <link rel="stylesheet" href="assets/stylesheets/css/bootstrap.min.css" type="text/css" media="screen">
+  <link rel="stylesheet" href="assets/stylesheets/css/font-awesome.min.css" type="text/css" media="screen">
+  <link rel="stylesheet" href="assets/stylesheets/css/ionicons.min.css" type="text/css" media="screen">
+    
+  <!-- OWL Carousel -->
+  <link href="assets/stylesheets/css/owl.carousel.css" rel="stylesheet">
+  <link href="assets/stylesheets/css/owl.theme.css" rel="stylesheet">
+  <link href="assets/stylesheets/css/owl.transitions.css" rel="stylesheet">
+  <link rel="stylesheet" href="assets/stylesheets/css/jquery-smartvimeoembed.css" type="text/css" media="screen">
+  <link rel="stylesheet" href="assets/stylesheets/css/flexslider.css" type="text/css" media="screen">
+  <link rel="stylesheet" href="assets/stylesheets/css/style.css" type="text/css" media="screen">
   
-  
+  <!-- FAVICON FILES -->
+  <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="images/favicon.ico" type="image/x-icon">
 </head>
-<body>
-  <p class="notice"><%= notice %></p>
-  <p class="alert"><%= alert %></p>
-
-  <header class="navbar  navbar-inverse">
-    <div class="navbar-class">
-      <div class="container">
-
-
-      <!-- Collect the nav links, forms, and other content for toggling -->
-
-        <ul class="nav navbar-nav">
-          <li class="<%='active' if current_page?('/firstpage')%>"><%=link_to "HOME", "/firstpage" %></li>
-          <li class="<%='active' if current_page?('/form_list')%>"><%=link_to "성적정정", "/form_list" %></li>
-          <li class="<%='active' if current_page?('/form_list')%>"><%=link_to "수강문의", "/form_list" %></li>
-          <li class="<%='active' if current_page?('/form_list')%>"><%=link_to "출석문의", "/form_list" %></li>
-          <li class="<%='active' if current_page?('/form_list')%>"><%=link_to "면담요청", "/form_list" %></li>
-          <li class="<%='active' if current_page?('/form_list')%>"><%=link_to "기타양식", "/form_list" %></li>
-          <li class="<%='active' if current_page?('/post_list')%>"><%=link_to "커뮤니티", "/post_list" %></li>
-          
-
-          <li><a href="#">CONTACT</a></li>
-        </ul>
-
-
+<body class="full-page">
+  <!--================= Start Preloader ==================-->
+    <div class="preloader">
+      <div class="spinner">
+        <div class="dot1"></div>
+        <div class="dot2"></div>
       </div>
     </div>
-  </header>
+  <!--================= End Preloader ====================-->
+  <div id="wrapper">
+    <!--================= Start sidebar ==================-->
+      <div id="sidebar-wrapper">
+        <div class="drilldown sidebar-nav mCustomScrollbar">
+          <div class="sidebar-brand text-center">                     
+            <a href="index.html">
+              <%= image_tag asset_path('logo.png'), class: 'img-responsive' %>
+            </a>
+          </div>
+
+          <div class="sidebar-bottom-wrap">
+           <!--Search bar(search 결과를 나타낼 view 필요!!!)-->
+            <form id="search_form_1" name="search" method="get" class="search-form_header" action="#">
+              <span class="submit-wrap"><i class="fa fa-search" aria-hidden="true"></i></span>
+              <input type="text" onblur="if (this.value == '') {this.value = 'SEARCH...';}" onfocus="if (this.value == 'SEARCH...') {this.value = '';}" id="search" name="search" value="SEARCH..." class="textboxsearch">
+            </form>
+          </div>
+          
+          <div class="drilldown-container">
+            <ul class="drilldown-root" style = "text-align: center">                         
+              <li class="<%= is_active?(home_firstpage_path) %>">
+                <%= link_to "HOME", home_firstpage_path , method: 'get'%>
+              </li>
+              <li class="<%= is_active?(home_form_list_path) %>">
+                <%= link_to "성적정정", home_form_list_path, method: 'get'%>
+              </li>
+              <li class="<%= is_active?(home_form_list_path) %>">
+                <%= link_to "수강문의", home_form_list_path, method: 'get'%>
+              </li>
+              <li class="<%= is_active?(home_form_list_path) %>">
+                <%= link_to "출석문의", home_form_list_path, method: 'get'%>
+              </li>
+              <li class="<%= is_active?(home_form_list_path) %>">
+                <%= link_to "면담요청", home_form_list_path, method: 'get'%>
+              </li>
+              <li class="<%= is_active?(home_form_list_path) %>">
+                <%= link_to "기타양식", home_form_list_path, method: 'get'%>
+              </li>
+              <li class="<%= is_active?(post_list_path) %>">
+                <%= link_to "커뮤니티", post_list_path, method: 'get'%>
+              </li>
+            </ul>
+          </div>
+          <div class="sidebar-bottom">
+            <div class="font-icon social-icons">
+              <ul>
+                <li><a href="#"><i class="ion-social-facebook"></i></a></li>
+                <li><a href="#"><i class="ion-social-twitter"></i></a></li>
+                <li><a href="#"><i class="ion-social-dribbble-outline"></i></a></li>
+                <li><a href="#"><i class="ion-social-linkedin-outline"></i></a></li>
+                <li><a href="#"><i class="ion-social-googleplus-outline"></i></a></li>
+                <li><a href="#"><i class="ion-social-instagram-outline"></i></a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    <!--================= End sidebar ==================-->
+   
+   <!--================= TOGGLE MENU ICON STARTS ==================-->
+    <a href="#menu-toggle" class="menu-icon" id="menu-toggle"><i class="fa fa-bars"></i></a>
+   <!--================= TOGGLE MENU ICON end ==================-->
+
+   <!--================= Start Footer ==================-->
+    <!--<footer>
+      <div class="container">
+        <div class="row">
+          <div class="col-xs-12">
+            <div class="sub-footer"><span class="copyright"> Copyrights © 2016. All Rights Reserved by Motts.co</span></div>
+          </div>
+        </div>
+      </div>
+    </footer>-->
+  <!--================= End Footer ==================-->
+      
+  </div>
+  <!-- Jquery Lib version 1.11.0 -->
+  <script type="text/javascript" src="javascripts/js/jquery.min.js"></script>
+  <script type="text/javascript" src="javascripts/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="javascripts/js/plugins.js"></script>
+  <script type="text/javascript" src="javascripts/js/main.js"></script>
+ 
+ 
 <%= yield %>
 <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script>
