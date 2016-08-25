@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   get 'home/form_scrap'
   get 'home/firstpage'
   get 'home/firstpage_result'
+  get 'cover/contact'
   get 'home/form_write'
   post 'home/form_action'
   get 'form_destroy/:form_id' => "home#form_destroy", as: "form_destroy"
