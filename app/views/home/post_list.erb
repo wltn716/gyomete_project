@@ -34,7 +34,8 @@
                         <% @posts.each do |p| %>
                             <tr>
                                 <td>
-                                    <%=link_to p.title, post_view_path(p.id), method: 'get'%><br>
+                                    <%=link_to p.title, post_view_path(p.id), method: 'get'%>
+                                    <br>
                                 </td>
                                 <td>
                                     <%="익명"%><br>
@@ -43,7 +44,7 @@
                                     <%=p.created_at.strftime("%Y-%m-%d")%><br>
                                 </td>
                                 <td>
-    
+                                    <%=p.impressionist_count%>
                                 </td>
                             </tr>
                         <%end%>
