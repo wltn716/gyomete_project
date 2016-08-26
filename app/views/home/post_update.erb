@@ -1,18 +1,42 @@
-<div class="container">
-    <h1>커뮤니티 글 쓰기</h1>
-    <form action="/post_update_action/<%=@one_post.id%>"  method="POST" enctype="multipart/form-data">
-      <div class="form-group">
-        <label for="exampleInputPassword1">제목</label>
-        <input type="text" name="title" value="<%=@one_post.title %>" class="form-control" id="title" placeholder="제목을 입력하세요">
+<section id="screen-width" class="col-md-8 col-md-offset-2">
+  <div class="post-type-blog single">
+    <div class="container relative">
+      <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+          <div class="post-article">
+            <div class="post-entry">
+              <div class="post-content">
+                <div class="help-block text-danger">
+                  <div class="post-title">
+                    <h1>커뮤니티 글 작성하기</h1>
+                  </div>      
+                </div>  
+                <br>  
+                <br>  
+
+                  <form action="/post_update_action/<%=@one_post.id%>"  method="POST" enctype="multipart/form-data" id="comment_form">
+                    <div class="form-group">
+                      <p class="help-block text-danger"></p>
+                      <input type="text" autocomplete="off" name="title" value="<%=@one_post.title %>" class="form-control" id="title" placeholder="제목" data-validation-required-message="제목을 입력하세요">
+                    </div>
+                  
+                    <div class="form-group">
+                      <p class="help-block text-danger"></p>
+                      <textarea type="text" rows="10" autocomplete="off" name="content" class="form-control" id="content" placeholder="내용" data-validation-required-message="내용을 입력하세요"> <%=@one_post.content %></textarea>
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleInputFile">파일 첨부</label>
+                      <input type="file" name="pic" accept="image/*">
+                      </div>  
+                      <button type="submit" class="pull-right send_btn">확인</button>
+                  </form>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="form-group">
-        <label for="comment">내용</label>
-        <textarea class="form-control" name="content" rows="5" id="comment"> <%=@one_post.content %></textarea>
-      </div>
-      <div class="form-group">
-      <label for="exampleInputFile">파일 첨부</label>
-      <input type="file" name="pic" accept="image/*">
-      </div>  
-      <button type="submit" class="btn btn-default">확인</button>
-    </form>
-</div>
+    </div>
+  </div>
+</section>  
+
+

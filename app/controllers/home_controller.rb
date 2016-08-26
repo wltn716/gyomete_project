@@ -161,7 +161,6 @@ class HomeController < ApplicationController
   # 커뮤니티 게시판 리스트 출력
   def post_list
     @posts = Post.all.reverse  
-    @posts = Post.all  
   end
   
   # 커뮤니티 게시판 리스트에서 검색했을 때 결과
@@ -193,7 +192,7 @@ class HomeController < ApplicationController
     @one_post.title= params[:title] 
     @one_post.content = params[:content]
     @one_post.save
-    redirect_to "/post_list" 
+    redirect_to "/post_view/" + params[:post_id] 
   end
   
   # 커뮤니티 게시판에 대한 댓글 작성 action
