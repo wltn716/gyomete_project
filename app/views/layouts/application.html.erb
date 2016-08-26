@@ -11,7 +11,18 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
   
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+  
+  
   <!-- Bootstrap 끝 -->
+  
+  <!-- Materialize 시작 -->
+  <!-- Compiled and minified CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/css/materialize.min.css">
+
+  <!-- Compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js"></script>
+  <!-- Materialize 끝 -->
+  
   
   <!-- Template 시작 -->
   <!-- Google fonts styles -->
@@ -36,6 +47,15 @@
   <link rel="icon" href="images/favicon.ico" type="image/x-icon">
 </head>
 <body class="full-page">
+  <!--================= Start Top Bar ====================-->
+   <div class= "top-nav-bar">
+     <div class= "logo-top">
+       <h3><%= link_to "교메때", home_firstpage_path, method: 'get' %></h3>
+     </div>
+     <div>
+      <button type="button" class="btn btn-default btn-lg" id="loginBtn" data-toggle="modal" data-target="#loginModal">Login</button>
+     </div>
+   </div>
   <!--================= Start Preloader ==================-->
     <div class="preloader">
       <div class="spinner">
@@ -61,59 +81,30 @@
               <input type="text" onblur="if (this.value == '') {this.value = 'SEARCH...';}" onfocus="if (this.value == 'SEARCH...') {this.value = '';}" id="search" name="search" value="SEARCH..." class="textboxsearch">
             </form>
           </div>
-<<<<<<< HEAD
-=======
-        <!--<ul class="nav navbar-nav">
-          <li class="<%='active' if current_page?('/firstpage')%>"><%=link_to "HOME", "/firstpage" %></li>
-          <li><%=link_to "성적정정", "/form_list/1" %></li>
-          <li><%=link_to "수강문의", "/form_list/2" %></li>
-          <li><%=link_to "출석문의", "/form_list/3" %></li>
-          <li><%=link_to "면담요청", "/form_list/4" %></li>
-          <li><%=link_to "기타양식", "/form_list/5" %></li>
-          <li class="<%='active' if current_page?('/post_list')%>"><%=link_to "커뮤니티", "/post_list" %></li>
->>>>>>> e53b3444e67f68fea2d55f3a806617c657f032bf-->
-=======
->>>>>>> 5699e2519ddf1d3fac5103fe3e846d828b608170
           
           <div class="drilldown-container">
             <ul class="drilldown-root" style = "text-align: center">                         
               <li class="<%= is_active?(home_firstpage_path) %>">
                 <%= link_to "HOME", home_firstpage_path , method: 'get'%>
               </li>
-<<<<<<< HEAD
-              <li class="<%= is_active?("/form_list/1") %>">
-                <%= link_to "성적정정", home_post_list_path , method: 'get'%>
-              </li>
-              <li class="<%= is_active?("/form_list/2") %>">
-                <%= link_to "수강문의", home_post_list_path , method: 'get' %>
-              </li>
-              <li class="<%= is_active?("/form_list/3") %>">
-                <%= link_to "출석문의", home_post_list_path , method: 'get'%>
-              </li>
-              <li class="<%= is_active?("/form_list/4") %>">
-                <%= link_to "면담요청", home_post_list_path , method: 'get'%>
-              </li>
-              <li class="<%= is_active?("/form_list/5") %>">
-                <%= link_to "기타양식", home_post_list_path , method: 'get'%>
-=======
-              <li>
+
+              <li class="<%= is_active?(form_list_path(1)) %>">
                 <%= link_to "성적정정", form_list_path(1), method: 'get'%>
               </li>
-              <li>
+              <li class="<%= is_active?(form_list_path(2)) %>">
                 <%= link_to "수강문의", form_list_path(2), method: 'get'%>
               </li>
-              <li>
+              <li class="<%= is_active?(form_list_path(3)) %>">
                 <%= link_to "출석문의", form_list_path(3), method: 'get'%>
               </li>
-              <li>
+              <li class="<%= is_active?(form_list_path(4)) %>">
                 <%= link_to "면담요청", form_list_path(4), method: 'get'%>
               </li>
-              <li>
+              <li class="<%= is_active?(form_list_path(5)) %>">
                 <%= link_to "기타양식", form_list_path(5), method: 'get'%>
->>>>>>> 5699e2519ddf1d3fac5103fe3e846d828b608170
               </li>
-              <li class="<%= is_active?(home_post_list_path) %>">
-                <%= link_to "커뮤니티", home_post_list_path, method: 'get'%>
+              <li class="<%= is_active?(post_list_path) %>">
+                <%= link_to "커뮤니티", post_list_path, method: 'get'%>
               </li>
             </ul>
           </div>
@@ -162,4 +153,5 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script>
 
 </body>
+
 </html>

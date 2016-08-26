@@ -36,15 +36,12 @@ Rails.application.routes.draw do
   
   get 'users/myaccount'
   
-<<<<<<< HEAD
   #get '/firstpage', to: 'home#firstpage'
   #get '/form_list', to: 'home#form_list'
   #get '/post_list', to: 'home#post_list'
-=======
   get '/firstpage', to: 'home#firstpage'
   get '/form_list/:category', to: 'home#form_list', as: "form_list"
   get '/post_list', to: 'home#post_list'
->>>>>>> 5699e2519ddf1d3fac5103fe3e846d828b608170
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
