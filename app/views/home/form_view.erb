@@ -79,7 +79,7 @@
           
         },
         error:function() {
-          $("#form_all_" + form_id).append(form_content + <%= escape_javascript.link_to "삭제", form_reply_destroy_path(r.id), method: 'get' %>+"<br>");
+          $("#form_all_" + form_id).append.( form_content + "<%= link_to "삭제", form_reply_destroy_path(r.id), method: 'get' %><br>");
           $("#content_" + form_id).val('');
           
         }
