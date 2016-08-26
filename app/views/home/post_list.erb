@@ -1,10 +1,23 @@
-<section id="screen-width" style="width:83%; min-height: 655px;">
+<section id="screen-width" style=" width:60%; min-height: 655px; margin-left:20%; margin-right:20%;">
   <article id="desktop">
     <div class="row">
         <div class="co1 s12 m11 l11">
           <div class="table-wrapper">
             <div class="main-container">
                 <h1>커뮤니티 게시판</h1>
+                <br>
+                <br>
+                <div class="write">
+                    <div class="wrap" style="float:right; margin-right:35px;">
+                        <form class="search" action="/home/post_result" method="GET" accept-charset="UTF-8">
+                            <input type="text" name="search_keyword" id="search_keyword" placeholder="검색">
+                            <button name="botton" type="submit" class="searchButton" >
+                                <span class="glyphicon glyphicon-search"></span>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+                <br>
                 <br>
                 <br>
                 <br>
@@ -18,26 +31,22 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>
-                                <% @posts.each do |p| %>
+                        <% @posts.each do |p| %>
+                            <tr>
+                                <td>
                                     <%=link_to p.title, post_view_path(p.id), method: 'get'%><br>
-                                <% end %>                    
-                            </td>
-                            <td>
-                                <% @posts.each do |p| %>
+                                </td>
+                                <td>
                                     <%="익명"%><br>
-                                <%end%>
-                            </td>
-                            <td>
-                                <% @posts.each do |p| %>
-                                    <%=p.created_at%><br>
-                                <%end%>
-                            </td>
-                            <td>
-
-                            </td>
-                        </tr>
+                                </td>
+                                <td>
+                                    <%=p.created_at.strftime("%Y-%m-%d")%><br>
+                                </td>
+                                <td>
+    
+                                </td>
+                            </tr>
+                        <%end%>
                     </tbody>
                     <tbody>
                     </tbody>    
@@ -48,18 +57,11 @@
                 <br>
                 <br>
                 <div class="write">
-                    <div class="wrap">
-                        <form class="search" action="/home/post_result" method="GET" accept-charset="UTF-8">
-                            <input name="utf8" type="hidden" value="✓">
-                            <input type="text" name="search_keyword" id="search_keyword" placeholder="검색" class="validate searchTerm">
-                            <button name="botton" type="submit" >
-                                <span class="glyphicon glyphicon-search"></span>
-                            </button>
-                        </form>
-                    </div>
+                    
                          <form action="/home/post_write" method="GET">
-                            <button type="submit" class="btn btn-default">글쓰기</button>
+                            <button type="submit" class="btn btn-secondary btn-lg">글쓰기</button>
                         </form>
+                    
                 </div>
                 <div class="flickr_pagination">...</div>
             </div>
