@@ -6,7 +6,7 @@
           <div class="post-article">
             <div class="post-entry">
               <div class="post-content">
-                  <div class="help-block text-danger">
+                  
                       <div class="post-title">
                         <h1><%=@view_post.title%></h1>
                       </div><br>
@@ -26,7 +26,7 @@
                         &nbsp;&nbsp;&nbsp;
                         조회수:<%=@view_post.impressionist_count%><br>
                       </ul>
-                  </div>  
+                    
                 <br>
                 <br>
                 <br>
@@ -37,17 +37,23 @@
                 <br>
                 <br>
                 <br>
-                  
+                    <div class="edit" align="right">
                       <% if can? :manage, @view_post %>
-                      <%=link_to "수정", post_update_path(@view_post.id), method: 'get'%> 
-                      <%=link_to "삭제", post_destroy_path(@view_post.id), method: 'get'%> </br>
+                        <button class="btn-orange" type="submit">
+                          <%=link_to "수정", post_update_path(@view_post.id), method: 'get' , class: 'css_class', style: 'color:#ffffff'%> 
+                        </button>
+                        <button  class="btn-orange" type="submit">
+                          <%=link_to "삭제", post_destroy_path(@view_post.id), method: 'get' , class: 'css_class', style: 'color:#ffffff'%>
+                        </button>
                       <%end%>
-                      
+                    </div>  
                 <br>
               </div>  
               <div class="post-comment">
                 <div class="comment-title">
-                  <h3>"<%=@view_post.preplies.count%>개의 댓글" </h3>
+                  <div class="help-block text-danger">
+                    <h3>"<%=@view_post.preplies.count%>개의 댓글" </h3>
+                  </div>  
                 </div>
                 <br>
                 <br>
