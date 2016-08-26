@@ -2,7 +2,6 @@ Rails.application.routes.draw do
   get 'cover/report'
 
   devise_for :users
-  #root 'home#firstpage'
   root 'cover#report'
   post 'liking/:form_id' => 'home#liking', as: 'liking'
   post 'home/form_scrap_action'
