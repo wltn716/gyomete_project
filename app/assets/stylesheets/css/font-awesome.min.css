@@ -246,6 +246,9 @@
 .fa-clock-o:before {
   content: "\f017";
 }
+.fa-eye-o:before {
+  content: url( "../images/14777.png" );
+}
 .fa-road:before {
   content: "\f018";
 }

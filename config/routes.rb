@@ -38,15 +38,14 @@ Rails.application.routes.draw do
   
   get '/firstpage', to: 'home#firstpage'
   get '/form_list/:category', to: 'home#form_list', as: "form_list"
-<<<<<<< HEAD
+
+
+
+
 
   get '/form_view/:form_id', to: 'home#form_view', as: "form_view"
   get '/post_list', to: 'home#post_list', as: "post_list"
 
-=======
-  get '/form_view/:form_id', to: 'home#form_view', as: "form_view"
-  get '/post_list', to: 'home#post_list', as: "post_list"
->>>>>>> 1659b559b5b18e3ba36eb812043fe812f56fd0e9
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
