@@ -9,11 +9,12 @@ Rails.application.routes.draw do
   get 'home/form_scrap'
   get 'home/firstpage'
   get 'home/firstpage_result'
+  get 'cover/contact'
   get 'home/form_write'
   post 'home/form_action'
-  get 'form_destroy/:form_id' => "home#form_destroy"
-  get 'form_reply_destroy/:reply_id' => "home#form_reply_destroy"  
-  get 'form_update/:form_id' => "home#form_update"
+  get 'form_destroy/:form_id' => "home#form_destroy", as: "form_destroy"
+  get 'form_reply_destroy/:reply_id' => "home#form_reply_destroy", as: "form_reply_destroy"  
+  get 'form_update/:form_id' => "home#form_update", as: "form_update"
   post 'form_update_action/:form_id' => "home#form_update_action"
   post 'home/form_reply'
   get 'home/form_result'
@@ -27,9 +28,9 @@ Rails.application.routes.draw do
   post 'home/post_reply'
   #get 'home/post_view'
   get 'post_view/:post_id' => "home#post_view", as: "post_view"
-  get 'post_destroy/:post_id' => "home#post_destroy"
+  get 'post_destroy/:post_id' => "home#post_destroy", as: "post_destroy" 
   get 'post_reply_destroy/:reply_id' => "home#post_reply_destroy"  
-  get 'post_update/:post_id' => "home#post_update"
+  get 'post_update/:post_id' => "home#post_update", as: "post_update"
   post 'post_update_action/:post_id' => "home#post_update_action"
   get 'home/post_result'
   
@@ -37,8 +38,20 @@ Rails.application.routes.draw do
   
   get '/firstpage', to: 'home#firstpage'
   get '/form_list/:category', to: 'home#form_list', as: "form_list"
+<<<<<<< HEAD
   get '/post_list', to: 'home#post_list'
   get '/form_view/:form_id', to: 'home#form_view', as: "form_view"
+=======
+<<<<<<< HEAD
+
+  get '/form_view/:form_id', to: 'home#form_view', as: "form_view"
+  get '/post_list', to: 'home#post_list', as: "post_list"
+
+=======
+  get '/form_view/:form_id', to: 'home#form_view', as: "form_view"
+  get '/post_list', to: 'home#post_list', as: "post_list"
+>>>>>>> 1659b559b5b18e3ba36eb812043fe812f56fd0e9
+>>>>>>> 008b49d60387c4d2eec7a014bc7d090d92cc07be
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

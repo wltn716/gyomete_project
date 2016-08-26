@@ -2,7 +2,6 @@ require 'mailgun'
 class HomeController < ApplicationController
   before_action :authenticate_user!
   impressionist :actions => [:show]
-  
   def firstpage
     @forms = Form.all
     @posts = Post.all
@@ -82,7 +81,7 @@ class HomeController < ApplicationController
   def form_reply
     freply = Freply.new(content: params[:reply_f], form_id: params[:id_of_form], writer: current_user)
     freply.save
-    redirect_to "/form_view/"+params[:id_of_form]
+    
   end
   
   def form_reply_destroy
@@ -174,6 +173,7 @@ class HomeController < ApplicationController
   # 커뮤니티 게시판 리스트에서 글 눌렀을 때, 제목과 내용 출력과 댓글 달기
   def post_view
     @view_post = Post.find(params[:post_id])
+    impressionist(@view_post)
     Preply.all
 
   end
@@ -181,7 +181,7 @@ class HomeController < ApplicationController
   def post_destroy
     @one_post = Post.find(params[:post_id]) 
     @one_post.destroy
-    redirect_to "/home/post_list"
+    redirect_to "/post_list"
   end
   
   def post_update
@@ -193,7 +193,7 @@ class HomeController < ApplicationController
     @one_post.title= params[:title] 
     @one_post.content = params[:content]
     @one_post.save
-    redirect_to "/home/post_list" 
+    redirect_to "/post_list" 
   end
   
   # 커뮤니티 게시판에 대한 댓글 작성 action
