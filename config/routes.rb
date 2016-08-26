@@ -42,7 +42,10 @@ Rails.application.routes.draw do
 
 
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 10366a2f88e04ba94c9aa89fd99d81f78f8e588c
   get '/form_view/:form_id', to: 'home#form_view', as: "form_view"
   get '/post_list', to: 'home#post_list', as: "post_list"
 
