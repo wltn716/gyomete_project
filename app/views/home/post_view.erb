@@ -91,16 +91,6 @@
                       <button type="submit" class="pull-right send_btn">Submit</button>
                     </div>
                 </form>
-                <script> $(".reply_submit").click(function(){
-                  $.ajax({
-                    method: "POST",
-                    url: "/home/reply_write",
-                    data: { name: "John", location: "Boston" }
-                        })
-                    .done(function( msg ) {
-                    alert("리플이 작성되었습니다"); });
-                  });
-                </script> 
               </div>  
             </div>    
           </div>      
