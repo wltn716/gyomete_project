@@ -109,14 +109,14 @@
     </div>
     <!--================= End sidebar ==================-->
     <!--================= Start Top Bar ====================-->
-      <div class= "top-nav-bar col-md-8">
+      <div class= "top-nav-bar col-md-10">
         <span class= "logo-top">
          <%= link_to "교메때", home_firstpage_path, method: 'get' %>
         </span>
         <div class="right">
           <% if user_signed_in? %>
             <p><%= button_to "로그아웃", destroy_user_session_path, method: :delete, data:{confirm: "Are you sure?"}, id:"loginBtn1" %></p>
-            <p><%= current_user.nickname %></p>
+            <p class= "user-nickname"><%= link_to current_user.nickname, home_mypage_path, method: "get" %>님</p>
           <% else %>
             <%= button_to "로그인", new_user_session_path, id:"loginBtn1", method:"get", class: "top-button" %>
             <%= button_to "회원가입", new_user_registration_path, id:"loginBtn2", method:"get" %>
