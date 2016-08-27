@@ -1,6 +1,56 @@
 <div class = container>
     <h1>내가 스크랩한 메일 양식</h1>
-    <%@scraps.each do |s|%>
-        <a href="/form_view/<%=s.scrap_id%>"><%=s.title%></a><br>
-    <%end%>
+
+    <div class="row p60" style="margin-left:20%;">
+      <div id="masonry" class="masonry infinite-scroll">
+<%@scraps.each do |p|%>
+          <div class="col-lg-4 col-md-6 col-sm-6 col-xs-6 col-12 masonry photography travel" style="cursor:pointer;"onclick="location.href='/form_view/<%=p.scrap_id%>'">
+              <div class="post-article">
+                <div class="thumbnail">
+              
+                <a href="single.html" title="#">
+                     <%= image_tag asset_path('1.jpg'), class: 'img-responsive' %>
+                </a>
+                </div>
+        
+                  <div class="post-entry">
+                      <div class="post-content">
+                          <ul class="post-author">
+                              <li><a href="javascript:void(0)"><i class="fa fa-user"></i><%=p.nickname%></a></li>
+                          </ul>
+                          <h5 class="post-title">
+                              <%= link_to p.title, form_view_path(p.scrap_id) , method: 'get'%>
+                          </h5>
+                      </div>
+                      <div class="post-footer">
+                          <ul class="post-link">
+                              <li><a >
+                                  <i class="fa fa-clock-o"></i> <%= p.time%>
+                              </a></li>
+                          </ul><br>
+                          <ul class="post-link">
+                              <li><a>
+                                   ಠ <%= p.hits%>
+                              </a></li>
+                          </ul>
+                          <ul class="post-link">
+                            <li><a href="#">
+                                <i class="fa fa-comments-o"></i> <%=p.replies%>
+                            </a></li>
+                          </ul>
+                          <ul class="post-link">
+                              <li><a >
+                                  ♡ <%=  p.likes%>
+                              </a></li>
+                          </ul>
+                      
+                    
+                      </div>
+                  </div>
+              </div>
+          </div>
+  <%end%>
+  </div>
+      
+  </div>
 </div>

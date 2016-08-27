@@ -5,6 +5,9 @@ class HomeController < ApplicationController
   
   #마이페이지 입니다.
   def mypage
+     @forms=Form.where(writer: current_user).take(3)
+     @posts=Post.where(writer: current_user).take(3)
+     @scraps=Scrap.where(writer: current_user).take(3)
   end
   
   #내가 쓴 메일 양식 보관함
@@ -126,14 +129,11 @@ class HomeController < ApplicationController
   end
   
   def form_scrap_action
-    scrap = Scrap.create(title: params[:scrap_title], scrap_id: params[:scrap_id], writer: current_user)
+    scrap = Scrap.create(title: params[:scrap_title],nickname: params[:scrap_nickname],time: params[:scrap_time],likes: params[:scrap_likes],hits: params[:scrap_hits],replies: params[:scrap_replies], scrap_id: params[:scrap_id], writer: current_user)
     scrap.save
     redirect_to :back
   end
-  
-  def form_scrap
-    @scraps=Scrap.where(writer: current_user)
-  end
+
   
   #해시태그만들기1
   def form_result
