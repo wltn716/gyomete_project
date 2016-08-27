@@ -37,10 +37,21 @@ Rails.application.routes.draw do
   get 'home/post_result'
   get 'home/mypage'
   
+  #get '/firstpage', to: 'home#firstpage'
+  #get '/form_list', to: 'home#form_list'
+  #get '/post_list', to: 'home#post_list'
   get '/firstpage', to: 'home#firstpage'
   get '/form_list/:category', to: 'home#form_list', as: "form_list"
+
+
+
   get '/form_view/:form_id', to: 'home#form_view', as: "form_view"
   get '/post_list', to: 'home#post_list', as: "post_list"
+
+  devise_for :users, :skip => [:sessions]
+  as :user do
+    get 'signin' => 'devise/sessions#new', :as => :home_firstpage_path
+  end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

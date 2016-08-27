@@ -15,6 +15,13 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
   <!-- Bootstrap 끝 -->
   
+  <!-- Modal  -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  
+  
   <!-- Template 시작 -->
   <!-- Google fonts styles -->
   <link href='https://fonts.googleapis.com/css?family=Roboto:400,900italic,900,700italic,700,500italic,500,400italic,300italic,300,100italic,100' rel='stylesheet' type='text/css'>
@@ -46,8 +53,10 @@
       </div>
     </div>
   <!--================= End Preloader ====================-->
-  <div id="wrapper">
+  <div class ="row">
+    <div class = "col-md-2">
     <!--================= Start sidebar ==================-->
+    <div id="wrapper">
       <div id="sidebar-wrapper">
         <div class="drilldown sidebar-nav mCustomScrollbar">
           <div class="sidebar-brand text-center">                     
@@ -69,19 +78,20 @@
               <li class="<%= is_active?(home_firstpage_path) %>">
                 <%= link_to "HOME", home_firstpage_path , method: 'get'%>
               </li>
-              <li>
+
+              <li class="<%= is_active?(form_list_path(1)) %>">
                 <%= link_to "성적정정", form_list_path(1), method: 'get'%>
               </li>
-              <li>
+              <li class="<%= is_active?(form_list_path(2)) %>">
                 <%= link_to "수강문의", form_list_path(2), method: 'get'%>
               </li>
-              <li>
+              <li class="<%= is_active?(form_list_path(3)) %>">
                 <%= link_to "출석문의", form_list_path(3), method: 'get'%>
               </li>
-              <li>
+              <li class="<%= is_active?(form_list_path(4)) %>">
                 <%= link_to "면담요청", form_list_path(4), method: 'get'%>
               </li>
-              <li>
+              <li class="<%= is_active?(form_list_path(5)) %>">
                 <%= link_to "기타양식", form_list_path(5), method: 'get'%>
               </li>
               <li class="<%= is_active?(post_list_path) %>">
@@ -92,21 +102,30 @@
               </li>              
             </ul>
           </div>
-          <div class="sidebar-bottom">
-            <div class="font-icon social-icons">
-              <ul>
-                <li><a href="#"><i class="ion-social-facebook"></i></a></li>
-                <li><a href="#"><i class="ion-social-twitter"></i></a></li>
-                <li><a href="#"><i class="ion-social-dribbble-outline"></i></a></li>
-                <li><a href="#"><i class="ion-social-linkedin-outline"></i></a></li>
-                <li><a href="#"><i class="ion-social-googleplus-outline"></i></a></li>
-                <li><a href="#"><i class="ion-social-instagram-outline"></i></a></li>
-              </ul>
-            </div>
-          </div>
+  
         </div>
       </div>
+      </div>
+    </div>
     <!--================= End sidebar ==================-->
+    <!--================= Start Top Bar ====================-->
+      <div class= "top-nav-bar col-md-8">
+        <span class= "logo-top">
+         <%= link_to "교메때", home_firstpage_path, method: 'get' %>
+        </span>
+        <div class="right">
+          <% if user_signed_in? %>
+            <p><%= button_to "로그아웃", destroy_user_session_path, method: :delete, data:{confirm: "Are you sure?"}, id:"loginBtn1" %></p>
+            <p><%= current_user.nickname %></p>
+          <% else %>
+            <%= button_to "로그인", new_user_session_path, id:"loginBtn1", method:"get", class: "top-button" %>
+            <%= button_to "회원가입", new_user_registration_path, id:"loginBtn2", method:"get" %>
+          <% end %>
+        </div>
+      </div>
+
+   
+  <!--================= End Top Bar ====================-->
    
    <!--================= TOGGLE MENU ICON STARTS ==================-->
     <a href="#menu-toggle" class="menu-icon" id="menu-toggle"><i class="fa fa-bars"></i></a>
@@ -135,5 +154,7 @@
 <%= yield %>
 <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
 
+</div>
 </body>
+
 </html>
