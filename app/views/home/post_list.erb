@@ -1,10 +1,6 @@
-<<<<<<< HEAD
 <div class="container relative">
-    <h1>커뮤니티 게시판</h1>
-    <% @posts.each do |p| %>
-        <%=link_to p.title, post_view_path(p.id), method: 'get'%> </br>
-    <% end %>
-=======
+    
+    
 <section id="screen-width" class="col-md-8 col-md-offset-3">
   <article id="desktop">
     <div class="row">
@@ -17,8 +13,6 @@
                 <div class="write">
                     <div class="wrap" style="float:right; margin-right:35px;">
                         <form class="search" action="/home/post_result" method="GET" accept-charset="UTF-8">
-                            <input type="text" class="form_control" name="search" id="search_keyword" placeholder="검색">
-
                             <input type="text" name="search" id="search_keyword" placeholder="검색">
                             <button name="botton" type="submit" class="searchButton" >
                                 <span class="glyphicon glyphicon-search"></span>
@@ -60,7 +54,6 @@
                     </tbody>
                     <tbody>
                     </tbody>    
->>>>>>> 324403d7ef1b4d6b81e6aca1eb7fd8a35707eca1
 
                 </table>
                 <br>
