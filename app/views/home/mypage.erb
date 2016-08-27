@@ -12,140 +12,165 @@
           <hr style="background-color:#ff9e03;"/>
           <h3>전   공 | <%= current_user.major %></h3>
           <hr style="background-color:#ff9e03;"/>
-          <%=link_to "정보수정", edit_user_registration_path, method: 'get'%>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-md-6" style="width:45%;margin-left:5px;border:dashed 1px  #ff9e03; ">
-        <table style="margin-left:3px;">
-          <h3>내가 쓴 메일양식</h3>
-          <br>
-          <br>
-          <thead>
-            <tr>
-              <th data-field="title">제목</th>
-              <th data-field="author">작성자</th>
-              <th data-field="date">날짜</th>
-            </tr>
-          </thead>
-          <tbody>
-            <% @forms.each do |p| %>
-              <tr>
-                <td>
-                    <%=link_to p.title, form_view_path(p.id), method: 'get', class: 'css_class', style: 'color:#454443' %>
-                    <br>
-                </td>
-                <td>
-                    <%=p.writer.nickname%><br>
-                </td>
-                <td>
-                    <%=p.created_at.strftime("%Y-%m-%d")%><br>
-                </td>
-              </tr>
-            <%end%>
-          </tbody>
-        </table>
-        <br>
-        <%=link_to "더 보러가기", home_mypage_mail_archive_path, method: 'get',class:"link_to_color"%>
-        <br>
-        <br>
-      </div>
-        
-      <div class="col-md-6" style="width:45%;margin-left:30px;border:dashed 1px  #ff9e03; ">
-        <table style="margin-left:3px;" >
-          <h3>내가 쓴 커뮤니티 글</h3>
-          <br>
-          <br>
-          <thead>
-            <tr>
-              <th data-field="title">제목</th>
-              <th data-field="author">작성자</th>
-              <th data-field="date">날짜</th>
-              
-            </tr>
-          </thead>
-          <tbody>
-            <% @posts.each do |p| %>
-              <tr>
-                <td>
-                    <%=link_to p.title, post_view_path(p.id), method: 'get', class: 'css_class', style: 'color:#454443' %>
-                    <br>
-                </td>
-                <td>
-                    <%=p.writer.nickname%><br>
-                </td>
-                <td>
-                    <%=p.created_at.strftime("%Y-%m-%d")%><br>
-                </td>
-              </tr>
-            <%end%>
-          </tbody>
-        </table>
-        <br>
-        <%=link_to "더 보러가기", home_mypage_community_archive_path, method: 'get', class:"link_to_color"%>
-      <br>
-      <br>
-      </div>
-      
-    <div class="row" >
-      
-      <div class="col-md-6" style="width:45%; margin-left:7px; border:dashed 1px  #ff9e03;margin-top:30px; ">
-        <table style="margin-left:3px;">
-          <h3>내가 스크랩한 양식</h3>
-          <br>
-          <br>
-          <thead>
-            <tr>
-              <th data-field="title">제목</th>
-              <th data-field="author">작성자</th>
-              <th data-field="date">날짜</th>
-              
-            </tr>
-          </thead>
-          <tbody>
-            <% @scraps.each do |p| %>
-              <tr>
-                <td>
-                    <%=link_to p.title, post_view_path(p.id), method: 'get', class: 'css_class', style: 'color:#454443' %>
-                    <br>
-                </td>
-                <td>
-                    <%=p.nickname%><br>
-                </td>
-                <td>
-                    <%=p.time%><br>
-                </td>
-              </tr>
-            <%end%>
-          </tbody>
-        </table>
-        <br>
-        <%=link_to "더 보러가기", home_mypage_scrap_archive_path, method: 'get',class:"link_to_color"%>
-      <br>
-      <br>
-      </div>
-      <br>
-      <br>
-      <div class="col-md-6"style="width:45%; margin-left:30px;border:dashed 1px  #ff9e03;margin-top:30px; ">
-      
-      </div>
-      <br>
-      <br>
+          
+          <%=button_to "정보수정", edit_user_registration_path, style:"width:auto;border: 1px solid #ff9e03;border-radius: 4px;padding: 7px 12px;font-weight: 700;background-color: #ff9e03;color: #ffffff;cursor: pointer;", method: 'get',class:"right"%>
+      </div>    
     </div>
     <br>
-      <br>
-</div>
-<%@forms.each do |p|%>
- <%p.freplies.each do |f|%>
- <%unless p.freplies.nil?%>
+    <br>
+    <table style=" width:95%;" >
+      
+        <tr>
+          <td>
+            <div style="padding: 30px 30px 30px 30px;width:95%;height:90%;border:1px dashed #ff9e03;margin-bottom:30px;">
+              <table>
+                <h3>내가 쓴 메일양식</h3>
+                <br>
+                <br>
+                <thead>
+                  <tr>
+                    <th data-field="title">제목</th>
+                    <th data-field="author">작성자</th>
+                    <th data-field="date">날짜</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <% @forms.each do |p| %>
+                    <tr>
+                      <td>
+                          <%=link_to p.title, form_view_path(p.id), method: 'get', class: 'css_class', style: 'color:#454443' %>
+                          <br>
+                      </td>
+                      <td>
+                          <%=p.writer.nickname%><br>
+                      </td>
+                      <td>
+                          <%=p.created_at.strftime("%Y-%m-%d")%><br>
+                      </td>
+                    </tr>
+                  <%end%>
+                </tbody>
+              </table>
+              <br>
+              <%=link_to "더 보러가기", home_mypage_mail_archive_path, method: 'get',class:"link_to_color"%>
+              <br>
+              <br>
+            </div>
+          </td>
+          <td  >
+            <div style="padding: 30px 30px 30px 30px;width:95%;border:1px dashed #ff9e03;margin-bottom:30px;">
+              <table >
+                <h3>내가 쓴 커뮤니티 글</h3>
+                <br>
+                <br>
+                <thead>
+                  <tr>
+                    <th data-field="title">제목</th>
+                    <th data-field="author">작성자</th>
+                    <th data-field="date">날짜</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <% @posts.each do |p| %>
+                    <tr>
+                      <td>
+                          <%=link_to p.title, post_view_path(p.id), method: 'get', class: 'css_class', style: 'color:#454443' %>
+                          <br>
+                      </td>
+                      <td>
+                          <%=p.writer.nickname%><br>
+                      </td>
+                      <td>
+                          <%=p.created_at.strftime("%Y-%m-%d")%><br>
+                      </td>
+                    </tr>
+                  <%end%>
+                </tbody>
+              </table>
+              <br>
+              <%=link_to "더 보러가기", home_mypage_community_archive_path, method: 'get', class:"link_to_color"%>
+            <br>
+            <br>
+           </div>
+          </td>
+        </tr>
+        <tr>
+          <td  >
+            <div style="padding: 30px 30px 30px 30px;width:95%; border:1px dashed #ff9e03;">
+              <table>
+                <h3>내가 스크랩한 양식</h3>
+                <br>
+                <br>
+                <thead>
+                  <tr>
+                    <th data-field="title">제목</th>
+                    <th data-field="author">작성자</th>
+                    <th data-field="date">날짜</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <% @scraps.each do |p| %>
+                    <tr>
+                      <td>
+                          <%=link_to p.title, post_view_path(p.id), method: 'get', class: 'css_class', style: 'color:#454443' %>
+                          <br>
+                      </td>
+                      <td>
+                          <%=p.nickname%><br>
+                      </td>
+                      <td>
+                          <%=p.time%><br>
+                      </td>
+                    </tr>
+                  <%end%>
+                </tbody>
+              </table>
+              <br>
+              <%=link_to "더 보러가기", home_mypage_scrap_archive_path, method: 'get',class:"link_to_color"%>
+              <br>
+              <br>
+            </div>
+          </td>
+          <td >
+            <div style="padding: 30px 30px 30px 30px;width:95%;border:dashed 1px #ff9e03;">
+              <table>
+                <h3>내가 쓴 댓글</h3>
+                <br>
+                <br>
+                <thead>
+                  <tr>
+                    <th data-field="title">내용</th>
+                    <th data-field="author">작성자</th>
+                    <th data-field="date">날짜</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <% @reply_forms.each do |p| %>
+                    <tr>
+                      <td>
+                          <%=link_to p.content[0..4], form_view_path(p.form_id), method: 'get', class: 'css_class', style: 'color:#454443' %>
+                          <br>
+                      </td>
+                      <td>
+                          <%=p.writer.nickname%><br>
+                      </td>
+                      <td>
+                          <%=p.created_at.strftime("%Y-%m-%d")%><br>
+                      </td>
+                    </tr>
+                  <%end%>
+                </tbody>
+              </table>
+              <br>
+              <%=link_to "더 보러가기", home_mypage_reply_archive_path, method: 'get',class:"link_to_color"%>
+              <br>
+              <br>
+            </div>
+          </td>
+        </tr>
+      
+    </table>
+
+
  
- <%=f.content%>
  
- <%=f.id%>
- <%=p.id%>
- <%end%>
- 
- <%end%>
- 
- 
-<%end%>

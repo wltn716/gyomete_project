@@ -39,7 +39,7 @@ ActiveRecord::Schema.define(version: 20160823104624) do
   end
 
   create_table "freplies", force: :cascade do |t|
-    t.text     "content"
+    t.string   "content"
     t.integer  "form_id"
     t.integer  "writer_id"
     t.datetime "created_at", null: false

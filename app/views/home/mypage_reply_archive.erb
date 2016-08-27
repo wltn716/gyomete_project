@@ -1,0 +1,65 @@
+<section id="screen-width" class="col-md-8 col-md-offset-3">
+  <article id="desktop">
+    <div class="row">
+        <div class="co1 s12 m11 l11">
+          <div class="table-wrapper">
+            <div class="main-container">
+                <h1>내가 쓴 양식 댓글</h1>
+                <br>
+                <br>
+                <div class="write">
+                    <div class="wrap" style="float:right; margin-right:35px;">
+                        <form class="search" action="/home/post_result" method="GET" accept-charset="UTF-8">
+
+                            <input type="text" name="search" id="search_keyword" placeholder="검색">
+                            <button name="botton" type="submit" class="searchButton" >
+                                <span class="glyphicon glyphicon-search"></span>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+                <br>
+                <br>
+                <br>
+                <br>
+                <table class="bordered highlight">
+                    <thead>
+                        <tr>
+                            <th data-field="title">내용</th>
+                            <th data-field="author">작성자</th>
+                            <th data-field="date">날짜</th>
+                            
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% @reply_forms.each do |p| %>
+                            <tr>
+                                <td>
+                                    <%=link_to p.content[0..20], form_view_path(p.form_id), method: 'get', class: 'css_class', style: 'color:#454443' %>
+                                    <br>
+                                </td>
+                                <td>
+                                    <%=p.writer.nickname%><br>
+                                </td>
+                                <td>
+                                    <%=p.created_at.strftime("%Y-%m-%d")%><br>
+                                </td>
+                                
+                            </tr>
+                        <%end%>
+                    </tbody>
+                    <tbody>
+                    </tbody>    
+
+                </table>
+                <br>
+                <br>
+                <br>
+                <br>
+                <div class="flickr_pagination">...</div>
+            </div>
+          </div>    
+        </div>
+    </div>
+  </article>
+</section>
