@@ -2,7 +2,6 @@ require 'mailgun'
 class HomeController < ApplicationController
   before_action :authenticate_user!
   impressionist :actions => [:show]
-<<<<<<< HEAD
   
   #마이페이지 입니다.
   def mypage
@@ -23,8 +22,6 @@ class HomeController < ApplicationController
     @scraps=Scrap.where(writer: current_user)
   end
   
-=======
->>>>>>> f964d34a9430b824cf327ec2774264f51e08e888
   def firstpage
     @forms = Form.all
     @posts = Post.all
