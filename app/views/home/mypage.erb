@@ -1,14 +1,13 @@
 <div class = container>
 
 
-이메일: <p><%= current_user.id %></p>
-닉네임: <p><%= current_user.nickname %></p>
-전공: <p><%= current_user.nickname %></p>
+이메일: <%= current_user.email %><br>
+닉네임: <%= current_user.nickname %><br> 
+전공: <%= current_user.major %><br>
 
-<%=link_to "내가 쓴 메일 양식", method: 'get'%>
-<%=link_to "내가 쓴 커뮤니티 게시글", method: 'get'%>
-
-<%=link_to "스크랩", method: 'get'%>
+<%=link_to "내가 쓴 메일 양식", home_mypage_mail_archive_path, method: 'get'%><br>
+<%=link_to "내가 쓴 커뮤니티 게시글", home_mypage_community_archive_path, method: 'get'%><br>
+<%=link_to "스크랩", home_mypage_scrap_archive_path, method: 'get'%><br>
 <%=link_to "정보수정", edit_user_registration_path, method: 'get'%> <br>
 
 </div>
