@@ -1,3 +1,15 @@
+<div align="center"style="margin-bottom:1%;margin-top:5%;">
+    <h1>BEST 교메때</h1>
+</div>
+
+<div class="row p60" style="margin-left:20%;">
+      
+<%=@best_form%>
+</div>
+
+
+
+
 <div class="row p60" style="margin-left:20%;">
       <div id="masonry" class="masonry infinite-scroll">
 <%@forms.each do |p|%>
@@ -24,17 +36,23 @@
                               <li><a >
                                   <i class="fa fa-clock-o"></i> <%= p.created_at.strftime("%Y-%m-%d")%>
                               </a></li>
-                          </ul>
-                          <ul class="post-link right">
+                          </ul><br>
+                          <ul class="post-link">
                               <li><a>
                                    ಠ <%= p.impressionist_count%>
                               </a></li>
                           </ul>
-                          <ul class="post-link right">
+                          <ul class="post-link">
+                            <li><a href="#">
+                                <i class="fa fa-comments-o"></i> <%=p.freplies.count%>
+                            </a></li>
+                          </ul>
+                          <ul class="post-link">
                               <li><a >
                                   ♡ <%=  p.likers.count %> 
                               </a></li>
                           </ul>
+                      
                     
                       </div>
                   </div>

@@ -27,19 +27,21 @@
   
   <!--#댓글창-->
     <div class="container">
+      <form action="/home/form_reply" method="POST">
         <div class="form-group">
-          <input type="hidden" name="wrtier" value="<%= current_user %>" id="writer_<%=@view_form.id%>">
-          <textarea name="reply_f" class="form-control" rows="5" id="content_<%=@view_form.id%>"></textarea>
+          <input type="hidden" value="<%=@view_form.id%>" name="id_of_form">
+ -        <textarea name="reply_f" class="form-control" rows="5" id="comment"></textarea>
         </div>
-        <button value = "<%=@view_form.id%>" type="submit" class="btn btn-default reply_submit">Submit</button>
+        <button type="submit" class="btn btn-default">Submit</button>
+ -    </form>
     </div>
+    
     
   <!--#댓글-->
 
   <div id="form_all_<%=@view_form.id%>">
     <%@view_form.freplies.each do |r|%>
     <%=r.writer.nickname%>:<%=r.content%> 
-    <button value="<%= r.id %>" id="button">삭제</button>
       <% if can? :manage, r %>
           <%=link_to "삭제", form_reply_destroy_path(r.id), method: 'get' %>
       <%end%>
@@ -61,33 +63,6 @@
   <input type="text" name="search" class="form_control">
   <button type="submit" class="btn btn-default">검색</button>
 </form>
-
-<script>
-  $(function() {
-  $(".reply_submit").click(function(){
-      form_id = this.value;
-      form_content = $("#content_" + form_id ).val();
-      writer = $("#writer_" + form_id).val();
-      
-      $.ajax({
-        method: "POST",
-        url: "/home/form_reply",
-        data: { reply_f: form_content, id_of_form: form_id, writer: writer },
-        success: function(){
-          $("#form_all_" + form_id).append("<p>" + form_content + "</p>");
-          $("#content_" + form_id).val('');
-          
-        },
-        error:function() {
-          $("#form_all_" + form_id).append.( form_content + "<%= link_to "삭제", form_reply_destroy_path(r.id), method: 'get' %><br>");
-          $("#content_" + form_id).val('');
-          
-        }
-     
-    })
-  });
-  });
-</script>
 
 
 
