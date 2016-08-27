@@ -1,8 +1,8 @@
 <%@forms.each do |p|%>
-   <a href="/form_view/<%=p.id%>"><%=p.title%></a></br>
+   <%= link_to p.title, form_view_path(p.id) , method: 'get'%></br>
    </hr>
 <%end%>
-<a href="/home/form_write">글 쓰러 가기</a>
+<%= link_to "글 쓰러 가기", home_form_write_path, method: 'get'%>
 <form action="/home/form_result" method="GET">
   <input type="text" name="search" class="form_control">
   <button type="submit" class="btn btn-default">검색</button>

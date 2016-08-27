@@ -2,26 +2,23 @@
 <html>
 <head>
   <title>교메때</title>
-
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   <!-- Bootstrap 시작 -->
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   
   <%= csrf_meta_tags %>
+  
 
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
   
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
-  
-  
   <!-- Bootstrap 끝 -->
   
-  <!-- Materialize 시작 -->
-  <!-- Compiled and minified CSS -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/css/materialize.min.css">
-
-  <!-- Compiled and minified JavaScript -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js"></script>
-  <!-- Materialize 끝 -->
+  <!-- Modal  -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   
   
   <!-- Template 시작 -->
@@ -47,15 +44,6 @@
   <link rel="icon" href="images/favicon.ico" type="image/x-icon">
 </head>
 <body class="full-page">
-  <!--================= Start Top Bar ====================-->
-   <div class= "top-nav-bar">
-     <div class= "logo-top">
-       <h3><%= link_to "교메때", home_firstpage_path, method: 'get' %></h3>
-     </div>
-     <div>
-      <button type="button" class="btn btn-default btn-lg" id="loginBtn" data-toggle="modal" data-target="#loginModal">Login</button>
-     </div>
-   </div>
   <!--================= Start Preloader ==================-->
     <div class="preloader">
       <div class="spinner">
@@ -64,8 +52,9 @@
       </div>
     </div>
   <!--================= End Preloader ====================-->
-  <div id="wrapper">
+  <div class ="row">
     <!--================= Start sidebar ==================-->
+    <div id="wrapper" class="col-md-1">
       <div id="sidebar-wrapper">
         <div class="drilldown sidebar-nav mCustomScrollbar">
           <div class="sidebar-brand text-center">                     
@@ -75,8 +64,8 @@
           </div>
 
           <div class="sidebar-bottom-wrap">
-           <!--Search bar(search 결과를 나타낼 view 필요!!!)-->
-            <form id="search_form_1" name="search" method="get" class="search-form_header" action="#">
+           
+            <form id="search_form_1" name="search" method="get" class="search-form_header" action="/home/firstpage_result">
               <span class="submit-wrap"><i class="fa fa-search" aria-hidden="true"></i></span>
               <input type="text" onblur="if (this.value == '') {this.value = 'SEARCH...';}" onfocus="if (this.value == 'SEARCH...') {this.value = '';}" id="search" name="search" value="SEARCH..." class="textboxsearch">
             </form>
@@ -106,23 +95,36 @@
               <li class="<%= is_active?(post_list_path) %>">
                 <%= link_to "커뮤니티", post_list_path, method: 'get'%>
               </li>
+              <li class="<%= is_active?(cover_contact_path) %>">
+                <%= link_to "CONTACT", cover_contact_path, method: 'get'%>
+              </li>              
             </ul>
           </div>
-          <div class="sidebar-bottom">
-            <div class="font-icon social-icons">
-              <ul>
-                <li><a href="#"><i class="ion-social-facebook"></i></a></li>
-                <li><a href="#"><i class="ion-social-twitter"></i></a></li>
-                <li><a href="#"><i class="ion-social-dribbble-outline"></i></a></li>
-                <li><a href="#"><i class="ion-social-linkedin-outline"></i></a></li>
-                <li><a href="#"><i class="ion-social-googleplus-outline"></i></a></li>
-                <li><a href="#"><i class="ion-social-instagram-outline"></i></a></li>
-              </ul>
-            </div>
-          </div>
+  
         </div>
       </div>
+    </div>
     <!--================= End sidebar ==================-->
+    <!--================= Start Top Bar ====================-->
+    <header> 
+      <div class= "top-nav-bar">
+        <span class= "logo-top">
+         <%= link_to "교메때", home_firstpage_path, method: 'get' %>
+        </span>
+        <span class="top-button">
+          <% if user_signed_in? %>
+            <p><%= button_to "로그아웃", destroy_user_session_path, method: :delete, data:{confirm: "Are you sure?"}, id:"loginBtn1" %></p>
+            <p><%= current_user.nickname %></p>
+          <% else %>
+            <%= button_to "로그인", new_user_session_path, id:"loginBtn1", method:"get", class: "top-button" %>
+            <%= button_to "회원가입", new_user_registration_path, id:"loginBtn2", method:"get" %>
+          <% end %>
+        </span>
+      </div>
+    </header>
+
+   
+  <!--================= End Top Bar ====================-->
    
    <!--================= TOGGLE MENU ICON STARTS ==================-->
     <a href="#menu-toggle" class="menu-icon" id="menu-toggle"><i class="fa fa-bars"></i></a>
@@ -152,6 +154,7 @@
 <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script>
 
+</div>
 </body>
 
 </html>

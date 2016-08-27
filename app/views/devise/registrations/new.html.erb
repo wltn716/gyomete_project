@@ -1,51 +1,68 @@
 <div class="container relative">
-  <head>
-    <style type = "text/css">
-     h2 {font-family: 'Roboto Slab'; margin-top: 50px; margin-bottom: 50px;}
-     .form-control{margin-bottom: 20px; font-family: 'Roboto', 'sans-serif'; font-size: 30px;}
-    </style>
-  </head>
-  <body>
-    <h2>Sign Up</h2>
-    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-    <%= devise_error_messages! %>
-     
-    <div class="form-group">
-      <%= f.label :email %><br />
-      <%= f.email_field :email, autofocus: true, class: "form-control" %>
-    </div>
+  <!-- Modal -->
+    <div class="modal fade" id="loginModal" role="dialog">
+      <div class="modal-dialog">
+        
+        <!-- Modal content-->
+          <div class="modal-content">
+            <div class="modal-header" style="padding:35px 50px;">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4><span class="glyphicon glyphicon-lock"></span> 회원가입</h4>
+            </div>
+            
+            <div class="modal-body" style="padding:40px 50px;">
+              <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+              <%= devise_error_messages! %>
     
-    <div class="form-group">
-      <%= f.label :password %>
-      <% if @minimum_password_length %>
-      <em>(<%= @minimum_password_length %> characters minimum)</em>
-      <% end %><br />
-      <%= f.password_field :password, autocomplete: "off", class: "form-control" %>
-    </div>
+              <div class="form-group">
+                <span class="glyphicon glyphicon-envelope"></span>&nbsp;<%= f.label :email%>
+                <%= f.email_field :email, class: "form-control", placeholder: "이메일"%>
+              </div>
     
-    <div class="form-group">
-      <%= f.label :password_confirmation %><br />
-      <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control" %>
-    </div>
+              <div class="form-group">
+                <span class="glyphicon glyphicon-eye-open"></span>&nbsp;
+                <%= f.label :password %>
+                <% if @minimum_password_length %>
+                <em>(<%= @minimum_password_length %> characters minimum)</em>
+                <% end %><br />
+                <%= f.password_field :password, autocomplete: "off", class: "form-control", placeholder: "비밀번호" %>
+              </div>
+    
+              <div class="form-group">
+                <span class="glyphicon glyphicon-eye-open"></span>&nbsp;
+                <%= f.label :password_confirmation %><br />
+                <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control", placeholder: "비밀번호" %> 
+              </div>
       
-    <div class="form-group" style = "">
-      <%= f.label :nickname %><br />
-      <%= f.text_field :nickname, autofocus: true, class: "form-control" %>
-    </div>
+              <div class="form-group" >
+                <span class="glyphicon glyphicon-user"></span>&nbsp;
+                <%= f.label :nickname %><br />
+                <%= f.text_field :nickname, class: "form-control", placeholder: "닉네임" %>
+              </div>
       
-    <div class="form-group">
-      <%= f.label :major %><br />
-      <%= f.text_field :major, autofocus: true, class: "form-control" %>
+              <div class="form-group">
+                <span class="glyphicon glyphicon-pencil"></span>&nbsp;
+                <%= f.label :major %><br />
+                <%= f.text_field :major, class: "form-control", placeholder: "전공" %>
+              </div>
+              <br>
+              <%= f.submit "회원가입", class:"btn btn-default btn-warning btn-block"%>
+              <% end %>
+            </div>
+            
+             <div class="modal-footer">
+              <button type="submit" class="btn btn-danger btn-default pull-left" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cancel</button>
+             </div>
+          </div>
+            
+     </div>
     </div>
-    
-    <br>
-    <div class="form-group">
-     <%= f.submit "Sign up", class: "btn btn-default" %>
-    </div>
-    <% end %>
-  </body>
 </div>
  
-
+<script>
+  window.onload = function(){
+    $("#loginModal").modal();
+  }
+</script>
 <%= render "devise/shared/links" %>
 

@@ -1,13 +1,6 @@
 <div class= "container relative">
   
   <h2>교메때</h2>
-  <% if user_signed_in? %>
-    <p><%= link_to "로그아웃", destroy_user_session_path, method: :delete, data:{confirm: "Are you sure?"}, class: 'ban ban-default' %></p>
-    <p><%= current_user.nickname %></p>
-  <% else %>
-    <a href="/users/sign_up">회원가입</a> <br> 
-    <a href="/users/sign_in">로그인</a>
-  <% end %>
   <form action="/home/firstpage_result" method="POST">
     <input type="text" name="search" class="form_control">
     <button type="submit" class="btn btn-default">검색</button>

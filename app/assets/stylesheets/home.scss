@@ -30,15 +30,26 @@
 }
 
 .top-nav-bar{
-    position: fixed;
-    top: 0;
-    width: 50%;
-    height: 60px;
+    position:fixed;
+    display: block;
+    //top: 0;
+    height: 65px;
+    width: 60%;
     z-index: 1;
-    background: #ffffff;
-    padding: 0 20px;
-    margin-left: 25%; 
-    margin-right: 25%;
+    background-color: yellow;
+    padding-top:20px;
+}
+.logo-top{
+    display: block;
+    float: left;
+    font-size: 30pt;
+    margin-right: 70%;
+    z-index: 5;
+}
+.button-top{
+    float: right;
+    margin-top: 20px;
+    z-index: 3;
 }
 
 .modal-header, h4, .close {
@@ -46,7 +57,49 @@
       color:white !important;
       text-align: center;
       font-size: 30px;
-  }
-  .modal-footer {
+}
+.modal-footer {
       background-color: #f9f9f9;
-  }
+}
+#loginBtn1{
+    display: inline-block;
+    margin-top: 20px;
+    border: 1px solid #ff9e03;
+    border-radius: 4px;
+    padding: 7px 12px;
+    font-weight: 700;
+    background-color: #ff9e03;
+    color:#ffffff;
+    cursor: pointer;
+    text-decoration: none;
+    }
+#loginBtn2{
+    display: inline-block;
+    margin-top: 20px;
+    border: 1px solid #ff9e03;
+    border-radius: 4px;
+    padding: 7px 12px;
+    font-weight: 700;
+    background-color: #ff9e03;
+    color:#ffffff;
+    cursor: pointer;
+    text-decoration: none;
+    }
+.modal-header, h4, .close {
+        background-color:  #ff9e03;
+        color:white !important;
+        text-align: center;
+        font-size: 30px;
+    }
+.checkbox{
+      padding: 10px;
+    }
+.modal-footer {
+        background-color: #f9f9f9;
+        padding-left:50px;
+        padding-right:50px;
+    }
+h7 {
+      text-align:right;
+    }
+    
