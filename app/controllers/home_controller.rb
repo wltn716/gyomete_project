@@ -2,6 +2,7 @@ require 'mailgun'
 class HomeController < ApplicationController
   before_action :authenticate_user!
   impressionist :actions => [:show]
+<<<<<<< HEAD
   
   #마이페이지 입니다.
   def mypage
@@ -22,6 +23,8 @@ class HomeController < ApplicationController
     @scraps=Scrap.where(writer: current_user)
   end
   
+=======
+>>>>>>> f964d34a9430b824cf327ec2774264f51e08e888
   def firstpage
     @forms = Form.all
     @posts = Post.all
@@ -67,7 +70,13 @@ class HomeController < ApplicationController
     @forms = Form.where(category: params[:category])
     @forms.each do |best|
       if best.likers.max
-        @best_form = best.title
+        @best_form_id = best.id
+        @best_form_title = best.title
+        @best_form_likers = best.likers.count
+        @best_form_replies = best.freplies.count
+        @best_form_time = best.created_at.strftime("%Y-%m-%d")
+        @best_form_writer = best.writer.nickname
+        @best_form_hit_count = best.impressionist_count
       end
     end
   
@@ -188,11 +197,13 @@ class HomeController < ApplicationController
   # 커뮤니티 게시판 리스트 출력
   def post_list
     @posts = Post.all.reverse  
+    @posts = Post.all  
   end
   
   # 커뮤니티 게시판 리스트에서 검색했을 때 결과
   def post_result
-    @posts = Post.search(params[:search]).reverse
+    @posts = Post.search(params[:search].reverse)
+    @posts = Post.search params[:search]
   end
   
   # 커뮤니티 게시판 리스트에서 글 눌렀을 때, 제목과 내용 출력과 댓글 달기
@@ -218,7 +229,7 @@ class HomeController < ApplicationController
     @one_post.title= params[:title] 
     @one_post.content = params[:content]
     @one_post.save
-    redirect_to "/post_view/" + params[:post_id] 
+    redirect_to "/post_list" 
   end
   
   # 커뮤니티 게시판에 대한 댓글 작성 action
