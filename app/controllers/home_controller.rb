@@ -5,19 +5,21 @@ class HomeController < ApplicationController
   
   #마이페이지 입니다.
   def mypage
-
   end
   
   #내가 쓴 메일 양식 보관함
-  def mail_archive 
+  def mypage_mail_archive 
+    @forms=Form.where(writer: current_user)
   end
   
   #내가 쓴 커뮤니티 게시글
-  def community_archive
+  def mypage_community_archive
+    
   end
   
   #내가 스크랩한 글
-  def scrap_archive
+  def mypage_scrap_archive
+    
   end
   
   def firstpage

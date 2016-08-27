@@ -3,6 +3,7 @@ Rails.application.routes.draw do
 
   devise_for :users
   root 'cover#report'
+  get 'home/mypage_mail_archive'
   post 'liking/:form_id' => 'home#liking', as: 'liking'
   post 'home/form_scrap_action'
   get 'home/form_scrap'
