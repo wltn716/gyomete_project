@@ -769,7 +769,7 @@ padding: 0;
 #comment_form textarea {min-height:142px;}
 form input[type="text"], form input[type="email"], textarea.form-control, form textarea {
     background: none;
-    width: 100%;
+    width:100%;
     border: 1px #eeeeee solid;
     outline: none;
     border-radius: 2px;

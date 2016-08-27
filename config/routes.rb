@@ -2,8 +2,10 @@ Rails.application.routes.draw do
   get 'cover/report'
 
   devise_for :users
-  #root 'home#firstpage'
   root 'cover#report'
+  get 'home/mypage_mail_archive'
+  get 'home/mypage_scrap_archive'
+  get 'home/mypage_community_archive'
   post 'liking/:form_id' => 'home#liking', as: 'liking'
   post 'home/form_scrap_action'
   get 'home/form_scrap'
@@ -33,14 +35,14 @@ Rails.application.routes.draw do
   get 'post_update/:post_id' => "home#post_update", as: "post_update"
   post 'post_update_action/:post_id' => "home#post_update_action"
   get 'home/post_result'
-  
-  get 'users/myaccount'
+  get 'home/mypage'
   
   #get '/firstpage', to: 'home#firstpage'
   #get '/form_list', to: 'home#form_list'
   #get '/post_list', to: 'home#post_list'
   get '/firstpage', to: 'home#firstpage'
   get '/form_list/:category', to: 'home#form_list', as: "form_list"
+
 
 
   get '/form_view/:form_id', to: 'home#form_view', as: "form_view"

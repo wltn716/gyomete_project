@@ -4,6 +4,7 @@
   <title>교메때</title>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   <!-- Bootstrap 시작 -->
+   
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   
   <%= csrf_meta_tags %>
@@ -53,8 +54,9 @@
     </div>
   <!--================= End Preloader ====================-->
   <div class ="row">
+    <div class = "col-md-2">
     <!--================= Start sidebar ==================-->
-    <div id="wrapper" class="col-md-1">
+    <div id="wrapper">
       <div id="sidebar-wrapper">
         <div class="drilldown sidebar-nav mCustomScrollbar">
           <div class="sidebar-brand text-center">                     
@@ -103,15 +105,15 @@
   
         </div>
       </div>
+      </div>
     </div>
     <!--================= End sidebar ==================-->
     <!--================= Start Top Bar ====================-->
-    <header> 
-      <div class= "top-nav-bar">
+      <div class= "top-nav-bar col-md-8">
         <span class= "logo-top">
          <%= link_to "교메때", home_firstpage_path, method: 'get' %>
         </span>
-        <span class="top-button">
+        <div class="right">
           <% if user_signed_in? %>
             <p><%= button_to "로그아웃", destroy_user_session_path, method: :delete, data:{confirm: "Are you sure?"}, id:"loginBtn1" %></p>
             <p><%= current_user.nickname %></p>
@@ -119,9 +121,8 @@
             <%= button_to "로그인", new_user_session_path, id:"loginBtn1", method:"get", class: "top-button" %>
             <%= button_to "회원가입", new_user_registration_path, id:"loginBtn2", method:"get" %>
           <% end %>
-        </span>
+        </div>
       </div>
-    </header>
 
    
   <!--================= End Top Bar ====================-->
@@ -152,7 +153,6 @@
  
 <%= yield %>
 <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script>
 
 </div>
 </body>

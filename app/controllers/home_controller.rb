@@ -2,6 +2,26 @@ require 'mailgun'
 class HomeController < ApplicationController
   before_action :authenticate_user!
   impressionist :actions => [:show]
+  
+  #마이페이지 입니다.
+  def mypage
+  end
+  
+  #내가 쓴 메일 양식 보관함
+  def mypage_mail_archive 
+    @forms=Form.where(writer: current_user)
+  end
+  
+  #내가 쓴 커뮤니티 게시글
+  def mypage_community_archive
+    @posts=Post.where(writer: current_user)
+  end
+  
+  #내가 스크랩한 글
+  def mypage_scrap_archive
+    @scraps=Scrap.where(writer: current_user)
+  end
+  
   def firstpage
     @forms = Form.all
     @posts = Post.all
@@ -44,9 +64,20 @@ class HomeController < ApplicationController
   
   # 메일 양식 리스트 출력
   def form_list
-    #카테고리 출력하는 action필요함 카테고리는 value값으로 받기
     @forms = Form.where(category: params[:category])
+    @forms.each do |best|
+      if best.likers.max
+        @best_form_id = best.id
+        @best_form_title = best.title
+        @best_form_likers = best.likers.count
+        @best_form_replies = best.freplies.count
+        @best_form_time = best.created_at.strftime("%Y-%m-%d")
+        @best_form_writer = best.writer.nickname
+        @best_form_hit_count = best.impressionist_count
+      end
+    end
   
+    Freply.all
   end
   
   # 작성된 하나하나의 메일 양식 & 댓글 출력 
@@ -81,6 +112,8 @@ class HomeController < ApplicationController
   def form_reply
     freply = Freply.new(content: params[:reply_f], form_id: params[:id_of_form], writer: current_user)
     freply.save
+    redirect_to "/form_view/" + params[:id_of_form]
+    
     
   end
   
