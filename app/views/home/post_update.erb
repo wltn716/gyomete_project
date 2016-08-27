@@ -8,7 +8,7 @@
               <div class="post-content">
                 <div class="help-block text-danger">
                   <div class="post-title">
-                    <h1>커뮤니티 글 작성하기</h1>
+                    <h1>글 수정하기</h1>
                   </div>      
                 </div>  
                 <br>  
@@ -17,12 +17,12 @@
                   <form action="/post_update_action/<%=@one_post.id%>"  method="POST" enctype="multipart/form-data" id="comment_form">
                     <div class="form-group">
                       <p class="help-block text-danger"></p>
-                      <input type="text" autocomplete="off" name="title" value="<%=@one_post.title %>" class="form-control" id="title" placeholder="제목" data-validation-required-message="제목을 입력하세요">
+                      <input type="text" autocomplete="off" name="title" value="<%=@one_post.title %>" class="form-control" id="title" placeholder="제목" required data-validation-required-message="제목을 입력하세요">
                     </div>
                   
                     <div class="form-group">
                       <p class="help-block text-danger"></p>
-                      <textarea type="text" rows="10" autocomplete="off" name="content" class="form-control" id="content" placeholder="내용" data-validation-required-message="내용을 입력하세요"> <%=@one_post.content %></textarea>
+                      <textarea type="text" rows="10" autocomplete="off" name="content" class="form-control" id="content" placeholder="내용" required data-validation-required-message="내용을 입력하세요"> <%=@one_post.content %></textarea>
                     </div>
                     <div class="form-group">
                       <label for="exampleInputFile">파일 첨부</label>

@@ -37,6 +37,15 @@ Rails.application.routes.draw do
   
   get '/firstpage', to: 'home#firstpage'
   get '/form_list/:category', to: 'home#form_list', as: "form_list"
+<<<<<<< HEAD
+
+
+
+
+
+
+=======
+>>>>>>> 10f133f8553f1e3d084caccf8e82f447cd671651
   get '/form_view/:form_id', to: 'home#form_view', as: "form_view"
   get '/post_list', to: 'home#post_list', as: "post_list"
 

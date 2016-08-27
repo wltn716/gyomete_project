@@ -14,17 +14,15 @@
                 <br>  
                 <br>  
 
-                  
-                  
                   <form id="comment_form" action="/post_action" method="POST" enctype="multipart/form-data">
                     <div class="form-group">
                       <p class="help-block text-danger"></p>
-                      <input type="text" autocomplete="off" name="title" class="form-control" id="title" placeholder="제목" data-validation-required-message="제목을 입력하세요">
+                      <input type="text" autocomplete="off" name="title" class="form-control" id="title" placeholder="제목" required data-validation-required-message="제목을 입력하세요">
                     </div>
                   
                     <div class="form-group">
                       <p class="help-block text-danger"></p>
-                      <textarea type="text" rows="10" autocomplete="off" name="content" class="form-control" id="content" placeholder="내용" data-validation-required-message="내용을 입력하세요"></textarea>
+                      <textarea type="text" rows="10" autocomplete="off" name="content" class="form-control" id="content" placeholder="내용" required data-validation-required-message="내용을 입력하세요"></textarea>
                     </div>
                     <div class="form-group">
                       <label for="exampleInputFile">파일 첨부</label>

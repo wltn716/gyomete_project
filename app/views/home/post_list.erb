@@ -4,13 +4,17 @@
         <div class="co1 s12 m11 l11">
           <div class="table-wrapper">
             <div class="main-container">
-                <h1>커뮤니티 게시판</h1>
+                <h1>커뮤니티</h1>
                 <br>
                 <br>
                 <div class="write">
                     <div class="wrap" style="float:right; margin-right:35px;">
                         <form class="search" action="/home/post_result" method="GET" accept-charset="UTF-8">
+<<<<<<< HEAD
                             <input type="text" class="form_control" name="search" id="search_keyword" placeholder="검색">
+=======
+                            <input type="text" name="search" id="search_keyword" placeholder="검색">
+>>>>>>> c52df8ee864183469dfecac5d008306180cb4760
                             <button name="botton" type="submit" class="searchButton" >
                                 <span class="glyphicon glyphicon-search"></span>
                             </button>
@@ -34,7 +38,7 @@
                         <% @posts.each do |p| %>
                             <tr>
                                 <td>
-                                    <%=link_to p.title, post_view_path(p.id), method: 'get'%>
+                                    <%=link_to p.title, post_view_path(p.id), method: 'get', class: 'css_class', style: 'color:#454443' %>
                                     <br>
                                 </td>
                                 <td>
@@ -60,7 +64,7 @@
                 <div class="write">
                     
                          <form action="/home/post_write" method="GET">
-                            <button type="submit" class="btn btn-secondary btn-lg">글쓰기</button>
+                            <button type="submit" class="confirm_btn">글쓰기</button>
                         </form>
                     
                 </div>
