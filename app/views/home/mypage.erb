@@ -12,6 +12,7 @@
           <hr style="background-color:#ff9e03;"/>
           <h3>전   공 | <%= current_user.major %></h3>
           <hr style="background-color:#ff9e03;"/>
+          <%=link_to "정보수정", edit_user_registration_path, method: 'get'%>
       </div>
     </div>
     <div class="row">
@@ -134,3 +135,17 @@
     <br>
       <br>
 </div>
+<%@forms.each do |p|%>
+ <%p.freplies.each do |f|%>
+ <%unless p.freplies.nil?%>
+ 
+ <%=f.content%>
+ 
+ <%=f.id%>
+ <%=p.id%>
+ <%end%>
+ 
+ <%end%>
+ 
+ 
+<%end%>

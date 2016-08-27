@@ -8,6 +8,7 @@ class HomeController < ApplicationController
      @forms=Form.where(writer: current_user).take(3)
      @posts=Post.where(writer: current_user).take(3)
      @scraps=Scrap.where(writer: current_user).take(3)
+     
   end
   
   #내가 쓴 메일 양식 보관함

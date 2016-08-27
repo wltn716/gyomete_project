@@ -1,6 +1,12 @@
-<div class = container>
+<section id="screen-width" class="col-md-8 col-md-offset-3">
+  <article id="desktop">
+    <div class="row">
+        <div class="co1 s12 m11 l11">
+          <div class="table-wrapper">
+            <div class="main-container">
+
     <h1>내가 쓴 메일양식</h1>
-    <div class="row p60" style="margin-left:20%;">
+    <div class="row p60">
       <div id="masonry" class="masonry infinite-scroll">
 <%@forms.each do |p|%>
           <div class="col-lg-4 col-md-6 col-sm-6 col-xs-6 col-12 masonry photography travel" style="cursor:pointer;"onclick="location.href='/form_view/<%=p.id%>'">
@@ -53,3 +59,9 @@
       
   </div>
 </div>
+</div>
+          </div>    
+        </div>
+    </div>
+  </article>
+</section>
