@@ -95,6 +95,11 @@ ActiveRecord::Schema.define(version: 20160823104624) do
 
   create_table "scraps", force: :cascade do |t|
     t.string   "title"
+    t.string   "nickname"
+    t.integer  "time"
+    t.integer  "likes"
+    t.integer  "hits"
+    t.integer  "replies"
     t.integer  "scrap_id"
     t.integer  "writer_id"
     t.datetime "created_at", null: false

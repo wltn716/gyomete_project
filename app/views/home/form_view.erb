@@ -54,6 +54,11 @@
   <%= link_to "목록으로 가기", form_list_path(@view_form.category) , method: 'get' %>
   <form action="/home/form_scrap_action" method="POST">
     <input type="hidden" value="<%=@view_form.title%>" name="scrap_title">
+    <input type="hidden" value="<%=@view_form.writer.nickname%>" name="scrap_nickname">
+    <input type="hidden" value="<%=@view_form.created_at.strftime("%Y-%m-%d")%>" name="scrap_time">
+    <input type="hidden" value="<%=@view_form.likers.count%>" name="scrap_likes">
+    <input type="hidden" value="<%=@view_form.impressionist_count%>" name="scrap_hits">
+    <input type="hidden" value="<%=@view_form.freplies.count%>" name="scrap_replies">
     <input type="hidden" value="<%=@view_form.id%>" name="scrap_id">
     <button type="submit" class="btn btn-default">스크랩</button>
   </form>

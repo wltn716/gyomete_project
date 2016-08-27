@@ -1,13 +1,128 @@
-<div class = container>
-
-
-이메일: <%= current_user.email %><br>
-닉네임: <%= current_user.nickname %><br> 
-전공: <%= current_user.major %><br>
-
-<%=link_to "내가 쓴 메일 양식", home_mypage_mail_archive_path, method: 'get'%><br>
-<%=link_to "내가 쓴 커뮤니티 게시글", home_mypage_community_archive_path, method: 'get'%><br>
-<%=link_to "스크랩", home_mypage_scrap_archive_path, method: 'get'%><br>
-<%=link_to "정보수정", edit_user_registration_path, method: 'get'%> <br>
-
+<div class = container style="margin-left:20%;">
+    <div class="row">
+      <div class="col-md-4">
+           <%= image_tag asset_path('avatar1.jpg'), style: "border-radius: 100%; width:80%;",class: 'img-responsive' %>
+      </div>
+      <div class="col-md-8">
+          <hr>
+          <h2>이메일: <%= current_user.email %></h2><br>
+          <hr>
+          <h2>닉네임: <%= current_user.nickname %></h2><br> 
+          <hr>
+          <h2>전공: <%= current_user.major %></h2><br>
+          <hr>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <table style="margin-left:3px;" >
+          <h2>내가 쓴 메일양식</h2>
+          <br>
+          <br>
+          <thead>
+            <tr>
+              <th data-field="title">제목</th>
+              <th data-field="author">작성자</th>
+              <th data-field="date">날짜</th>
+              <th data-field="view">view</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @forms.each do |p| %>
+              <tr>
+                <td>
+                    <%=link_to p.title, post_view_path(p.id), method: 'get', class: 'css_class', style: 'color:#454443' %>
+                    <br>
+                </td>
+                <td>
+                    <%="익명"%><br>
+                </td>
+                <td>
+                    <%=p.created_at.strftime("%Y-%m-%d")%><br>
+                </td>
+                <td>
+                    <%=p.impressionist_count%>
+                </td>
+              </tr>
+            <%end%>
+          </tbody>
+        </table>
+        <%=link_to "더 보러가기", home_mypage_mail_archive_path, method: 'get'%>
+      </div>
+      <div class="col-md-6">
+        
+        <table style="margin-left:3px" >
+          <h2>내가 쓴 커뮤니티</h2>
+            <br>
+            <br>
+          <thead>
+            <tr>
+              <th data-field="title">제목</th>
+              <th data-field="author">작성자</th>
+              <th data-field="date">날짜</th>
+              <th data-field="view">view</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @posts.each do |p| %>
+              <tr>
+                <td>
+                    <%=link_to p.title, post_view_path(p.id), method: 'get', class: 'css_class', style: 'color:#454443' %>
+                    <br>
+                </td>
+                <td>
+                    <%=p.writer.nickname%><br>
+                </td>
+                <td>
+                    <%=p.created_at.strftime("%Y-%m-%d")%><br>
+                </td>
+                <td>
+                    <%=p.impressionist_count%>
+                </td>
+              </tr>
+            <%end%>
+          </tbody>
+        </table>
+      </div>
+      <%=link_to "더 보러가기", home_mypage_community_archive_path, method: 'get'%>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <table style="margin-left:3px;">
+          <h2>내가 스크랩한 양식</h2>
+          <br>
+          <br>
+          <thead>
+            <tr>
+              <th data-field="title">제목</th>
+              <th data-field="author">작성자</th>
+              <th data-field="date">날짜</th>
+              <th data-field="view">view</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @scraps.each do |p| %>
+              <tr>
+                <td>
+                    <%=link_to p.title, post_view_path(p.id), method: 'get', class: 'css_class', style: 'color:#454443' %>
+                    <br>
+                </td>
+                <td>
+                    <%=p.nickname%><br>
+                </td>
+                <td>
+                    <%=p.time%><br>
+                </td>
+                <td>
+                    <%=p.hits%>
+                </td>
+              </tr>
+            <%end%>
+          </tbody>
+        </table>
+        <%=link_to "더 보러가기", home_mypage_scrap_archive_path, method: 'get'%>
+      </div>
+      <div class="col-md-6">
+      </div>
+    </div>
 </div>
