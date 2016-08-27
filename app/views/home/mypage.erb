@@ -2,15 +2,15 @@
     <div class="row">
       <div class="col-md-4">
         <br>
-           <%= image_tag asset_path('avatar1.jpg'), style: "border-radius: 100%; width:70%;margin-left:30px;",class: 'img-responsive' %>
+           <%= image_tag asset_path('avatar1.jpg'), style: "border-radius: 100%; width:60%;margin-left:20%;",class: 'img-responsive' %>
       </div>
-      <div class="col-md-8" style="width:60%;">
+      <div class="col-md-8" style="width:60%;margin-top:15px;">
           <hr style="background-color:#ff9e03;"/>
-          <h3>이메일: <%= current_user.email %></h3><br>
+          <h3>이메일 | <%= current_user.email %></h3>
           <hr style="background-color:#ff9e03;"/>
-          <h3>닉네임: <%= current_user.nickname %></h3><br> 
+          <h3>닉네임 | <%= current_user.nickname %></h3>
           <hr style="background-color:#ff9e03;"/>
-          <h3>전공: <%= current_user.major %></h3><br>
+          <h3>전   공 | <%= current_user.major %></h3>
           <hr style="background-color:#ff9e03;"/>
       </div>
     </div>
