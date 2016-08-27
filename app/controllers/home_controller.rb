@@ -2,6 +2,24 @@ require 'mailgun'
 class HomeController < ApplicationController
   before_action :authenticate_user!
   impressionist :actions => [:show]
+  
+  #마이페이지 입니다.
+  def mypage
+
+  end
+  
+  #내가 쓴 메일 양식 보관함
+  def mail_archive 
+  end
+  
+  #내가 쓴 커뮤니티 게시글
+  def community_archive
+  end
+  
+  #내가 스크랩한 글
+  def scrap_archive
+  end
+  
   def firstpage
     @forms = Form.all
     @posts = Post.all
@@ -168,13 +186,11 @@ class HomeController < ApplicationController
   # 커뮤니티 게시판 리스트 출력
   def post_list
     @posts = Post.all.reverse  
-    @posts = Post.all  
   end
   
   # 커뮤니티 게시판 리스트에서 검색했을 때 결과
   def post_result
-    @posts = Post.search(params[:search].reverse)
-    @posts = Post.search params[:search]
+    @posts = Post.search(params[:search]).reverse
   end
   
   # 커뮤니티 게시판 리스트에서 글 눌렀을 때, 제목과 내용 출력과 댓글 달기
@@ -200,7 +216,7 @@ class HomeController < ApplicationController
     @one_post.title= params[:title] 
     @one_post.content = params[:content]
     @one_post.save
-    redirect_to "/post_list" 
+    redirect_to "/post_view/" + params[:post_id] 
   end
   
   # 커뮤니티 게시판에 대한 댓글 작성 action

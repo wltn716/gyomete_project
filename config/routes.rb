@@ -2,7 +2,6 @@ Rails.application.routes.draw do
   get 'cover/report'
 
   devise_for :users
-  #root 'home#firstpage'
   root 'cover#report'
   post 'liking/:form_id' => 'home#liking', as: 'liking'
   post 'home/form_scrap_action'
@@ -33,17 +32,19 @@ Rails.application.routes.draw do
   get 'post_update/:post_id' => "home#post_update", as: "post_update"
   post 'post_update_action/:post_id' => "home#post_update_action"
   get 'home/post_result'
-  
-  get 'users/myaccount'
+  get 'home/mypage'
   
   get '/firstpage', to: 'home#firstpage'
   get '/form_list/:category', to: 'home#form_list', as: "form_list"
+<<<<<<< HEAD
 
 
 
 
 
 
+=======
+>>>>>>> 10f133f8553f1e3d084caccf8e82f447cd671651
   get '/form_view/:form_id', to: 'home#form_view', as: "form_view"
   get '/post_list', to: 'home#post_list', as: "post_list"
 
