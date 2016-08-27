@@ -1,0 +1,6 @@
+<div class = container>
+    <h1>내가 스크랩한 메일 양식</h1>
+    <%@scraps.each do |s|%>
+        <a href="/form_view/<%=s.scrap_id%>"><%=s.title%></a><br>
+    <%end%>
+</div>

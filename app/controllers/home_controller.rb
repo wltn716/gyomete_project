@@ -14,12 +14,12 @@ class HomeController < ApplicationController
   
   #내가 쓴 커뮤니티 게시글
   def mypage_community_archive
-    
+    @posts=Post.where(writer: current_user)
   end
   
   #내가 스크랩한 글
   def mypage_scrap_archive
-    
+    @scraps=Scrap.where(writer: current_user)
   end
   
   def firstpage

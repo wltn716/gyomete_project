@@ -1,0 +1,6 @@
+<div class = container>
+    <h1>내가 쓴 커뮤니티 게시글</h1>
+    <% @posts.each do |p| %>
+         <%=link_to p.title, post_view_path(p.id), method: 'get', class: 'css_class', style: 'color:#454443' %>
+    <%end%>
+</div>                                    
