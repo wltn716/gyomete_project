@@ -1,41 +1,58 @@
-<div class = container>
-<!--#글 출력창-->
-  <div class="well">
-      조회수:<%=@view_form.impressionist_count%><br>
-      작성자:<%=@view_form.writer.nickname%><br>
-      제목:<%=@view_form.title%><br>
-      내용:<%=@view_form.content%><br>
-      해시태그:<% tags = @view_form.hashtag.split(",")%>
-      <%tags.each do |tag|%>
-      #<%=link_to tag,"/home/form_result?search=#{tag}"%>
-      <%end%><br>
-      <% if can? :manage, @view_form %>
-        <%= link_to "수정",form_update_path(@view_form.id), method: 'get'%>
-        <%= link_to "삭제", form_destroy_path(@view_form.id), method: 'get'%>
-      <% end %>
-      
-  <!--#좋아요 버튼 근데 새로고침하면 숫자없어짐ㅎ..--> 
-      <div class="col s12 like_div">
-        <%= link_to liking_path(@view_form.id), class: "like_btn #{if current_user.likees.include? p then :liked else :unliked end}", method: 'post', remote: true, id: "like_btn_#{@view_form.id}" do %>
-           좋아요
+
+  <div class = container>
+  <!--#글 출력창-->
+    <div class="well">
+        조회수:<%=@view_form.impressionist_count%><br>
+        작성자:<%=@view_form.writer.nickname%><br>
+        제목:<%=@view_form.title%><br>
+        내용:<%=@view_form.content%><br>
+        해시태그:<% tags = @view_form.hashtag.split(",")%>
+        <%tags.each do |tag|%>
+        #<%=link_to tag,"/home/form_result?search=#{tag}"%>
+        <%end%><br>
+        <% if can? :manage, @view_form %>
+          <%= link_to "수정",form_update_path(@view_form.id), method: 'get'%>
+          <%= link_to "삭제", form_destroy_path(@view_form.id), method: 'get'%>
         <% end %>
-        <div id="liker_wrap<%= @view_form.id %>">
-            <%= render partial: 'liker_list', locals: {p: @view_form} %>
+        
+    <!--#좋아요 버튼 근데 새로고침하면 숫자없어짐ㅎ..--> 
+        <div class="col s12 like_div">
+          <%= link_to liking_path(@view_form.id), class: "like_btn #{if current_user.likees.include? p then :liked else :unliked end}", method: 'post', remote: true, id: "like_btn_#{@view_form.id}" do %>
+             좋아요
+          <% end %>
+          <div id="liker_wrap<%= @view_form.id %>">
+              <%= render partial: 'liker_list', locals: {p: @view_form} %>
+          </div>
         </div>
+        
+    
+    <!--#댓글창-->
+      <div class="container">
+        <form action="/home/form_reply" method="POST">
+          <div class="form-group">
+            <input type="hidden" value="<%=@view_form.id%>" name="id_of_form">
+   -        <textarea name="reply_f" class="form-control" rows="5" id="comment"></textarea>
+          </div>
+          <button type="submit" class="btn btn-default">Submit</button>
+   -    </form>
       </div>
       
+      
+    <!--#댓글-->
   
-  <!--#댓글창-->
-    <div class="container">
-      <form action="/home/form_reply" method="POST">
-        <div class="form-group">
-          <input type="hidden" value="<%=@view_form.id%>" name="id_of_form">
- -        <textarea name="reply_f" class="form-control" rows="5" id="comment"></textarea>
-        </div>
-        <button type="submit" class="btn btn-default">Submit</button>
- -    </form>
+    <div id="form_all_<%=@view_form.id%>">
+      <%@view_form.freplies.each do |r|%>
+      <%=r.writer.nickname%>:<%=r.content%> 
+        <% if can? :manage, r %>
+            <%=link_to "삭제", form_reply_destroy_path(r.id), method: 'get' %>
+        <%end%>
+        <br>
+      <%end%>
     </div>
+    <!--메일링크-->
+    <a href="/form_mail/<%=@view_form.id%>">메일보내러가기</a>
     
+<<<<<<< HEAD
     
   <!--#댓글-->
 
@@ -61,13 +78,20 @@
     <input type="hidden" value="<%=@view_form.freplies.count%>" name="scrap_replies">
     <input type="hidden" value="<%=@view_form.id%>" name="scrap_id">
     <button type="submit" class="btn btn-default">스크랩</button>
+=======
+    <%= link_to "목록으로 가기", form_list_path(@view_form.category) , method: 'get' %>
+    <form action="/home/form_scrap_action" method="POST">
+      <input type="hidden" value="<%=@view_form.title%>" name="scrap_title">
+      <input type="hidden" value="<%=@view_form.id%>" name="scrap_id">
+      <button type="submit" class="btn btn-default">스크랩</button>
+    </form>
+    </div>
+  <!--검색-->
+  <form action="/home/form_result" method="GET">
+    <input type="text" name="search" class="form_control">
+    <button type="submit" class="btn btn-default">검색</button>
+>>>>>>> 062a4b977fd7ed67d5da6eb903eb1f9a02369955
   </form>
   </div>
-<!--검색-->
-<form action="/home/form_result" method="GET">
-  <input type="text" name="search" class="form_control">
-  <button type="submit" class="btn btn-default">검색</button>
-</form>
-</div>
-
-
+  
+  
