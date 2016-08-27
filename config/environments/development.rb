@@ -45,9 +45,7 @@ config.action_mailer.perform_deliveries = true
 config.action_mailer.smtp_settings = {
     :address              => 'smtp.mailgun.org',
     :port                 => 2525,
-    :domain               => 'sandbox41ceb00888d0479096b32609df172ab0.mailgun.org',
-    :user_name            => 'postmaster@sandbox41ceb00888d0479096b32609df172ab0.mailgun.org',
-    :password             => '500392c0f7706f9fea26747102206953',
+
     :authentication => :plain,
     :enable_starttls_auto => true,
     :ssl =>false
