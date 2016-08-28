@@ -29,25 +29,37 @@
    src: font-url('glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'), font-url('glyphicons-halflings-regular.woff2') format('woff2'), font-url('glyphicons-halflings-regular.woff') format('woff'),font-url('glyphicons-halflings-regular.ttf') format('truetype'),font-url('glyphicons-halflings-regular.svg#glyphicons_halflingsregular') format('svg');
 }
 .top-nav-bar{
-    position: absolute;
+    list-style-type: none;
+    margin: 0;
+    padding: 7px;
+    overflow: hidden;
+    background-color: #ffffff;
+    position: fixed;
+    top: 0;
     width: 100%;
-    height: 60px;
-    background-color:yellow;
-    padding: 10px, 20px;
 }
-
-.logo-top{
+.logo-top,.user-nickname,.top-Btn-1,.top-Btn-2{
     display: block;
-    float: left;
-    font-size: 30pt;
-    z-index: 5;
+    text-align: center;
+    padding: 5px 10px;
+    text-decoration: none;
 }
-.button-top{
-    float:right;
-    margin-top: 20px;
-    z-index: 3;
+.logo-top{
+    float:left; font-size: 20pt; margin:5px;
 }
-
+.user-nickname{
+    float:right; font-size: 13pt; margin: 15px; margin-top: 15px; color: #000000 ;
+}
+.top-Btn-1{
+    float:right; font-size: 13pt; margin:15px;
+}
+.top-Btn-2{
+    float:right; font-size: 13pt; margin:15px;
+}
+.top-Btn-1,.top-Btn-2{
+    border: 1px solid #fa7a33;
+    border-radius: 4px;
+}
 .modal-header, h4, .close {
       background-color: #5cb85c;
       color:white !important;
@@ -57,44 +69,7 @@
 .modal-footer {
       background-color: #f9f9f9;
 }
-#loginBtn1{
-    display: inline-block;
-    position: fixed;
-    top: 0px;
-    left: 90%;
-    margin-top: 20px;
-    border: 1px solid #ff9e03;
-    border-radius: 4px;
-    padding: 7px 12px;
-    font-weight: 700;
-    background-color: #ff9e03;
-    color:#ffffff;
-    cursor: pointer;
-    text-decoration: none;
-    }
-#loginBtn2{
-    display: inline-block;
-    position: fixed;
-    top: 0px;
-    left: 85%;
-    margin-top: 20px;
-    border: 1px solid #ff9e03;
-    border-radius: 4px;
-    padding: 7px 12px;
-    font-weight: 700;
-    background-color: #ff9e03;
-    color:#ffffff;
-    cursor: pointer;
-    text-decoration: none;
-    }
-.user-nickname{
-    position: fixed;
-    top: 0px;
-    left: 85%;
-    font-size: 15pt;
-    margin-top: 25px;
-    font-weight: 700;
-}
+
 .modal-header, h4, .close {
         background-color:  #ff9e03;
         color:white !important;

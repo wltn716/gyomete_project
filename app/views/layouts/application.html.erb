@@ -109,20 +109,26 @@
     </div>
     <!--================= End sidebar ==================-->
     <!--================= Start Top Bar ====================-->
-      <div class= "top-nav-bar col-md-10">
-        <span class= "logo-top">
-         <%= link_to "교메때", home_firstpage_path, method: 'get' %>
-        </span>
-        <div class="right">
-          <% if user_signed_in? %>
-            <p><%= button_to "로그아웃", destroy_user_session_path, method: :delete, data:{confirm: "Are you sure?"}, id:"loginBtn1" %></p>
-            <p class= "user-nickname"><%= link_to current_user.nickname, home_mypage_path, method: "get" %>님</p>
-          <% else %>
-            <%= button_to "로그인", new_user_session_path, id:"loginBtn1", method:"get", class: "top-button" %>
-            <%= button_to "회원가입", new_user_registration_path, id:"loginBtn2", method:"get" %>
-          <% end %>
-        </div>
-      </div>
+      <ul class= "top-nav-bar col-md-10 col-md-offset-2" style="position:fixed;">
+        <li class= "logo-top">
+         <%= link_to "교메때", cover_report_path, method: 'get' %>
+        </li>
+        <% if user_signed_in? %>
+          <li class= "top-Btn-2">
+            <%= link_to "로그아웃", destroy_user_session_path, method: :delete, data:{confirm: "Are you sure?"},class: "application_link"%>
+          </li>
+          <li class="user-nickname">
+            <%= link_to current_user.nickname, home_mypage_path, method: "get", class: "application_link" %>님
+          </li>
+        <% else %>
+          <li class= "top-Btn-2">
+            <%= link_to "로그인 ", new_user_session_path, method:"get", class: "application_link" %>
+          </li>
+          <li class= "top-Btn-1">
+            <%= link_to "회원가입", new_user_registration_path, method:"get", class: "application_link"%>
+          </li>
+        <% end %>
+      </ul>
 
    
   <!--================= End Top Bar ====================-->
@@ -133,12 +139,8 @@
 
    <!--================= Start Footer ==================-->
     <!--<footer>
-      <div class="container">
-        <div class="row">
-          <div class="col-xs-12">
-            <div class="sub-footer"><span class="copyright"> Copyrights © 2016. All Rights Reserved by Motts.co</span></div>
-          </div>
-        </div>
+      <div class="container relative">
+        <div class="sub-footer"><span class="copyright"> Copyrights © 교메때</span></div>
       </div>
     </footer>-->
   <!--================= End Footer ==================-->

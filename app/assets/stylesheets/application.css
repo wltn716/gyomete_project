@@ -13,3 +13,7 @@
  *= require_tree .
  *= require_self
  */
+.application_link{color:#fa7a33;}
+.application_link:hover{
+    text-decoration: none;
+}

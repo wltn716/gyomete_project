@@ -310,7 +310,7 @@ iframe{
     height: 60%;
     display: inline-block;
     position: absolute;
-    background: #cea525;
+    background: #ff9e03;
     top: 0;
     border-radius: 100%;
     -webkit-animation: bouncee 2s infinite ease-in-out;
@@ -569,7 +569,7 @@ ul.drilldown-root {
   text-transform: uppercase;
   border-color: #8b8b8c;
   border-bottom: 1px solid #2f2f35;
-  padding: 13px 20px;
+  padding: 15px 20px;
   -webkit-transition: all 0.5s ease;
   -moz-transition: all 0.5s ease;
   -o-transition: all 0.5s ease;
@@ -586,10 +586,10 @@ ul.drilldown-root {
   color: #fff;
 }
 .sidebar-nav li.active a,.sidebar-nav li a:hover{
-  color: #cea525;
+  color: #ff9e03;
 }
 .sidebar-nav li a {
-  font-size: 12px;
+  font-size: 15px;
   display: block;
   text-decoration: none;
   color: #fff;
@@ -1577,10 +1577,10 @@ font-size: 18px;
     outline: 0;
 }
 .search .input-group-btn .btn-default{
-    border-radius: 0;
+    border-radius: 4px;
     box-shadow: none;
     outline: 0;
-    background-color: #000000;
+    background-color: #ff9e03;
     border-color: #000000;
     color: #ffffff;
 }
@@ -1968,7 +1968,7 @@ footer {
   color:#000000;
   outline: none;
   box-shadow: none;
-  background: #eeeeee;
+  background: #ff9e03;
 }
 #comment_form textarea {min-height:142px;}
 form input[type="text"], form input[type="email"], textarea.form-control, form textarea {
@@ -1996,7 +1996,7 @@ form input[type="text"], form input[type="email"], textarea.form-control, form t
     text-transform: uppercase;
     line-height: 1em;
     font-weight: 400;
-    background-color: #222222;
+    background-color: #ff9e03;
     border: 1px solid #222222;
     border-radius: 2px;
     color: #ffffff;
@@ -2265,7 +2265,7 @@ form input[type="text"], form input[type="email"], textarea.form-control, form t
 .contact form .btn-default {
   width: auto;
   color: #fff;
-  background-color: #333333;
+  background-color: #ff9e03;
   border: 2px solid #333333;
 }
 .contact form .btn {
