@@ -74,17 +74,7 @@ class HomeController < ApplicationController
   # 메일 양식 리스트 출력
   def form_list
     @forms = Form.where(category: params[:category])
-    f_best=Array.new
-    @forms.each do |f|
-       f_best << f.likers.count 
-    end
-    @pick_best=f_best.sort.drop(3)
-    @best_form=Array.new
-    @forms.each do |f|
-      if @pick_best.include?(f.likers.count)
-        @best_form << f
-      end
-    end
+    @best_form = @forms.sort_by{|b| b.likers.count}.reverse.take(3)
     
         
     Freply.all
