@@ -310,7 +310,7 @@ iframe{
     height: 60%;
     display: inline-block;
     position: absolute;
-    background: #ff9e03;
+    background: #fa7a33;
     top: 0;
     border-radius: 100%;
     -webkit-animation: bouncee 2s infinite ease-in-out;
@@ -513,7 +513,7 @@ iframe{
   margin-left: -260px;
   overflow-y: auto;
   overflow-x: hidden;
-  background: #000000;
+  background: #fa7a33;
   -webkit-transition: all 0.5s ease;
   -moz-transition: all 0.5s ease;
   -o-transition: all 0.5s ease;
@@ -568,7 +568,7 @@ ul.drilldown-root {
   line-height: 40px;
   text-transform: uppercase;
   border-color: #8b8b8c;
-  border-bottom: 1px solid #2f2f35;
+  border-bottom: 1px solid #f99b66;
   padding: 15px 20px;
   -webkit-transition: all 0.5s ease;
   -moz-transition: all 0.5s ease;
@@ -586,7 +586,7 @@ ul.drilldown-root {
   color: #fff;
 }
 .sidebar-nav li.active a,.sidebar-nav li a:hover{
-  color: #ff9e03;
+  color: #e5bc34;
 }
 .sidebar-nav li a {
   font-size: 15px;
