@@ -11,6 +11,7 @@ class User < ActiveRecord::Base
 
   has_many :favors, foreign_key: :liker_id
   has_many :likees, through: :favors
+  validates :nickname, uniqueness: {message: "이미 같은 닉네임이 존재합니다." }
   #has_one :account_setting      
   #before_create :build_profile #-> builds a blank profile on user create
   #has_one :profile

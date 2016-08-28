@@ -1,20 +1,140 @@
   <!--검색한 양식 출력-->
+  <section id="screen-width" class="col-md-8 col-md-offset-3">
+  <article id="desktop">
+    <div class="row">
+        <div class="co1 s12 m11 l11">
+          <div class="table-wrapper">
+            <div class="main-container">
   <h2>메일양식 검색 결과</h2>
-  <div class="container">
-    <%@forms.each do |p|%>
-     <%= link_to p.title, form_view_path(p.id) , method: 'get'%></br>
-     </hr>
-    <%end%>
-    <%= link_to "글 쓰러 가기", home_form_write_path, method: 'get'%>
-    </hr>
+  <div class="row p60" >
+      <div id="masonry" class="masonry infinite-scroll">
+<%@forms.each do |p|%>
+          <div class="col-lg-4 col-md-6 col-sm-6 col-xs-6 col-12 masonry photography travel" style="cursor:pointer;"onclick="location.href='/form_view/<%=p.id%>'">
+              <div class="post-article">
+                <div class="thumbnail">
+              
+                <a href="single.html" title="#">
+                     <%= image_tag asset_path('1.jpg'), class: 'img-responsive' %>
+                </a>
+                </div>
+        
+                  <div class="post-entry">
+                      <div class="post-content">
+                          <ul class="post-author">
+                              <li><a href="javascript:void(0)"><i class="fa fa-user"></i><%=p.writer.nickname%></a></li>
+                          </ul>
+                          <h5 class="post-title">
+                              <%= link_to p.title, form_view_path(p.id) , method: 'get'%>
+                          </h5>
+                      </div>
+                      <div class="post-footer">
+                          <ul class="post-link">
+                              <li><a >
+                                  <i class="fa fa-clock-o"></i> <%= p.created_at.strftime("%Y-%m-%d")%>
+                              </a></li>
+                          </ul><br>
+                          <ul class="post-link">
+                              <li><a>
+                                   ಠ <%= p.impressionist_count%>
+                              </a></li>
+                          </ul>
+                          <ul class="post-link">
+                            <li><a href="#">
+                                <i class="fa fa-comments-o"></i> <%=p.freplies.count%>
+                            </a></li>
+                          </ul>
+                          <ul class="post-link">
+                              <li><a >
+                                  ♡ <%=  p.likers.count %> 
+                              </a></li>
+                          </ul>
+                      
+                    
+                      </div>
+                  </div>
+              </div>
+          </div>
+  <%end%>
   </div>
+      
+  </div>
+  </div>
+          </div>    
+        </div>
+    </div>
+  </article>
+</section>
   <!--검색한 게시판 출력-->
-  <h2>게시판 검색 결과</h2>
-  <div class="container">
-    <% @posts.each do |p| %>
-      <a href="/post_view/<%=p.id%>"><%=p.title%></a><br>
-    <% end %>
-    <form action="/home/post_write" method="GET">
-      <button type="submit" class="btn btn-default">글쓰기</button>
-    </form> 
-  </div>
+  <section id="screen-width" class="col-md-8 col-md-offset-3">
+  <article id="desktop">
+    <div class="row">
+        <div class="co1 s12 m11 l11">
+          <div class="table-wrapper">
+            <div class="main-container">
+                <h1>커뮤니티 검색 결과</h1>
+                <br>
+                <br>
+                <div class="write">
+                    <div class="wrap" style="float:right; margin-right:35px;">
+                        <form class="search" action="/home/post_result" method="GET" accept-charset="UTF-8">
+                            <input type="text" name="search" id="search_keyword" placeholder="검색">
+                            <button name="botton" type="submit" class="searchButton" >
+                                <span class="glyphicon glyphicon-search"></span>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+                <br>
+                <br>
+                <br>
+                <br>
+                <table class="bordered highlight">
+                    <thead>
+                        <tr>
+                            <th data-field="title">제목</th>
+                            <th data-field="author">작성자</th>
+                            <th data-field="date">날짜</th>
+                            <th data-field="view">view</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% @posts.each do |p| %>
+                            <tr>
+                                <td>
+                                    <%=link_to p.title, post_view_path(p.id), method: 'get', class: 'css_class', style: 'color:#454443'%>
+                                    <br>
+                                </td>
+                                <td>
+                                    <%="익명"%><br>
+                                </td>
+                                <td>
+                                    <%=p.created_at.strftime("%Y-%m-%d")%><br>
+                                </td>
+                                <td>
+                                    <%=p.impressionist_count%>
+                                </td>
+                            </tr>
+                        <%end%>
+                    </tbody>
+                    <tbody>
+                    </tbody>    
+
+                </table>
+                <br>
+                <br>
+                <br>
+                <br>
+                <div class="write">
+                    
+                         <form action="/home/post_write" method="GET">
+                            <button type="submit" class="confirm_btn">글쓰기</button>
+                        </form>
+                    
+                </div>
+                <div class="flickr_pagination">...</div>
+            </div>
+          </div>    
+        </div>
+    </div>
+  </article>
+</section>

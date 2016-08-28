@@ -21,7 +21,7 @@ Rails.application.routes.draw do
   post 'form_update_action/:form_id' => "home#form_update_action"
   post 'home/form_reply'
   get 'home/form_result'
-  get 'form_mail/:form_id' => "home#form_mail"
+  get 'form_mail/:form_id' => "home#form_mail", as: "form_mail"
   post 'form_m_update/:form_id' => "home#form_m_update"
   get 'home/post_write'
   #post 'home/post_acion'
