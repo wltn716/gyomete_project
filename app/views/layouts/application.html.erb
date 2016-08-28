@@ -61,14 +61,14 @@
         <div class="drilldown sidebar-nav mCustomScrollbar">
           <div class="sidebar-brand text-center">                     
             <a href="index.html">
-              <%= image_tag asset_path('logo.png'), class: 'img-responsive' %>
+              <%= image_tag asset_path('KakaoTalk_20160829_020445928.png'), style:"width:50%;",class: 'img-responsive' %>
             </a>
           </div>
 
           <div class="sidebar-bottom-wrap">
            
             <form id="search_form_1" name="search" method="get" class="search-form_header" action="/home/firstpage_result">
-              <span class="submit-wrap"><i class="fa fa-search" aria-hidden="true"></i></span>
+              <i class="fa fa-search submit-wrap" aria-hidden="true" style="color:white;"></i>
               <input type="text" onblur="if (this.value == '') {this.value = 'SEARCH...';}" onfocus="if (this.value == 'SEARCH...') {this.value = '';}" id="search" name="search" value="SEARCH..." class="textboxsearch">
             </form>
           </div>

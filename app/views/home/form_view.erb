@@ -1,4 +1,4 @@
-<section>
+<section style="margin-top:5%;margin-left:50%;">
     <div class="post-type-blog single">
         <div class="container relative">
             <div class="row">
@@ -6,14 +6,42 @@
                     <div class="post-article">
                         <div class="post-entry">
                             <div class="post-content">
-                                <div >
-                                    <h1 class="section-title "><%=@view_form.title%> </h1>
-                                    <h2 class="section-sub-title"><%=@view_form.writer.nickname%></h2>
-                                </div>
-                                <li><a><i class="fa fa-clock-o"></i> <%= @view_form.created_at.strftime("%Y-%m-%d")%></a></li>
-                                <li><a>ಠ <%= @view_form.impressionist_count%></a></li>
-                          
+                              <div class="link_to_color">
+                              <%if @view_form.category == 1%>
+                               category | 성적정정
+                              <%elsif @view_form.category == 2 %>
+                              category | 수강문의
+                              <%elsif @view_form.category == 3 %>
+                              category | 출석문의
+                              <%elsif @view_form.category == 4 %>
+                              category | 면담요청
+                              <%elsif @view_form.category == 5 %>
+                              category | 기타양식
+                              <%end%>
+                              </div>
+                              <div class="post-title">
+                                <h1><%=@view_form.title%></h1>
+                              </div><br>
+                              <ul class="post-author">
+                                <li>
+                                  <i class="fa fa-user">
+                                  </i>
+                                  <%=@view_form.writer.nickname%>
+                                </li>
+                                
+                                <li>
+                                  &nbsp;&nbsp;&nbsp;
+                                  <i class="fa fa-clock-o">
+                                  </i>
+                                  <%=@view_form.created_at.strftime("%Y-%m-%d %I:%M:%S")%>
+                                </li>
+                                &nbsp;&nbsp;&nbsp;
+                                조회수:<%=@view_form.impressionist_count%><br>
+                              </ul>
+                                
+                              <div  style="margin-top:5%;">                          
                                 <p><%=@view_form.content%></p>
+                              </div>
                             </div>
                             <div class="post-footer">
                                 <div class="post-tag">
@@ -33,28 +61,44 @@
                                           <input type="hidden" value="<%=@view_form.impressionist_count%>" name="scrap_hits">
                                           <input type="hidden" value="<%=@view_form.freplies.count%>" name="scrap_replies">
                                           <input type="hidden" value="<%=@view_form.id%>" name="scrap_id">
-                                          <button type="submit" class="btn btn-default">스크랩</button>
+                                          <button type="submit" class="btn-orange" style= 'color:#ffffff'>스크랩</button>
                                         </form>
+                                        
+                                         
+                                        
                                     </div>
+                                    
                                 </div>
                             </div>
                             <br>
                             <br>
-                            <div class="col s12 like_div">
-                        
-                              <%= link_to liking_path(@view_form.id), class: "like_btn #{if current_user.likees.include? p then :liked else :unliked end}", method: 'post', remote: true, id: "like_btn_#{@view_form.id}" do %>
-                                좋아요
-                              <% end %>
-                              
-                              <span id="liker_wrap<%= @view_form.id %>">
-                                <%= render partial: 'liker_list', locals: {p: @view_form} %>
-                              </span>
-                            </div>
+                            <div class="row">
+                              <div class="col-xs-1">
+                                <%= image_tag asset_path('Tanitakawkaw-Simple-Cute-Heart.ico'),style:"margin-left:50%;",class: 'img-responsive' %>
+                              </div>
+                              <div class="col-xs-8" style="margin-top:1%;">
+                                <%= link_to liking_path(@view_form.id), class: "link_to_color like_btn #{if current_user.likees.include? p then :liked else :unliked end}", method: 'post', remote: true, id: "like_btn_#{@view_form.id}" do %>
+                                  좋아요
+                                <% end %>
+                                <span id="liker_wrap<%= @view_form.id %>">
+                                   <%= render partial: 'liker_list', locals: {p: @view_form} %>
+                                </span>
+                              </div>
+                              <div class="col-xs-3 edit" style="margin-top:1%;" align="right">
+                                <% if can? :manage, @view_form %>
+                                <button class="btn-orange" type="submit">
+                                  <%= link_to "수정",form_update_path(@view_form.id), method: 'get', style: 'color:#ffffff'%>
+                                </button>  
+                                <button class="btn-orange" type="submit">  
+                                  <%= link_to "삭제", form_destroy_path(@view_form.id), method: 'get', style: 'color:#ffffff'%>
+                                </button>
+                                <% end %>
+                              </div>
                         </div>
                     </div>
                     
                 
-                    <div class="post-comment">
+                    <div class="post-comment" style="margin-top:10%;">
                         <div class="comment-title">
                             <h2><%=@view_form.freplies.count%> Comments</h2>
                         </div>
@@ -64,7 +108,8 @@
                               <%@view_form.freplies.each do |r|%>
                                 <li class="clearfix">
                                     <div class="pull-left avatar">
-                                        <a href="javascript:void(0);"><img src="images/avatar1.jpg" alt=""></a>
+                                      <%= image_tag asset_path('avatar1.jpg'),class: 'img-responsive' %>
+                                       
                                     </div>
                                     <div class="comment_right">
                                         <div class="comment_info clearfix">
@@ -73,14 +118,15 @@
                                             </div>
                                         </div>
                                         <p><%=r.content%></p>
+                                        
                                     </div>
                                     <div class="row">
-                                    <div class="col-md-10">
-                                      <%=r.created_at.strftime("%Y-%m-%d")%>
+                                    <div class="edit" align="left">
+                                      <%=r.created_at.strftime("%Y-%m-%d %I:%M:%S" )%>
                                     </div>
-                                    <div class=" col-md-2" >
+                                    <div class="edit" align="right">
                                       <% if can? :manage, r %>
-                                      <%=link_to "삭제", form_reply_destroy_path(r.id), method: 'get'%>
+                                      <%=link_to "삭제",form_reply_destroy_path(r.id), method: 'get', class:"link_to_color"%>
                                       <%end%>
                                     </div>
                                     </div>
@@ -109,22 +155,25 @@
                             </div>
                         </form>
                     </div>
-                    <div class="row">
+                    <div >
                       <div>
-                         <%=link_to "메일보내러가기", form_mail_path(@view_form.id), method: 'get'%>
-                         <%=link_to "목록으로 가기", form_list_path(@view_form.category) , method: 'get' %>
+      
+                        <button class="btn-orange" type="submit">
+                         <%=link_to "메일보내러가기", form_mail_path(@view_form.id), method: 'get', style: 'color:#ffffff'%>
+                        </button>  
+                        <button class="btn-orange" type="submit">
+                         <%=link_to "목록으로 가기", form_list_path(@view_form.category) , method: 'get', style: 'color:#ffffff' %>
+                        </button>
+                        
+                        
                       </div>
-                      <div class="edit" align="right">
-                        <% if can? :manage, @view_form %>
-                          <%= link_to "수정",form_update_path(@view_form.id), method: 'get'%>
-                          <%= link_to "삭제", form_destroy_path(@view_form.id), method: 'get'%>
-                        <% end %>
-                      </div>
+                      
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    
 </section>
 
   
@@ -133,17 +182,5 @@
     <input type="text" name="search" class="form_control">
     <button type="submit" class="btn btn-default">검색</button>
     </form>
-    <div>
-<%if @view_form.category == 1%>
- "성적정정"
-<%elsif @view_form.category == 2 %>
-"수강문의"
-<%elsif @view_form.category == 3 %>
-"출석문의"
-<%elsif @view_form.category == 4 %>
-"면담요청"
-<%elsif @view_form.category == 5 %>
-"기타양식"
-<%end%>
-</div>
+    
 
