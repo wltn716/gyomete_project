@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   get 'home/mypage_mail_archive'
   get 'home/mypage_scrap_archive'
   get 'home/mypage_community_archive'
+   get 'home/mypage_reply_archive'
   post 'liking/:form_id' => 'home#liking', as: 'liking'
   post 'home/form_scrap_action'
   get 'home/form_scrap'

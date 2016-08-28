@@ -2,7 +2,7 @@ class CreateFreplies < ActiveRecord::Migration
   def change
     create_table :freplies do |t|
       
-      t.text :content
+      t.string :content
       t.integer :form_id
       t.integer :writer_id
       

@@ -8,6 +8,9 @@ class HomeController < ApplicationController
      @forms=Form.where(writer: current_user).take(3)
      @posts=Post.where(writer: current_user).take(3)
      @scraps=Scrap.where(writer: current_user).take(3)
+     @reply_forms=Freply.where(writer: current_user).take(3)
+    
+    
   end
   
   #내가 쓴 메일 양식 보관함
@@ -23,6 +26,9 @@ class HomeController < ApplicationController
   #내가 스크랩한 글
   def mypage_scrap_archive
     @scraps=Scrap.where(writer: current_user)
+  end
+  def mypage_reply_archive
+    @reply_forms=Freply.where(writer: current_user)
   end
   
   def firstpage
