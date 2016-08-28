@@ -75,8 +75,6 @@ class HomeController < ApplicationController
   def form_list
     @forms = Form.where(category: params[:category])
     @best_form = @forms.sort_by{|b| b.likers.count}.reverse.take(3)
-    
-        
     Freply.all
   end
   
