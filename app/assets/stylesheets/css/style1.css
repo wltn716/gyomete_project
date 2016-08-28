@@ -770,12 +770,12 @@ padding: 0;
 form input[type="text"], form input[type="email"], textarea.form-control, form textarea {
     background: none;
     width:100%;
-    border: 1px #eeeeee solid;
+    border: 1px #ccc solid;
     outline: none;
-    border-radius: 2px;
+    border-radius: 4px !important;
     -webkit-border-radius: 2px;
     box-shadow: none;
-    font-size: 12px;
+    font-size: 14px;
     color: #515151;
     font-weight: 400;
     font-family: 'Open Sans', sans-serif;

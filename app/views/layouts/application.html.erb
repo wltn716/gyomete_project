@@ -75,8 +75,8 @@
           
           <div class="drilldown-container">
             <ul class="drilldown-root" style = "text-align: center">                         
-              <li class="<%= is_active?(home_firstpage_path) %>">
-                <%= link_to "HOME", home_firstpage_path , method: 'get'%>
+              <li class="<%= is_active?(cover_report_path) %>">
+                <%= link_to "HOME", cover_report_path , method: 'get'%>
               </li>
 
               <li class="<%= is_active?(form_list_path(1)) %>">
@@ -86,10 +86,10 @@
                 <%= link_to "수강문의", form_list_path(2), method: 'get'%>
               </li>
               <li class="<%= is_active?(form_list_path(3)) %>">
-                <%= link_to "출석문의", form_list_path(3), method: 'get'%>
+                <%= link_to "면담요청", form_list_path(3), method: 'get'%>
               </li>
               <li class="<%= is_active?(form_list_path(4)) %>">
-                <%= link_to "면담요청", form_list_path(4), method: 'get'%>
+                <%= link_to "영어메일", form_list_path(4), method: 'get'%>
               </li>
               <li class="<%= is_active?(form_list_path(5)) %>">
                 <%= link_to "기타양식", form_list_path(5), method: 'get'%>
@@ -109,7 +109,7 @@
     </div>
     <!--================= End sidebar ==================-->
     <!--================= Start Top Bar ====================-->
-      <ul class= "top-nav-bar col-md-10 col-md-offset-2" style="position:fixed;">
+      <ul class= "top-nav-bar col-md-12 col-md-offset-1" style="position:fixed;">
         <li class= "logo-top">
          <%= link_to "교메때", cover_report_path, method: 'get' %>
         </li>

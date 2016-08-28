@@ -1,7 +1,55 @@
-<div class="container">
-    <div class="top-contact" style="padding: 10px 100px; background-color: #ff9e03">
-        <h5 class="category-post"><em>교수님께 메일 보낼때, 교메때</em></h5>
-        <h1 class="section-title">Contact Us</h1>
-    </div>
-    
+<div class="container col-md-12 col-md-offset-1 relative">
+  <div class="top-contact">
+    <h5 class="category-post"><em>교수님께 메일 보낼 때, 교메때</em></h5>
+    <h1 class="section-title">Contact Us</h1>
+  </div>
+  <div class="col-md-6">
+    <div id="map_view"></div>
+  </div>
+
 </div>
+
+<script src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
+<script>
+	function initialize() {
+
+		var Y_point			= 37.545704;		
+		var X_point			= 126.963638;		
+
+		var zoomLevel		= 16;						
+		var markerTitle		= "숙명여자대학교 명신관";			
+		var markerMaxWidth	= 300;						
+
+		var contentString	= '<div>' +
+		'<h2>숙명여자대학교 명신관</h2>'+
+		'<p>교수님께 메일 보낼 때, 교메때 서비스는 숙명여대 명신관에서 태어났습니다.</p>' +
+		'</div>';
+
+		var myLatlng = new google.maps.LatLng(Y_point, X_point);
+		var mapOptions = {
+							zoom: zoomLevel,
+							center: myLatlng,
+							mapTypeId: google.maps.MapTypeId.ROADMAP
+	}
+	var map = new google.maps.Map(document.getElementById('map_view'), mapOptions);
+
+	var marker = new google.maps.Marker({
+						position: myLatlng,
+						map: map,
+						title: markerTitle
+	});
+
+	var infowindow = new google.maps.InfoWindow({
+						content: contentString,
+						maxWidth: markerMaxWidth
+		  
+	});
+
+	google.maps.event.addListener(marker, 'click', function() {
+		infowindow.open(map, marker);
+   	});
+	}
+		
+	window.onload = function() {initialize()};
+</script>
+

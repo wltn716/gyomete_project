@@ -1,3 +1,33 @@
 // Place all the styles related to the cover controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.top-contact{
+    padding: 350px 100%;
+    margin-left: 50px;
+    background-image: url(/assets/university2.png);
+    background-repeat: no-repeat;
+}
+.category-post{
+    position: absolute;
+    top: 100px;
+    left: 200px;
+    font-size: 16pt;
+    color:white;
+    letter-spacing: 5px;
+    font-weight: 300;
+}
+.section-title{
+    position: absolute;
+    top: 150px;
+    left: 200px;
+    font-size: 44pt;
+    font-family: 'Roboto Slab', serif;
+    text-transform: uppercase;
+    color:white;
+    letter-spacing: -1px;
+}
+#map_view{
+    margin-left: 90px;
+    width:100%; 
+    height:500px;
+}

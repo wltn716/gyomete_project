@@ -32,10 +32,10 @@
 .top-nav-bar{
     list-style-type: none;
     margin: 0;
-    padding: 7px;
+    padding: 7px 150px !important;
     overflow: hidden;
     background-color: #ffffff;
-    //border-bottom: 2px solid #fa7a33;
+    z-index: 999;
     position: fixed;
     top: 0;
     width: 100%;
