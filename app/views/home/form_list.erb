@@ -2,58 +2,56 @@
 <div align="center"style="margin-bottom:1%;margin-top:5%;margin-left:15%;">
     <h1>BEST 교메때</h1>
 </div>
-
-<%unless @best_form_id.nil?%>
-<div class="row p60" style="margin-left:20%;width:200%;">
-      
-    <div id="masonry" class="masonry infinite-scroll ">
-        <div class="col-lg-4 col-md-6 col-sm-6 col-xs-6 col-12 masonry fashion"style="cursor:pointer;"onclick="location.href='/form_view/<%=@best_form_id%>'">
-          <div class="post-article">
-            <div class="thumbnail col-md-8">
-              <a href="single.html" title="#">
-              <%= image_tag asset_path('2.jpg'), class: 'img-responsive' %>
-              </a>
-            </div>
-            <div class="post-entry col-md-4" >
-              <br>
-              <br>
-              <br>
-              <br>
-              <br>
-              <div class="post-content">
-                <ul class="post-author">
-                    <li><a href="javascript:void(0)"><i class="fa fa-user"></i><%=@best_form_writer%></a></li>
-                </ul>
-                <h5 class="post-title">
-                   <%= link_to @best_form_title, form_view_path(@best_form_id) , method: 'get'%>
-                </h5>
+<div class="row p60" style="margin-left:20%;">
+      <div id="masonry" class="masonry infinite-scroll">
+<%unless @best_form.nil?%>
+<%@best_form.each do |p|%>
+          <div class="col-lg-4 col-md-6 col-sm-6 col-xs-6 col-12 masonry photography travel" style="cursor:pointer;"onclick="location.href='/form_view/<%=p.id%>'">
+              <div class="post-article">
+                <div class="thumbnail">
+              
+                <a href="single.html" title="#">
+                     <%= image_tag asset_path('KakaoTalk_20160828_092045856.png'),style:"width:80%;",class: 'img-responsive' %>
+                </a>
+                </div>
+        
+                  <div class="post-entry">
+                      <div class="post-content">
+                          <ul class="post-author">
+                              <li><a href="javascript:void(0)"><i class="fa fa-user"></i><%=p.writer.nickname%></a></li>
+                          </ul>
+                          <h5 class="post-title">
+                              <%= link_to p.title, form_view_path(p.id) , method: 'get'%>
+                          </h5>
+                      </div>
+                      <div class="post-footer">
+                          <ul class="post-link">
+                              <li><a >
+                                  <i class="fa fa-clock-o"></i> <%= p.created_at.strftime("%Y-%m-%d")%>
+                              </a></li>
+                          </ul><br>
+                          <ul class="post-link">
+                              <li><a>
+                                   ಠ <%= p.impressionist_count%>
+                              </a></li>
+                          </ul>
+                          <ul class="post-link">
+                            <li><a href="#">
+                                <i class="fa fa-comments-o"></i> <%=p.freplies.count%>
+                            </a></li>
+                          </ul>
+                          <ul class="post-link">
+                              <li><a >
+                                  ♡ <%=  p.likers.count %> 
+                              </a></li>
+                          </ul>
+                      
+                    
+                      </div>
+                  </div>
               </div>
-              <div class="post-footer">
-                <ul class="post-link">
-                  <li><a>
-                    <i class="fa fa-clock-o"></i> <%=@best_form_time%>
-                  </a></li>
-                </ul><br>
-                <ul class="post-link">
-                  <li><a>
-                    ಠ <%= @best_form_hit_count%>
-                  </a></li>
-                </ul>
-                <ul class="post-link">
-                  <li><a>
-                    ♡ <%=  @best_form_likers%> 
-                  </a></li>
-                </ul>
-                <ul class="post-link">
-                  <li><a href="#">
-                      <i class="fa fa-comments-o"></i><%=@best_form_replies%>
-                  </a></li>
-                </ul>
-              </div>
-            </div>
           </div>
-        </div>
-      <br>
+  <%end%>
   </div> 
 </div>
 <%end%>

@@ -74,18 +74,19 @@ class HomeController < ApplicationController
   # 메일 양식 리스트 출력
   def form_list
     @forms = Form.where(category: params[:category])
-    @forms.each do |best|
-      if best.likers.max
-        @best_form_id = best.id
-        @best_form_title = best.title
-        @best_form_likers = best.likers.count
-        @best_form_replies = best.freplies.count
-        @best_form_time = best.created_at.strftime("%Y-%m-%d")
-        @best_form_writer = best.writer.nickname
-        @best_form_hit_count = best.impressionist_count
+    f_best=Array.new
+    @forms.each do |f|
+       f_best << f.likers.count 
+    end
+    @pick_best=f_best.sort.drop(3)
+    @best_form=Array.new
+    @forms.each do |f|
+      if @pick_best.include?(f.likers.count)
+        @best_form << f
       end
     end
-  
+    
+        
     Freply.all
   end
   
