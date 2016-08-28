@@ -125,14 +125,6 @@
             </div>
         </div>
     </div>
-</section>
-
-  
- <!--검색-->
-  <form action="/home/form_result" method="GET">
-    <input type="text" name="search" class="form_control">
-    <button type="submit" class="btn btn-default">검색</button>
-    </form>
     <div>
 <%if @view_form.category == 1%>
  "성적정정"
@@ -146,4 +138,13 @@
 "기타양식"
 <%end%>
 </div>
+</section>
+
+  
+ <!--검색-->
+  <form action="/home/form_result" method="GET">
+    <input type="text" name="search" class="form_control">
+    <button type="submit" class="btn btn-default">검색</button>
+    </form>
+    
 
