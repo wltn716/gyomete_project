@@ -2299,7 +2299,6 @@ form input[type="text"], form input[type="email"], textarea.form-control, form t
 .contact form .btn-default:hover {
   color: #000000;
   background-color: transparent;
-  border: 2px solid #000000;
 }
 #message_post {
   text-align: center;

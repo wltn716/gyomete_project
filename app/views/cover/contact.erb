@@ -1,13 +1,75 @@
-<div class="container col-md-12 col-md-offset-1 relative">
-  <div class="top-contact">
-    <h5 class="category-post"><em>교수님께 메일 보낼 때, 교메때</em></h5>
-    <h1 class="section-title">Contact Us</h1>
+<div style="margin-left:260px;margin-top:80px;">
+  <div class="row top-contact" style="margin:0;">
+    <div class="row" style="padding-top:100px;">
+      <div class="col-md-offset-1 col-md-11">
+        <h5 class="category-post"><em>교수님께 메일 보낼 때, 교메때</em></h5>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-offset-1 col-md-11">
+        <h1 class="section-title">Contact Us</h1>
+      </div>
+    </div>
   </div>
-  <div class="col-md-6">
-    <div id="map_view"></div>
-  </div>
+  <div class="row" style="margin:0;">
+    <div class="col-md-6" style="background-color:white;">
+      <div id= "map_view"></div>
+    </div>
+    
+    <div class="col-md-6" style="background-color:white">
+      <div class="contact">
+        <div class="text-center contact-title">
+          <h2>Contact information</h2>
+        </div>
+                            
+        <ul class="list-icon">
+          <li><i class="fa fa-globe"></i> Jl.Pagaden, Kampung Saradan City 1423</li>
+          <li><i class="fa fa-envelope"></i> yourname@site.com</li>
+          <li><i class="fa fa-phone"></i> +62 123 456 789</li>
+          <li><i class="fa fa-fax"></i> +62 123 456 780</li>
+        </ul>
 
+        <div class="text-center contact-title mt60">
+          <h2>SEND A MESSAGE</h2>
+        </div>
+
+        <form id="contact-form" action="#" class="form" name="sentMessage" novalidate> 
+
+        <div class="form-group"> <!-- Your name input -->
+           <p class="help-block text-danger"></p>
+           <input type="text" autocomplete="off" class="form-control" placeholder="Name" id="name" name="name" required data-validation-required-message="Please enter your name.">
+        </div>
+
+        <div class="form-group"> <!-- Your email input -->
+          <p class="help-block text-danger"></p>
+          <input type="email" autocomplete="off" class="form-control" placeholder="Email" id="email" name="mail" required data-validation-required-message="Please enter your email address.">
+        </div>
+
+        <div class="form-group"> <!-- Your email input -->
+          <p class="help-block text-danger"></p>
+          <input type="text" autocomplete="off" class="form-control" placeholder="Phone" id="phone" name="phone" required data-validation-required-message="Please enter your email address.">
+        </div>
+
+        <div class="form-group"> <!-- Your email input -->
+          <p class="help-block text-danger"></p>
+          <input type="text" autocomplete="off" class="form-control" placeholder="Website" id="website" name="website" required data-validation-required-message="Please enter your email address.">
+        </div>
+
+        <div class="form-group"> <!-- Your email input -->
+          <p class="help-block text-danger"></p>
+          <textarea class="form-control" rows="7" placeholder="Message" id="message" name="message" required data-validation-required-message="Please enter a message."></textarea>
+          <div id="success"></div>
+        </div>
+                                
+        <label><span class="ion-android-alert"> All the fields are required</span></label>
+        <button type="submit" class=" confirm_btn pull-right" id="submit-message">submit</button>
+        <div id="msg" class="message"></div>
+      </form>
+    </div>
+  </div>
 </div>
+
+ 
 
 <script src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
 <script>
@@ -16,13 +78,13 @@
 		var Y_point			= 37.545704;		
 		var X_point			= 126.963638;		
 
-		var zoomLevel		= 16;						
+		var zoomLevel		= 17;						
 		var markerTitle		= "숙명여자대학교 명신관";			
-		var markerMaxWidth	= 300;						
+		var markerMaxWidth	= 400;						
 
 		var contentString	= '<div>' +
 		'<h2>숙명여자대학교 명신관</h2>'+
-		'<p>교수님께 메일 보낼 때, 교메때 서비스는 숙명여대 명신관에서 태어났습니다.</p>' +
+		'<p>교수님께 메일 보낼 때, 교메때 서비스는 코딩연합동아리 멋쟁이 사자처럼 숙명여대에서 탄생했습니다. .</p>' +
 		'</div>';
 
 		var myLatlng = new google.maps.LatLng(Y_point, X_point);
