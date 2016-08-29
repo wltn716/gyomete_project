@@ -204,10 +204,10 @@ class HomeController < ApplicationController
     post.title = params[:title]
     post.content = params[:content]
     post.writer = current_user
-    #file = params[:pic]
-    #uploader = GyometeCommunityUploader.new
-    #uploader.store!(file)
-    #post.image_url = uploader.url
+    file = params[:pic]
+    uploader = GyometeCommunityUploader.new
+    uploader.store!(file)
+    post.image_url = uploader.url
     post.save
     
     redirect_to "/post_list"  

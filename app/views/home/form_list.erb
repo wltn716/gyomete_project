@@ -1,9 +1,17 @@
 
-<div align="center"style="margin-bottom:1%;margin-top:10%;margin-left:17%;">
-    <h1>BEST 교메때</h1>
-</div>
+<section style="width:80%;height:80%;box-left:20%;">
+  
+<div style="padding-top:100px;" >
+    <div align="center" class="link_to_color">
+        
+        <br>
+      <%= image_tag asset_path('best.png'),style:"width:25%;",class: 'img-responsive' %>
+      <br>
+      <br>
+      <br>
+    </div>
 
-<div class="row p60" style="margin-left:15%;">
+<div class="row" style="padding:30px 30px 10px 30px;">
       <div id="masonry" class="masonry infinite-scroll">
 <%@best_form.each do |p|%>
     <%unless p.likers.count.nil?%>
@@ -59,16 +67,19 @@
           </div>
   <%end%>
   <%end%>
-  </div> 
+  </div>
+
 </div>
-<br>
-<br>
-<br>
+</div>
+<hr style="background-color:black;">
 
 
-<div style="margin-left:15%;margin-bottom:5%;padding-right:10%;"align="right">
+<%= image_tag asset_path('mailform.png'),style:"width:10%;margin-top:5%;",class: 'img-responsive' %>
+
+
+<div align="right" style="margin-bottom:5%; margin-right:5%;">
   <div class="write">
-    <div class="wrap" style="float:right; margin-right:35px;">
+    <div class="wrap" style="float:right; margin-right:35px; display: inline-block;">
         <form class="search" action="/home/form_result" method="GET" accept-charset="UTF-8">
   
   
@@ -77,6 +88,7 @@
                 <span class="glyphicon glyphicon-search"></span>
             </button>
         </form>
+         
     </div>
   </div>
 </div>
@@ -85,7 +97,7 @@
 
 
 
-<div class="row p60" style="margin-left:15%;">
+<div class="row p60" >
   <div id="masonry" class="masonry infinite-scroll">
     <%@forms.each do |p|%>
       <div class="col-lg-4 col-md-6 col-sm-6 col-xs-6 col-12 masonry photography travel" style="cursor:pointer;"onclick="location.href='/form_view/<%=p.id%>'">
@@ -142,5 +154,5 @@
   </button>  
   
 </div>
-
+<section>
 

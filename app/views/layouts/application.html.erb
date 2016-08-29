@@ -111,7 +111,7 @@
     <!--================= Start Top Bar ====================-->
       <ul class= "top-nav-bar col-md-12 col-md-offset-1" style="position:fixed;">
         <li class= "logo-top">
-         <%= link_to "교메때", cover_report_path, method: 'get' %>
+         <%= link_to (image_tag asset_path('KakaoTalk_20160829_035313826.png'), style:"width:80%;",class: 'img-responsive'), cover_report_path, method: 'get' %>
         </li>
         <% if user_signed_in? %>
           <li class= "top-Btn-2">
