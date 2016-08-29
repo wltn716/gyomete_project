@@ -1,102 +1,103 @@
-<section id="screen-width" class="col-md-8 col-md-offset-2">
-  <div class="post-type-blog single">
-    <div class="container relative">
+<head>
+</head>
+<body class="full-page">
+  <div id="wrapper" style="opacity: 1; margin-top:100px;">
+    <section id="screen-width" class="col-md-8 col-md-offset-1">
       <div class="row">
-        <div class="col-md-10 col-md-offset-1">
-          <div class="post-article">
-            <div class="post-entry">
-              <div class="post-content">
-                  
-                      <div class="post-title">
-                        <h1><%=@view_post.title%></h1>
-                      </div><br>
-                      <ul class="post-author">
-                        <li>
-                          <i class="fa fa-user">
-                          </i>
-                          익명
-                        </li>
-                        
-                        <li>
-                          &nbsp;&nbsp;&nbsp;
-                          <i class="fa fa-clock-o">
-                          </i>
-                          <%=@view_post.created_at.strftime("%Y-%m-%d %I:%M:%S")%>
-                        </li>
-                        &nbsp;&nbsp;&nbsp;
-                        조회수:<%=@view_post.impressionist_count%><br>
-                      </ul>
+        <div class="post-type-blog single">
+          <div class="col-md-10 col-md-offset-1">
+            <div class="post-article">
+              <div class="post-entry">
+                <div class="post-content">
                     
-                <br>
-                <br>
-                <br>
-                <br>
-                <p>
-                  <%=@view_post.content%>
-                </p>
-                <br>
-                <br>
-                <br>
-                    <div class="edit" align="right">
-                      <% if can? :manage, @view_post %>
-                        <button class="btn-orange" type="submit">
-                          <%=link_to "수정", post_update_path(@view_post.id), method: 'get' , class: 'css_class', style: 'color:#ffffff'%> 
-                        </button>
-                        <button  class="btn-orange" type="submit">
-                          <%=link_to "삭제", post_destroy_path(@view_post.id), method: 'get' , class: 'css_class', style: 'color:#ffffff'%>
-                        </button>
-                      <%end%>
-                    </div>  
-                <br>
-              </div>  
-              <div class="post-comment">
-                <div class="comment-title">
-                  <div class="help-block text-danger">
-                    <h3>"<%=@view_post.preplies.count%>개의 댓글" </h3>
-                  </div>  
-                </div>
-                <br>
-                <br>
-                <br>
-                <br>
-                <div id="comments">
-                  <ul>
-                    <% @view_post.preplies.each do |r| %>
-                      <li class="clearfix">
-                        <div class="comment_info clearfix">
-                          <div class="pull-left comment_author">
+                        <div class="post-title">
+                          <h1><%=@view_post.title%></h1>
+                        </div>
+                        <hr>
+                        <ul class="post-author">
+                          <li>
+                            <i class="fa fa-user">
+                            </i>
                             익명
-                          </div>
-                        </div>
-                        <p>
-                            <%=r.content%>
-                        </p>
-                        <div class="comment_date">
-                          <span class="pull-left"><%=r.created_at.strftime("%Y-%m-%d %I:%M%p")%></span>
-                        </div>
-                      </li>                        
-                    <%end%>                    
-                  </ul>
-                </div>
-              </div>  
-              <div class="post-comment">
-                <form id="comment_form" action="/home/post_reply" method="POST">
-                  <div class="form-group">
-                    <p class="help-block text-danger"></p>
-                    <input type="hidden" value="<%=@view_post.id%>" name="id_of_post">
-                    <textarea name="reply_p" class="form-control" placeholder="댓글을 입력하세요." required data-validation-required-message="Please enter a message." rows="5" id="comment"></textarea>
-                    <div id="success"></div>
+                          </li>
+                          
+                          <li>
+                            &nbsp;&nbsp;&nbsp;
+                            <i class="fa fa-clock-o">
+                            </i>
+                            <%=@view_post.created_at.strftime("%Y-%m-%d %I:%M:%S")%>
+                          </li>
+                          &nbsp;&nbsp;&nbsp;
+                          조회수:<%=@view_post.impressionist_count%><br>
+                        </ul>
+                      
+                  <br>
+                  <br>
+                  <br>
+                  <br>
+                  <p>
+                    <%=@view_post.content%>
+                  </p>
+                  <br>
+                  <br>
+                  <br>
+                      <div class="edit" align="right">
+                        <!--언니 해결했어용!!ㅎㅎ-->
+                        <% if can? :manage, @view_post %>
+                          <%=link_to post_update_path(@view_post.id), method: 'get' , class: 'btn btn-outline btn-circle btn-sm orange' do%> 
+                            <i class="fa fa-edit"></i>edit
+                          <%end%>
+                          <%=link_to post_update_path(@view_post.id), method: 'get' , class: 'btn btn-outline btn-circle btn-sm orange' do%> 
+                            <i class="fa fa-trash-o"></i>delete
+                          <%end%>
+                        <%end%>
+                      </div>  
+                  <br>
+                </div>  
+                <div class="post-comment" style="margin-top:10%;">
+                  <div class="comment-title">
+                      <h2><%=@view_post.preplies.count%> comments </h2>
                   </div>
-                    <div class="col-lg-12 col-md-12">
-                      <button type="submit" class="pull-right send_btn">Submit</button>
-                    </div>
-                </form>
-              </div>  
-            </div>    
-          </div>      
-        </div>        
-      </div>  
-    </div>
-  </div>
 
-</section>
+                  <div id="comments">
+                    <ul>
+                      <% @view_post.preplies.each do |r| %>
+                        <li class="clearfix">
+                          <div class="comment_info clearfix">
+                            <div class="pull-left comment_author">
+                              익명
+                            </div>
+                          </div>
+                          <p>
+                              <%=r.content%>
+                          </p>
+                          <div class="comment_date">
+                            <span class="pull-left"><%=r.created_at.strftime("%Y-%m-%d %I:%M%p")%></span>
+                          </div>
+                        </li>                        
+                      <%end%>                    
+                    </ul>
+                  </div>
+                </div>  
+                <div class="post-comment">
+                  <form id="comment_form" action="/home/post_reply" method="POST">
+                    <div class="form-group">
+                      <p class="help-block text-danger"></p>
+                      <input type="hidden" value="<%=@view_post.id%>" name="id_of_post">
+                      <textarea name="reply_p" class="form-control" placeholder="댓글을 입력하세요." required data-validation-required-message="Please enter a message." rows="5" id="comment"></textarea>
+                      <div id="success"></div>
+                    </div>
+                      <div class="col-lg-12 col-md-12">
+                        <button type="submit" class="pull-right send_btn">확인</button>
+                      </div>
+                      
+                  </form>
+                </div>  
+              </div>    
+            </div>      
+          </div>        
+        </div>
+      </div>
+    </section>
+  </div>
+</body>  

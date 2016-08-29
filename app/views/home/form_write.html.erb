@@ -1,53 +1,57 @@
-<section id="screen-width" class="col-md-8 col-md-offset-2">
-  <div class="post-type-blog single">
-    <div class="container relative">
+<head>
+</head>
+<body class="full-page">
+  <div id="wrapper" style="opacity: 1; margin-top:100px;">
+    <section id="screen-width" class="col-md-8 col-md-offset-1">
       <div class="row">
-        <div class="col-md-10 col-md-offset-1">
-          <div class="post-article">
-            <div class="post-entry">
-              <div class="post-content">
-                <div class="help-block text-danger">
-                  <div class="post-title">
-                    <h1>메일 양식 작성하기</h1>
-                  </div>      
-                </div>  
-                <br>  
-                <br>
-                <form id="comment_form" action="/home/form_action" method="POST" >
-                  <div class="form-group" >
-                    <lable for="category">카테고리 선택</label>
-                    <select class="form-control" name="category"> <!--컨트롤러에서 @category = params[:name].find(value)이케 출력해도 되는지..-->
-                      <option value="1">성적정정</option>
-                      <option value="2">수강문의</option>
-                      <option value="3">출석문의</option>
-                      <option value="4">면담요청</option>
-                      <option value="5">기타양식</option>
-                    </select>
+          <div class="post-type-blog single">
+            <div class="col-md-10 col-md-offset-1">
+              <div class="post-article">
+                <div class="post-entry">
+                  <div class="post-content">
+                    <div class="help-block text-danger">
+                      <div class="post-title">
+                        <h1>메일 양식 작성하기</h1>
+                      </div>      
+                    </div>  
+                    <br>  
+                    <br>
+                    <form id="comment_form" action="/home/form_action" method="POST" >
+                      <div class="form-group" >
+                        <lable for="category">카테고리 선택</label>
+                        <select class="form-control" name="category"> <!--컨트롤러에서 @category = params[:name].find(value)이케 출력해도 되는지..-->
+                          <option value="1">성적정정</option>
+                          <option value="2">수강문의</option>
+                          <option value="3">출석문의</option>
+                          <option value="4">면담요청</option>
+                          <option value="5">기타양식</option>
+                        </select>
+                      </div>
+      <!--#제목입력-->
+                      <div class="form-group">
+                        <label for="exampleInputEmail1">제목</label>
+                        <input name="title" type="text" class="form-control" id="exampleInputEmail1" placeholder="메일 제목을 입력하세요" required data-validation-required-message="제목을 입력하세요">
+                      </div>
+      <!--#글작성-->
+                      <div class="form-group">
+                        <label for="comment">내용</label>
+                        <textarea name="content" class="form-control" rows="15" id="comment" placeholder="메일 내용을 입력하세요" required data-validation-required-message="내용을 입력하세요"></textarea>
+                      </div>
+      <!--#해시태그 곧 넣겠슴당-->
+                      <div class="form-group">
+                        <label for="exampleInputEmail1">Hashtag</label>
+                       <input name="hashtag" type="text" class="form-control" id="exampleInputEmail1" placeholder="태그는 ,로 구분해 주십시오">
+                      </div>
+                  
+      <!--#글 올리는 버튼-->
+                      <button type="submit" class="pull-right send_btn">확인</button>
+                    </form>
                   </div>
-  <!--#제목입력-->
-                  <div class="form-group">
-                    <label for="exampleInputEmail1">제목</label>
-                    <input name="title" type="text" class="form-control" id="exampleInputEmail1" placeholder="메일 제목을 입력하세요" required data-validation-required-message="제목을 입력하세요">
-                  </div>
-  <!--#글작성-->
-                  <div class="form-group">
-                    <label for="comment">내용</label>
-                    <textarea name="content" class="form-control" rows="15" id="comment" placeholder="메일 내용을 입력하세요" required data-validation-required-message="내용을 입력하세요"></textarea>
-                  </div>
-  <!--#해시태그 곧 넣겠슴당-->
-                  <div class="form-group">
-                    <label for="exampleInputEmail1">Hashtag</label>
-                   <input name="hashtag" type="text" class="form-control" id="exampleInputEmail1" placeholder="태그는 ,로 구분해 주십시오">
-                  </div>
-              
-  <!--#글 올리는 버튼-->
-                  <button type="submit" class="pull-right send_btn">확인</button>
-                </form>
+                </div>
               </div>
             </div>
           </div>
-        </div>
       </div>
-    </div>
+    </section>  
   </div>
-</section>                     
+</body>
