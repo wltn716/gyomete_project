@@ -6,7 +6,7 @@
         <br>
            <%= image_tag asset_path('avatar1.jpg'), style: "border-radius: 100%; width:100%;margin-left:20%;",class: 'img-responsive' %>
       </div>
-<<<<<<< HEAD
+
       <div class="col-md-5" style="width:600px;margin-top:15px;margin-left:50px;">
           <hr style="background-color:#ff9e03;"/>
           <h5>이메일 | <%= current_user.email %></h5>
@@ -15,29 +15,6 @@
 
           <%=link_to "정보수정", edit_user_registration_path, style:"display: inline-block;", class:"btn-orange", method: 'get'%>
       </div>    
-=======
-<<<<<<< HEAD
-      <div class="col-md-8" style="width:60%;margin-top:15px;" >
-=======
-      <div class="col-md-8" style="width:400px;margin-top:15px;margin-left:150px;">
-          <hr style="background-color:#ff9e03;"/>
-          <h3>이메일 | <%= current_user.email %></h3>
-          <hr style="background-color:#ff9e03;"/>
-          <h3>닉네임 | <%= current_user.nickname %></h3>
-          <hr style="background-color:#ff9e03;"/>
-          <h3>전   공 | <%= current_user.major %></h3>
->>>>>>> 022c1318a36467281c7eb7193b7c91f50fe8e93b
-          <hr style="background-color:#ff9e03;"/>
-          <h2>이메일 | <%= current_user.email %></h2>
-      
-          <h2>닉네임 | <%= current_user.nickname %></h2>
-         
-          <h2>전   공 | <%= current_user.major %></h2>
-          
-          
-          <%=button_to "정보수정", edit_user_registration_path, style:"style="width: 450px;    width:auto;border: 1px solid #ff9e03;border-radius: 4px;padding: 7px 12px;font-weight: 700;background-color: #ff9e03;color: #ffffff;cursor: pointer; ", method: 'get',class:"right"%>
-      </div>  
->>>>>>> ef8c3d15e4ea03999291732cf0236eb14eab4ffa
     </div>
     <br>
     <br>

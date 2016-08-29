@@ -5,30 +5,30 @@ class HomeController < ApplicationController
   
   #마이페이지 입니다.
   def mypage
-     @forms=Form.where(writer: current_user).take(3)
-     @posts=Post.where(writer: current_user).take(3)
-     @scraps=Scrap.where(writer: current_user).take(3)
-     @reply_forms=Freply.where(writer: current_user).take(3)
+     @forms=Form.where(writer: current_user).take(3).reverse
+     @posts=Post.where(writer: current_user).take(3).reverse
+     @scraps=Scrap.where(writer: current_user).take(3).reverse
+     @reply_forms=Freply.where(writer: current_user).take(3).reverse
     
     
   end
   
   #내가 쓴 메일 양식 보관함
   def mypage_mail_archive 
-    @forms=Form.where(writer: current_user)
+    @forms=Form.where(writer: current_user).reverse
   end
   
   #내가 쓴 커뮤니티 게시글
   def mypage_community_archive
-    @posts=Post.where(writer: current_user)
+    @posts=Post.where(writer: current_user).reverse
   end
   
   #내가 스크랩한 글
   def mypage_scrap_archive
-    @scraps=Scrap.where(writer: current_user)
+    @scraps=Scrap.where(writer: current_user).reverse
   end
   def mypage_reply_archive
-    @reply_forms=Freply.where(writer: current_user)
+    @reply_forms=Freply.where(writer: current_user).reverse
   end
   
   def firstpage
@@ -73,7 +73,7 @@ class HomeController < ApplicationController
   
   # 메일 양식 리스트 출력
   def form_list
-    @forms = Form.where(category: params[:category])
+    @forms = Form.where(category: params[:category]).reverse
     @best_form = @forms.sort_by{|b| b.likers.count}.reverse.take(3)
     Freply.all
   end
