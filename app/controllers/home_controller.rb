@@ -81,6 +81,7 @@ class HomeController < ApplicationController
   # 작성된 하나하나의 메일 양식 & 댓글 출력 
   def form_view
     @view_form = Form.find(params[:form_id])
+    @current_scrap = Scrap.where(writer_id: current_user.id, scrap_id: @view_form.id).first
     impressionist(@view_form)
     Freply.all
   end
@@ -124,9 +125,35 @@ class HomeController < ApplicationController
   end
   
   def form_scrap_action
-    scrap = Scrap.create(title: params[:scrap_title],nickname: params[:scrap_nickname],time: params[:scrap_time],likes: params[:scrap_likes],hits: params[:scrap_hits],replies: params[:scrap_replies], scrap_id: params[:scrap_id], writer: current_user)
-    scrap.save
-    redirect_to :back
+    if request.post?
+      begin
+        scrap = Scrap.create(
+          title: params[:scrap_title],
+          nickname: params[:scrap_nickname],
+          time: params[:scrap_time],
+          likes: params[:scrap_likes],
+          hits: params[:scrap_hits],
+          replies: params[:scrap_replies],
+          scrap_id: params[:scrap_id],
+          writer: current_user
+        )
+        render :json => { :success => true, :id => scrap.id }
+      rescue Exception => e
+        render :json => { :success => false, :params => params.inspect }
+      end
+    elsif request.delete?
+      begin
+        scrap = Scrap.find_by_id(params[:id])
+        if scrap.nil?
+          render :json => { :success => false }
+        else 
+          scrap.destroy
+          render :json => { :success => true }
+        end
+      rescue Exception => e
+        render :json => { :success => false, :params => params.inspect }
+      end
+    end
   end
 
   

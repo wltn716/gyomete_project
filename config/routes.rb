@@ -9,7 +9,7 @@ Rails.application.routes.draw do
    get 'home/mypage_reply_archive'
   post 'liking/:form_id' => 'home#liking', as: 'liking'
   post 'home/form_scrap_action'
-  get 'home/form_scrap'
+  delete 'home/form_scrap_action'
   get 'home/firstpage'
   get 'home/firstpage_result'
   get 'cover/contact'

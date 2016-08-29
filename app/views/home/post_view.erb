@@ -44,10 +44,10 @@
                       <div class="edit" align="right">
                         <!--언니 해결했어용!!ㅎㅎ-->
                         <% if can? :manage, @view_post %>
-                          <%=link_to post_update_path(@view_post.id), method: 'get' , class: 'btn btn-outline btn-circle btn-sm orange' do%> 
+                          <%=link_to post_update_path(@view_post.id), method: 'get' , class: 'btn btn-outline btn-circle btn-sm grey' do%> 
                             <i class="fa fa-edit"></i>edit
                           <%end%>
-                          <%=link_to post_update_path(@view_post.id), method: 'get' , class: 'btn btn-outline btn-circle btn-sm orange' do%> 
+                          <%=link_to post_update_path(@view_post.id), method: 'get' , class: 'btn btn-outline btn-circle btn-sm grey' do%> 
                             <i class="fa fa-trash-o"></i>delete
                           <%end%>
                         <%end%>
