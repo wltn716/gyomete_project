@@ -10,35 +10,33 @@
   <%= csrf_meta_tags %>
   
 
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
   
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
   <!-- Bootstrap 끝 -->
   
   <!-- Modal  -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  
+
   
   
   <!-- Template 시작 -->
   <!-- Google fonts styles -->
   <link href='https://fonts.googleapis.com/css?family=Roboto:400,900italic,900,700italic,700,500italic,500,400italic,300italic,300,100italic,100' rel='stylesheet' type='text/css'>
   <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
-    
+  
   <!-- Lifestone styles -->
-  <link rel="stylesheet" href="assets/stylesheets/css/bootstrap.min.css" type="text/css" media="screen">
-  <link rel="stylesheet" href="assets/stylesheets/css/font-awesome.min.css" type="text/css" media="screen">
-  <link rel="stylesheet" href="assets/stylesheets/css/ionicons.min.css" type="text/css" media="screen">
+  <%stylesheet_link_tag "/assets/stylesheets/css/bootstrap.min.css" %>
+  <%stylesheet_link_tag  "/assets/stylesheets/css/font-awesome.min.css"%>
+  <%stylesheet_link_tag   "/assets/stylesheets/css/ionicons.min.css"%>
     
   <!-- OWL Carousel -->
-  <link href="assets/stylesheets/css/owl.carousel.css" rel="stylesheet">
-  <link href="assets/stylesheets/css/owl.theme.css" rel="stylesheet">
-  <link href="assets/stylesheets/css/owl.transitions.css" rel="stylesheet">
-  <link rel="stylesheet" href="assets/stylesheets/css/jquery-smartvimeoembed.css" type="text/css" media="screen">
-  <link rel="stylesheet" href="assets/stylesheets/css/flexslider.css" type="text/css" media="screen">
-  <link rel="stylesheet" href="assets/stylesheets/css/style.css" type="text/css" media="screen">
+  <%stylesheet_link_tag "assets/stylesheets/css/owl.carousel.css" %>
+  <%stylesheet_link_tag "assets/stylesheets/css/owl.theme.css"%>
+  <%stylesheet_link_tag "assets/stylesheets/css/owl.transitions.css" %>
+  <%stylesheet_link_tag "assets/stylesheets/css/jquery-smartvimeoembed.css"%>
+  <%stylesheet_link_tag "assets/stylesheets/css/flexslider.css"  %>
+  <%stylesheet_link_tag "assets/stylesheets/css/style.css"%>
   
   <!-- FAVICON FILES -->
   <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
@@ -109,7 +107,7 @@
     </div>
     <!--================= End sidebar ==================-->
     <!--================= Start Top Bar ====================-->
-      <ul class= "top-nav-bar col-md-12 col-md-offset-1" style="position:fixed;">
+      <ul class= "top-nav-bar col-md-12 col-md-offset-1" style="margin-left:150px;">
         <li class= "logo-top">
          <%= link_to (image_tag asset_path('KakaoTalk_20160829_035313826.png'), style:"width:80%;",class: 'img-responsive'), cover_report_path, method: 'get' %>
         </li>
@@ -146,11 +144,12 @@
   <!--================= End Footer ==================-->
       
   </div>
+  
   <!-- Jquery Lib version 1.11.0 -->
-  <script type="text/javascript" src="javascripts/js/jquery.min.js"></script>
-  <script type="text/javascript" src="javascripts/js/bootstrap.min.js"></script>
-  <script type="text/javascript" src="javascripts/js/plugins.js"></script>
-  <script type="text/javascript" src="javascripts/js/main.js"></script>
+  <%javascript_include_tag "javascripts/js/jquery.min.js"%>
+  <%javascript_include_tag "javascripts/js/bootstrap.min.js" %>
+  <%javascript_include_tag "javascripts/js/plugins.js"%>
+  <%javascript_include_tag "javascripts/js/main.js"%>
  
  
 <%= yield %>

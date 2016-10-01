@@ -216,7 +216,7 @@ class HomeController < ApplicationController
   # 커뮤니티 게시판 리스트 출력
   def post_list
     @posts = Post.all.reverse  
-    @posts = Post.all  
+    
   end
   
   # 커뮤니티 게시판 리스트에서 검색했을 때 결과
