@@ -2,7 +2,8 @@
 <html>
 <head>
   <title>교메때</title>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  
+  <%javascript_include_tag "https://maps.googleapis.com/maps/api/js?key=AIzaSyCMDrWjjhg4Vna6w_SllMqFWdtRWkqDVTs"%>
   <!-- Bootstrap 시작 -->
    
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
@@ -11,7 +12,7 @@
   
 
   
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+  <% stylesheet_link_tag "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css", integrity:"sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r", crossorigin: "anonymous" %>
   <!-- Bootstrap 끝 -->
   
   <!-- Modal  -->
@@ -19,11 +20,11 @@
   
 
   
-  
+ 
   <!-- Template 시작 -->
   <!-- Google fonts styles -->
-  <link href='https://fonts.googleapis.com/css?family=Roboto:400,900italic,900,700italic,700,500italic,500,400italic,300italic,300,100italic,100' rel='stylesheet' type='text/css'>
-  <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
+  <%stylesheet_link_tag 'https://fonts.googleapis.com/css?family=Roboto:400,900italic,900,700italic,700,500italic,500,400italic,300italic,300,100italic,100' %>
+  <%stylesheet_link_tag 'https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' %>
   
   <!-- Lifestone styles -->
   <%stylesheet_link_tag "/assets/stylesheets/css/bootstrap.min.css" %>
@@ -146,6 +147,7 @@
   </div>
   
   <!-- Jquery Lib version 1.11.0 -->
+  
   <%javascript_include_tag "javascripts/js/jquery.min.js"%>
   <%javascript_include_tag "javascripts/js/bootstrap.min.js" %>
   <%javascript_include_tag "javascripts/js/plugins.js"%>

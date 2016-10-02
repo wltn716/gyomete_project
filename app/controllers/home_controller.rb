@@ -75,6 +75,8 @@ class HomeController < ApplicationController
   def form_list
     @forms = Form.where(category: params[:category]).reverse
     @best_form = @forms.sort_by{|b| b.likers.count}.reverse.take(3)
+   
+    
     Freply.all
   end
   
@@ -208,6 +210,7 @@ class HomeController < ApplicationController
     uploader = GyometeCommunityUploader.new
     uploader.store!(file)
     post.image_url = uploader.url
+   
     post.save
     
     redirect_to "/post_list"  

@@ -65,6 +65,3 @@ Google map
   };
 }(jQuery));
 
-jQuery(document).ready(function() {
-  jQuery('#contactmap').contactmap();
-});

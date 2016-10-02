@@ -1,158 +1,143 @@
-
 <section style="width:80%;height:80%;box-left:20%;">
   
-<div style="padding-top:100px;" >
-    <div align="center" class="link_to_color">
-        
-        <br>
-      <%= image_tag asset_path('best.png'),style:"width:25%;",class: 'img-responsive' %>
-      <br>
-      <br>
-      <br>
+<!--BEST 교메때 시작-->  
+  <% a = 0 %>
+  <div style="padding-top:100px;" >
+    <div align="center" class="link_to_color"><br>
+      <%= image_tag asset_path('best.png'),style:"width:25%;",class: 'img-responsive' %><br><br><br>
     </div>
-
-<div class="row" style="padding:30px 30px 10px 30px;">
-      <div id="masonry" class="masonry infinite-scroll">
-<%@best_form.each do |p|%>
-    <%unless p.likers.count.nil?%>
-          <div class="col-lg-4 col-md-6 col-sm-6 col-xs-6 col-12 masonry photography travel" style="cursor:pointer;"onclick="location.href='/form_view/<%=p.id%>'">
+    <%@best_form.each do |p|%>
+      <%if p.likers.count != 0 %>
+        <div class="row" style="padding:30px 30px 10px 30px;">
+          <div id="masonry" class="masonry infinite-scroll">
+            <% a = 1 %>
+            <div class="col-lg-4 col-md-6 col-sm-6 col-xs-6 col-12 masonry photography travel" style="cursor:pointer;"onclick="location.href='/form_view/<%=p.id%>'">
               <div class="post-article">
                 <div class="thumbnail">
-              
-                <a href="single.html" title="#">
-                     <%= image_tag asset_path('KakaoTalk_20160828_092045856.png'),style:"width:80%;",class: 'img-responsive' %>
-                </a>
+                  <%= image_tag asset_path('KakaoTalk_20160828_092045856.png'),style:"width:80%;",class: 'img-responsive' %>
                 </div>
-        
-                  <div class="post-entry">
-                      <div class="post-content">
-                          <ul class="post-author">
-                              <li><a href="javascript:void(0)"><i class="fa fa-user"></i><%=p.writer.nickname%></a></li>
-                          </ul>
-                          <h5 class="post-title">
-                              <%= link_to p.title, form_view_path(p.id) , method: 'get'%>
-                          </h5>
-                      </div>
-                      <div class="post-footer">
-                          <ul class="post-link">
-                              <li><a >
-                                  <i class="fa fa-clock-o"></i> <%= p.created_at.strftime("%Y-%m-%d")%>
-                              </a></li>
-                          </ul><br>
-                          <ul class="post-link">
-                              <li><a>
-                                   <i class="glyphicon glyphicon-eye-open"></i>&nbsp;<%= p.impressionist_count%>
-                              </a></li>
-                          </ul>
-                          <ul class="post-link">
-                            <li><a href="#">
-                                <i class="fa fa-comments-o"></i> <%=p.freplies.count%>
-                            </a></li>
-                          </ul>
-                          <ul class="post-link">
-                              <li><a >
-                                  <i class="glyphicon glyphicon-heart" style="color:#ff6666;"></i>&nbsp;<%=  p.likers.count %> 
-                              </a></li>
-                          </ul>
-                      
-                    
-                      </div>
-                  </div>
-              </div>
-          </div>
-          <%else%>
-          <div align="center" style="margin-bottom:5%;margin-left:32%;">
-          <h3>"아직 Best 교메때가 없습니다."</h3>
-          <p>베스트 교메때에 도전해보세요!</p>
-          </div>
-  <%end%>
-  <%end%>
-  </div>
-
-</div>
-</div>
-<hr style="background-color:black;">
-
-
-<%= image_tag asset_path('mailform.png'),style:"width:10%;margin-top:5%;",class: 'img-responsive' %>
-
-
-<div align="right" style="margin-bottom:5%; margin-right:5%;">
-  <div class="write">
-    <div class="wrap" style="float:right; margin-right:35px; display: inline-block;">
-        <form class="search" action="/home/form_result" method="GET" accept-charset="UTF-8">
-  
-  
-            <input type="text" name="search"  class="form_control" placeholder="&nbsp;검색하기" style="width:200px;">
-            <button name="botton" type="submit" class="searchButton" >
-                <span class="glyphicon glyphicon-search"></span>
-            </button>
-        </form>
-         
-    </div>
-  </div>
-</div>
-
-
-
-
-
-<div class="row p60" >
-  <div id="masonry" class="masonry infinite-scroll">
-    <%@forms.each do |p|%>
-      <div class="col-lg-4 col-md-6 col-sm-6 col-xs-6 col-12 masonry photography travel" style="cursor:pointer;"onclick="location.href='/form_view/<%=p.id%>'">
-          <div class="post-article">
-            <div class="thumbnail">
-          
-            <a href="single.html" title="#">
-                 <%= image_tag asset_path('KakaoTalk_20160828_092045856.png'),style:"width:80%;",class: 'img-responsive' %>
-            </a>
-            </div>
-    
-              <div class="post-entry">
+                <div class="post-entry">
                   <div class="post-content">
-                      <ul class="post-author">
-                          <li><a href="javascript:void(0)"><i class="fa fa-user"></i><%=p.writer.nickname%></a></li>
-                      </ul>
-                      <h5 class="post-title">
-                          <%= link_to p.title, form_view_path(p.id) , method: 'get'%>
-                      </h5>
+                    <ul class="post-author">
+                      <li><a href="javascript:void(0)"><i class="fa fa-user"></i><%=p.writer.nickname%></a></li>
+                    </ul>
+                    <h5 class="post-title">
+                      <%= link_to p.title, form_view_path(p.id) , method: 'get'%>
+                    </h5>
                   </div>
                   <div class="post-footer">
-                      <ul class="post-link">
-                          <li><a >
-                              <i class="fa fa-clock-o"></i> <%= p.created_at.strftime("%Y-%m-%d")%>
-                          </a></li>
-                      </ul><br>
-                      <ul class="post-link">
-                          <li><a>
-                               <i class="glyphicon glyphicon-eye-open"></i>&nbsp; <%= p.impressionist_count%>
-                          </a></li>
-                      </ul>
-                      <ul class="post-link">
-                        <li><a href="#">
-                            <i class="fa fa-comments-o"></i> <%=p.freplies.count%>
-                        </a></li>
-                      </ul>
-                      <ul class="post-link">
-                          <li><a >
-                              <i class="glyphicon glyphicon-heart" style="color:#ff6666;"></i>&nbsp;<%=  p.likers.count %> 
-                          </a></li>
-                      </ul>
+                    <ul class="post-link">
+                      <li><a >
+                        <i class="fa fa-clock-o"></i> <%= p.created_at.strftime("%Y-%m-%d")%>
+                      </a></li>
+                    </ul><br>
+                    <ul class="post-link">
+                      <li><a>
+                        <i class="glyphicon glyphicon-eye-open"></i>&nbsp;<%= p.impressionist_count%>
+                      </a></li>
+                    </ul>
+                    <ul class="post-link">
+                      <li><a href="#">
+                        <i class="fa fa-comments-o"></i> <%=p.freplies.count%>
+                      </a></li>
+                    </ul>
+                    <ul class="post-link">
+                      <li><a >
+                        <i class="glyphicon glyphicon-heart" style="color:#ff6666;"></i>&nbsp;<%=  p.likers.count %> 
+                      </a></li>
+                    </ul>
                   </div>
+                </div>
               </div>
+            </div>
           </div>
+        </div>
+      <%end%>
+    <%end%>
+    <%if a == 0 %>
+      <div align="center">
+        <h3>"아직 Best 교메때가 없습니다."</h3>
+        <p>베스트 교메때에 도전해보세요!</p>
       </div>
     <%end%>
   </div>
-</div>
-<div style="margin-left:20%;margin-bottom:5%;padding-right:5%;"align="right">
   
-  <button class="btn-orange" type="submit">
-    <i class="glyphicon glyphicon-pencil"></i>
-    <%= link_to "양식 올리기", home_form_write_path, method: 'get', :style => "color:#ffffff"%>
-  </button>  
-  
-</div>
+  <hr style="background-color:black;">
+<!--베스트교메때 끝-->
+
+<!--메일양식logo, 검색창 시작--> 
+  <%= image_tag asset_path('mailform.png'),style:"width:10%;margin-top:5%;",class: 'img-responsive' %>
+  <div align="right" style="margin-bottom:5%; margin-right:5%;">
+    <div class="write">
+      <div class="wrap" style="float:right; margin-right:35px; display: inline-block;">
+        <form class="search" action="/home/form_result" method="GET" accept-charset="UTF-8">
+          <input type="text" name="search"  class="form_control" placeholder="&nbsp;검색하기" style="width:200px;">
+          <button name="botton" type="submit" class="searchButton" >
+            <span class="glyphicon glyphicon-search"></span>
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+<!--메일양식logo, 검색창 끝-->
+
+
+
+<!--메일양식card 시작--> 
+  <div class="row p60" >
+    <div id="masonry" class="masonry infinite-scroll">
+      <%@forms.each do |p|%>
+        <div class="col-lg-4 col-md-6 col-sm-6 col-xs-6 col-12 masonry photography travel" style="cursor:pointer;"onclick="location.href='/form_view/<%=p.id%>'">
+          <div class="post-article">
+            <div class="thumbnail">
+              <a href="single.html" title="#">
+                <%= image_tag asset_path('KakaoTalk_20160828_092045856.png'),style:"width:80%;",class: 'img-responsive' %>
+              </a>
+            </div>
+            <div class="post-entry">
+              <div class="post-content">
+                <ul class="post-author">
+                  <li><a href="javascript:void(0)"><i class="fa fa-user"></i><%=p.writer.nickname%></a></li>
+                </ul>
+                <h5 class="post-title">
+                  <%= link_to p.title, form_view_path(p.id) , method: 'get'%>
+                </h5>
+              </div>
+              <div class="post-footer">
+                <ul class="post-link">
+                  <li><a >
+                    <i class="fa fa-clock-o"></i> <%= p.created_at.strftime("%Y-%m-%d")%>
+                  </a></li>
+                </ul><br>
+                <ul class="post-link">
+                  <li><a>
+                    <i class="glyphicon glyphicon-eye-open"></i>&nbsp; <%= p.impressionist_count%>
+                  </a></li>
+                </ul>
+                <ul class="post-link">
+                  <li><a href="#">
+                    <i class="fa fa-comments-o"></i> <%=p.freplies.count%>
+                  </a></li>
+                </ul>
+                <ul class="post-link">
+                  <li><a >
+                    <i class="glyphicon glyphicon-heart" style="color:#ff6666;"></i>&nbsp;<%=  p.likers.count %> 
+                  </a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      <%end%>
+    </div>
+  </div>
+  <div style="margin-left:20%;margin-bottom:5%;padding-right:5%;"align="right">
+    <button class="btn-orange" type="submit">
+      <i class="glyphicon glyphicon-pencil"></i>
+      <%= link_to "양식 올리기", home_form_write_path, method: 'get', :style => "color:#ffffff"%>
+    </button>  
+  </div>
+<!--메일양식card 끝--> 
+
 <section>
 
